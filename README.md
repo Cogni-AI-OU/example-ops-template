@@ -1,2 +1,3 @@
-# example-ops-template
-Example template for Ops repos.
+# Example repo Ops template
+
+Describe the project here.
