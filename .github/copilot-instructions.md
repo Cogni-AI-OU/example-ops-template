@@ -46,7 +46,7 @@ TBC
 
 ### YAML Guidelines
 
-- yaml[empty-lines]: Allow at most one consecutive blank line (checks for >1 empty line).
+- yaml[empty-lines]: Limit consecutive blank lines to one.
 - yaml[indentation]: Avoid wrong indentation.
 - yaml[line-length]: No long lines (max. 120 characters).
 - yaml[new-line-at-end-of-file]: Enforce new line character at the end of file.
