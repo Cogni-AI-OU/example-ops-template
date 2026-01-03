@@ -46,11 +46,11 @@ TBC
 
 ### YAML Guidelines
 
-- yaml[empty-lines]: Limit consecutive blank lines to one.
-- yaml[indentation]: Avoid wrong indentation.
-- yaml[line-length]: No long lines (max. 120 characters).
-- yaml[new-line-at-end-of-file]: Enforce new line character at the end of file.
-- yaml[truthy]: Truthy value should be one of [false, true].
+- empty-lines (yamllint): Limit consecutive blank lines to one.
+- indentation (yamllint): Avoid wrong indentation.
+- line-length (yamllint): No long lines (max. 120 characters).
+- new-line-at-end-of-file (yamllint): Enforce new line character at the end of file.
+- truthy (yamllint): Truthy value should be one of [false, true].
 - Ensure items are in lexicographical order when possible.
 - When embedding code blocks or inline YAML snippets within lists, end with a trailing newline to preserve indentation.
 
