@@ -61,35 +61,6 @@ Notes:
 - Project utilizes Codespaces with config at `.devcontainer/devcontainer.json` and requirements at `.devcontainer/requirements.txt`.
 - GitHub Actions run pre-commit checks (`.pre-commit-config.yaml`).
 
-## Example `pyproject.toml`
-
-```toml
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
-name = "example-ops-utility"
-version = "0.1.0"
-description = "Utility for interacting with the Example service via API."
-readme = "README.md"
-license = { file = "LICENSE" }
-requires-python = ">=3.11"
-dependencies = [
-  "requests>=2.32.0",
-  "tabulate>=0.9.0",
-  "pyyaml>=6.0.1",
-]
-
-authors = [
-  { name = "Cogni AI Example" },
-]
-
-[project.urls]
-Homepage = "https://github.com/Cogni-AI-OU/example-ops-template"
-Repository = "https://github.com/Cogni-AI-OU/example-ops-template"
-```
-
 ## Project Structure
 
 TBC
