@@ -1,3 +1,5 @@
+# Example pyproject template; update name, description, and metadata for your project.
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -5,7 +7,7 @@ build-backend = "hatchling.build"
 [project]
 name = "example-ops-template"
 version = "0.1.0"
-description = "Example template for interacting with an Example service via API."
+description = "Template for Example ops utilities that interact with external APIs."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.11"
