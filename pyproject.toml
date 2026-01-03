@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "example-ops-template"
 version = "0.1.0"
-description = "Utility for interacting with the Example service via API."
+description = "Example template for interacting with an Example service via API."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.11"
