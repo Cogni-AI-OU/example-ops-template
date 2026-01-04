@@ -208,3 +208,6 @@ __marimo__/
 
 # Data exports
 *.csv
+
+# Ignore .lock files
+*.lock
