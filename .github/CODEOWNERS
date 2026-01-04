@@ -1,2 +1,2 @@
-# Always request reviews from GitHub Copilot for all files.
-* @github-copilot
+# Always request reviews from GitHub Copilot bot for all files.
+* @github-copilot[bot]
