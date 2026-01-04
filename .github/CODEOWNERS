@@ -1,2 +1,2 @@
-# Always request reviews from GitHub Copilot bot for all files.
-* @github-copilot[bot]
+# Always request reviews from the Cogni AI reviewer for all files.
+* @cogni-ai-ee
