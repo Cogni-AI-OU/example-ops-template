@@ -1,0 +1,2 @@
+# Always request reviews from GitHub Copilot bot for all files.
+* @github-copilot[bot]
