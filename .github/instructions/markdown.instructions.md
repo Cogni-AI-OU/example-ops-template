@@ -59,7 +59,7 @@ Ensure compliance with the following validation requirements:
 
 ## Project Markdown Lint Rules
 
-The project enforces the following markdownlint rules (see `.markdownlint.yaml`):
+The project enforces the following markdownlint rules:
 
 - Keep line length <=120 characters.
 - Surround headings and lists with blank lines; fence code blocks with blank lines.
@@ -69,3 +69,8 @@ The project enforces the following markdownlint rules (see `.markdownlint.yaml`)
 - Lists must be surrounded by blank lines (MD032/blanks-around-lists).
 - Fenced code blocks need surrounding blank lines (MD031/blanks-around-fences) and a language.
 - Files end with a single newline (MD047/single-trailing-newline).
+
+## Validation
+
+- Repository rules come from `.markdownlint.yaml`.
+- Run `pre-commit run markdownlint -a` to verify locally.
