@@ -13,11 +13,12 @@
   "customizations": {
         "vscode": {
             "extensions": [
-              "DavidAnson.vscode-markdownlint",
-              "vscodevim.vim",
-              "xaver.clang-format",
-              "GitHub.copilot",
-              "GitHub.copilot-chat"
+                "DavidAnson.vscode-markdownlint",
+                "vscodevim.vim",
+                "xaver.clang-format",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "vsls-contrib.codetour"
             ]
     }
     },
