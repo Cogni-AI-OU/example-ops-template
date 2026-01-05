@@ -29,7 +29,7 @@ applyTo:
 - Ensure all tasks are idempotent - running them multiple times should produce the same result without unintended side effects.
 - Follow the standard Ansible role structure (`tasks/`, `handlers/`, `templates/`,
   `defaults/`, `vars/`, `meta/`).
-- Give every play, block, and task a concise but descriptive `name`
+- Give every play, block, and task a concise but descriptive `name`:
   - Start names with an action verb that indicates the operation being performed,
     such as "Install," "Configure," or "Copy"
   - Capitalize the first letter of the task name
