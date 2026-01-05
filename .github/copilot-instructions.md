@@ -40,15 +40,7 @@ TBC
 
 ### Markdown
 
-- Keep line length <=120 characters (see `.markdownlint.yaml`).
-- Surround headings and lists with blank lines; fence code blocks with blank lines.
-- Avoid trailing spaces; ensure a single trailing newline.
-- Avoid hard tabs (MD010/no-hard-tabs).
-- Headings must have blank lines around them (MD022/blanks-around-headings).
-- Lists must be surrounded by blank lines (MD032/blanks-around-lists).
-- Fenced code blocks need surrounding blank lines (MD031/blanks-around-fences).
-- Files end with a single newline (MD047/single-trailing-newline).
-- If pre-commit surfaces formatting errors, update these guidelines to keep them current and prevent repeats.
+Follow the Markdown rules in `.github/instructions/markdown.instructions.md`, which mirror the repository markdownlint configuration.
 
 ### YAML Guidelines
 
