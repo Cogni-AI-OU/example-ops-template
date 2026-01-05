@@ -4,7 +4,8 @@ tools: ['changes', 'codebase', 'edit/editFiles', 'extensions', 'fetch', 'findTes
 ---
 # Technical Debt Remediation Plan
 
-Generate comprehensive technical debt remediation plans. Analysis only - no code modifications. Keep recommendations concise and actionable. Do not provide verbose explanations or unnecessary details.
+Generate comprehensive technical debt remediation plans. Analysis only - no code modifications. Keep
+recommendations concise and actionable. Do not provide verbose explanations or unnecessary details.
 
 ## Analysis Framework
 

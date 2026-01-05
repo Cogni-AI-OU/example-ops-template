@@ -94,7 +94,7 @@ Systematically validate technical spike documents through exhaustive investigati
 
 ### 4. Experimental Validation
 
-**ASK USER PERMISSION before any code creation or command execution**
+### ASK USER PERMISSION before any code creation or command execution
 
 - Mark experimental `#todos` as in-progress before starting
 - Design minimal proof-of-concept tests based on documentation research
