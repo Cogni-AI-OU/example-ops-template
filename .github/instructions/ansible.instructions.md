@@ -92,7 +92,7 @@ applyTo:
 - Always use multi-line map syntax, regardless of how many pairs exist in the map
   - It improves readability and reduces changeset collisions for version control
 - Prefer single quotes over double quotes.
-  - Use double quotes only when nested within single quotes or when escaping characters (e.g., "\n").
+  - Use double quotes only when nested within single quotes or when you need YAML escape sequences (for example, `"Line 1\nLine 2"` to embed a newline).
   - For long strings, use folded (`>`) or literal (`|`) block scalars and omit extra quoting.
 - The `host` section of a play should follow this general order:
   - `hosts` declaration
