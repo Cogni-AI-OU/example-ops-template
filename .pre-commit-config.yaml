@@ -64,6 +64,7 @@ repos:
       - id: forbid-binary
       - id: git-check     # Configure in .gitattributes
       - id: require-ascii
+        exclude: .github/agents/
       - id: script-must-have-extension
 
   - repo: https://github.com/rhysd/actionlint
