@@ -13,9 +13,9 @@ The following markdown content rules are enforced in the validators:
    Do not use an H1 heading, as this will be generated based on the title.
 2. **Lists**: Use bullet points or numbered lists for lists. Ensure proper indentation and spacing.
 3. **Code Blocks**: Use fenced code blocks for code snippets. Specify the language for syntax highlighting.
-4. **Links**: Use proper markdown syntax for links. Ensure that links are valid and accessible.
-5. **Images**: Use proper markdown syntax for images. Include alt text for accessibility.
-6. **Tables**: Use markdown tables for tabular data. Ensure proper formatting and alignment.
+4. **Links**: Use proper Markdown syntax for links. Ensure that links are valid and accessible.
+5. **Images**: Use proper Markdown syntax for images. Include alt text for accessibility.
+6. **Tables**: Use Markdown tables for tabular data. Ensure proper formatting and alignment.
 7. **Line Length**: Limit line length to 120 characters to align with project linting.
 8. **Whitespace**: Use appropriate whitespace to separate sections and improve readability.
 9. **Front Matter**: Include YAML front matter at the beginning of the file with required metadata fields.
