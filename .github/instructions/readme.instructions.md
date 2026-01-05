@@ -14,12 +14,12 @@ applyTo: 'README.md'
   - `[license-link]: https://tldrlegal.com/license/mit-license`
 - If project has any tags, add a tags badge:
   - `[![Tags][tags-image]][tags-link]`
-  - `[tags-image]: https://img.shields.io/github/tag/{org}}/{repo}.svg?logo=github`
-  - `[tags-link]: https://github.com/{org}}/{repo}}/tags`
+  - `[tags-image]: https://img.shields.io/github/tag/{org}/{repo}.svg?logo=github`
+  - `[tags-link]: https://github.com/{org}/{repo}/tags`
 - If project uses GitHub Actions, include a build status badge:
-  - `[![Status][gha-image-{workflow}}-{branch}}]][gha-link-{workflow}}-{branch}}]`
-  - `[gha-link-{workflow}}-{branch}]: https://github.com/{org}}/{repo}}/actions?query=workflow%3A{name}}%3A{branch}}`
-  - `[gha-image-{workflow}}-{branch}]: https://github.com/{org}}/{repo}}/workflows/{name}/badge.svg`
+  - `[![Status][gha-image-{workflow}-{branch}]][gha-link-{workflow}-{branch}]`
+  - `[gha-link-{workflow}-{branch}]: https://github.com/{org}/{repo}/actions?query=workflow%3A{name}%3A{branch}`
+  - `[gha-image-{workflow}-{branch}]: https://github.com/{org}/{repo}/workflows/{name}/badge.svg`
 - Include project status badges as available (update workflow names as needed):
   - Optional: Docs/site badge if a published site exists.
 
