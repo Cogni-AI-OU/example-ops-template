@@ -21,9 +21,16 @@ For information on supported AI models, see [Supported Models](https://docs.gith
 ## Customizing the development environment
 
 See:
+[Customizing the development environment for GitHub Copilot coding agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment).
 
-- [Customizing the development environment for GitHub Copilot coding agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment).
-- [Customizing or disabling the firewall for GitHub Copilot coding agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-firewall).
+## Firewall
+
+See:
+[Customizing or disabling the firewall for GitHub Copilot coding agent](https://gh.io/copilot/firewall-config).
+
+#### Firewall allowlist
+
+See [FIREWALL.md](FIREWALL.md) for recommended hosts to allow and the official guidance link.
 
 ### MCP Server Setup
 
