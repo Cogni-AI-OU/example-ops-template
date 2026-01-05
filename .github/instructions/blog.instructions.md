@@ -37,7 +37,7 @@ Blog posts must follow the general markdown content rules defined in `markdown.i
 ## Validation
 
 - Ensure all required front matter fields are present and properly formatted.
-- Verify that each category value appears as a line in `/categories.txt`
-  (for example, use `grep -Fx "<category>" categories.txt` for each category or open the file and confirm manually).
+- Verify that each category value appears as a line in `/categories.txt` (for example, use
+  `grep -Fx "<category>" categories.txt` for each category or open the file and confirm manually).
 - Follow the project's markdown linting rules from `.markdownlint.yaml`.
 - Run `pre-commit run markdownlint -a` to verify locally.
