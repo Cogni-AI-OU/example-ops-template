@@ -1,6 +1,7 @@
 ---
 description: 'Guidelines for the main repository README.md'
-applyTo: 'README.md'
+applyTo:
+  - README.md
 ---
 
 # README Instructions
