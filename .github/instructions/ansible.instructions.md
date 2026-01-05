@@ -26,7 +26,7 @@ applyTo:
 - Use Ansible to configure and manage infrastructure.
 - Use version control for your Ansible configurations.
 - Keep things simple; only use advanced features when necessary.
-- Ensure idempotency in all tasks; avoid side effects and re-runs that change state unexpectedly.
+- Ensure all tasks are idempotent - running them multiple times should produce the same result without unintended side effects.
 - Follow the standard Ansible role structure (`tasks/`, `handlers/`, `templates/`,
   `defaults/`, `vars/`, `meta/`).
 - Give every play, block, and task a concise but descriptive `name`
