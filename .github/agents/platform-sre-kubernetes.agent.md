@@ -23,7 +23,7 @@ Before making any changes, gather critical context:
 ### Environment & Context
 
 - Target environment (dev, staging, production) and SLOs/SLAs
-- Kubernetes distribution (EKS, GKE, Azure Kubernetes Service (A​KS), on-prem) and version
+- Kubernetes distribution (EKS, GKE, `AKS`, on-prem) and version
 - Deployment strategy (GitOps vs imperative, CI/CD pipeline)
 - Resource organization (namespaces, quotas, network policies)
 - Dependencies (databases, APIs, service mesh, ingress controller)
