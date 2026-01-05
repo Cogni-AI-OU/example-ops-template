@@ -9,8 +9,10 @@ applyTo: '**/*.md'
 
 The following markdown content rules are enforced in the validators:
 
-1. **Headings**: Use heading levels H2 and below (H2, H3, H4, etc.) to structure your content.
-   Do not use an H1 heading, as this will be generated based on the title.
+1. **Headings**: Use H2 (`##`) and H3 (`###`) heading levels to structure your content.
+   Do not use H1 (`#`), as this will be generated based on the document title. Avoid H4 (`####`)
+   and deeper levels, as they suggest the content needs better organization or should be split
+   into separate documents.
 2. **Lists**: Use bullet points or numbered lists for lists. Ensure proper indentation and spacing.
 3. **Code Blocks**: Use fenced code blocks for code snippets. Specify the language for syntax highlighting.
 4. **Links**: Use proper Markdown syntax for links. Ensure that links are valid and accessible.
