@@ -39,8 +39,10 @@ applyTo:
   - When including tasks from a separate file, you may include the filename in each
     task name to make tasks easier to locate (e.g., `<TASK_FILENAME> : <TASK_NAME>`)
 - Use comments to provide additional context about **what**, **how**, and/or **why**
-  something is being done
-  - Don't include redundant comments
+  something is being done, especially for non-obvious decisions, workarounds, or complex logic
+  - Prefer comments that explain reasoning, caveats, or links to external context (e.g., ticket IDs, docs)
+  - Avoid comments that simply restate what the task already does (for example, do not add `# Install package`
+    above a task whose `name:` is "Install package")
 - Use dynamic inventory for cloud resources
   - Use tags to dynamically create groups based on environment, function, location, etc.
   - Use `group_vars` to set variables based on these attributes
