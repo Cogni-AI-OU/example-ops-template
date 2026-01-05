@@ -116,7 +116,7 @@ applyTo:
 - Use `ansible-lint` and `yamllint` to check syntax and enforce project standards.
 - Use `ansible-playbook --syntax-check` to check for syntax errors.
 - Use `ansible-playbook --check --diff` to perform a dry-run of playbook execution.
-- Use `pre-commit run ansible-lint` to verify Ansible files locally if pre-commit is
+- Use `pre-commit run ansible-lint -a` to verify Ansible files locally if pre-commit is
   available.
 - Prefer Molecule for role testing when available (e.g., `molecule test`).
 
