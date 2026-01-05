@@ -1,5 +1,6 @@
 ---
 description: 'Refine the requirement or issue with Acceptance Criteria, Technical Considerations, Edge Cases, and NFRs'
+name: 'Issue Refinement Assistant'
 tools:
   - 'list_issues'
   - 'githubRepo'
