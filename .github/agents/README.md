@@ -1,9 +1,25 @@
-# Custom agents
+# Custom Agents
 
-Fill in the fields below to create a basic custom agent for your repository.
+This folder contains custom agents designed to enhance your development workflow.
+These agents are tailored to specific tasks and integrate seamlessly with GitHub Copilot and MCP servers.
 
-The Copilot CLI can be used for local testing: https://gh.io/customagents/cli
+## How to Use Custom Agents
 
-To make this agent available, merge this file into the default repository branch.
+### Installation
 
-For format details, see: https://gh.io/customagents/config
+- Download the desired agent configuration file (`*.agent.md`) and add it to your repository.
+- Use the Copilot CLI for local testing: [Copilot CLI](https://gh.io/customagents/cli).
+
+### MCP Server Setup
+
+- Some agents require MCP servers to function.
+  Follow the instructions in the agent's documentation to configure the necessary MCP servers.
+
+### Activation
+
+- Merge the agent configuration file into the default branch of your repository.
+- Access installed agents through the VS Code Chat interface, Copilot CLI, or assign them in CCA.
+
+For more details, see the [Custom Agents Documentation](https://gh.io/customagents/config).
+
+For a collection of awesome custom agents, visit the [GitHub Awesome Copilot repository](https://github.com/github/awesome-copilot).
