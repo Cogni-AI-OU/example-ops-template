@@ -31,6 +31,8 @@ Follow these guidelines for formatting and structuring your markdown content:
 - **Code Blocks**: Use triple backticks (```) to create fenced code blocks. Specify the
   language after the opening backticks for syntax highlighting (e.g., `csharp`).
 - **Links**: Use `[link text](URL)` for links. Ensure that the link text is descriptive and the URL is valid.
+  - If a URL is long or reused, prefer reference-style links placed at the end of the file
+    after `<!-- Named links -->`.
 - **Images**: Use `![alt text](image URL)` for images. Include a brief description of the image in the alt text.
 - **Tables**: Use `|` to create tables. Ensure that columns are properly aligned and headers are included.
 - **Line Length**: Break lines at 120 characters to match `.markdownlint.yaml`. Use soft line breaks for long paragraphs.
