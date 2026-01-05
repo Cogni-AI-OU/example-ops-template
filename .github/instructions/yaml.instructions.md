@@ -1,6 +1,7 @@
 ---
 description: 'YAML formatting standards'
-applyTo: '**/*.{yaml,yml}'
+applyTo:
+  - '**/*.{yaml,yml}'
 ---
 
 # YAML Instructions
