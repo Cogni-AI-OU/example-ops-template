@@ -1,16 +1,19 @@
 ---
-description: 'Documentation and content creation standards'
+description: 'General documentation and markdown content standards'
 applyTo: '**/*.md'
 ---
 
 # Markdown Instructions
 
+These guidelines apply to all markdown files in the repository. For blog-specific requirements
+(including front matter fields), see `blog.instructions.md`.
+
 ## Markdown Content Rules
 
 The following markdown content rules are enforced in the validators:
 
-1. **Headings**: Use appropriate heading levels (H2, H3, etc.) to structure your content.
-   Do not use an H1 heading, as this will be generated based on the title.
+1. **Headings**: Use appropriate heading levels (H1, H2, H3, etc.) to structure your content.
+   Use H1 for the main document title, and H2/H3 for sections and subsections.
 2. **Lists**: Use bullet points or numbered lists for lists. Ensure proper indentation and spacing.
 3. **Code Blocks**: Use fenced code blocks for code snippets. Specify the language for syntax highlighting.
 4. **Links**: Use proper markdown syntax for links. Ensure that links are valid and accessible.
@@ -18,7 +21,8 @@ The following markdown content rules are enforced in the validators:
 6. **Tables**: Use markdown tables for tabular data. Ensure proper formatting and alignment.
 7. **Line Length**: Limit line length to 120 characters to align with project linting.
 8. **Whitespace**: Use appropriate whitespace to separate sections and improve readability.
-9. **Front Matter**: Include YAML front matter at the beginning of the file with required metadata fields.
+9. **Front Matter**: YAML front matter is optional for general documentation. See `blog.instructions.md`
+   for blog-specific front matter requirements.
 
 ## Formatting and Structure
 
@@ -37,27 +41,6 @@ Follow these guidelines for formatting and structuring your markdown content:
 - **Tables**: Use `|` to create tables. Ensure that columns are properly aligned and headers are included.
 - **Line Length**: Break lines at 120 characters to match `.markdownlint.yaml`. Use soft line breaks for long paragraphs.
 - **Whitespace**: Use blank lines to separate sections and improve readability. Avoid excessive whitespace.
-
-## Validation Requirements
-
-Ensure compliance with the following validation requirements:
-
-- **Front Matter**: Include the following fields in the YAML front matter:
-
-  - `post_title`: The title of the post.
-  - `author1`: The primary author of the post.
-  - `post_slug`: The URL slug for the post.
-  - `microsoft_alias`: The Microsoft alias of the author.
-  - `featured_image`: The URL of the featured image.
-  - `categories`: The categories for the post. These categories must be from the approved categories list for this repository.
-  - `tags`: The tags for the post.
-  - `ai_note`: Indicate if AI was used in the creation of the post.
-  - `summary`: A brief summary of the post. Recommend a summary based on the content when possible.
-  - `post_date`: The publication date of the post.
-
-- **Content Rules**: Ensure that the content follows the markdown content rules specified above.
-- **Formatting**: Ensure that the content is properly formatted and structured according to the guidelines.
-- **Validation**: Run the validation tools to check for compliance with the rules and guidelines.
 
 ## Project Markdown Lint Rules
 
