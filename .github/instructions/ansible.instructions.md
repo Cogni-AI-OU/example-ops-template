@@ -1,22 +1,14 @@
 ---
 description: 'Ansible conventions and best practices'
 applyTo:
-  - 'ansible/**/*.yml'
-  - 'ansible/**/*.yaml'
-  - 'defaults/**/*.yml'
-  - 'defaults/**/*.yaml'
-  - 'handlers/**/*.yml'
-  - 'handlers/**/*.yaml'
-  - 'meta/**/*.yml'
-  - 'meta/**/*.yaml'
-  - 'tasks/**/*.yml'
-  - 'tasks/**/*.yaml'
-  - 'tests/**/*.yml'
-  - 'tests/**/*.yaml'
-  - 'vars/**/*.yml'
-  - 'vars/**/*.yaml'
-  - 'molecule/**/*.yml'
-  - 'molecule/**/*.yaml'
+  - 'ansible/**/*.{yaml,yml}'
+  - 'defaults/**/*.{yaml,yml}'
+  - 'handlers/**/*.{yaml,yml}'
+  - 'meta/**/*.{yaml,yml}'
+  - 'tasks/**/*.{yaml,yml}'
+  - 'tests/**/*.{yaml,yml}'
+  - 'vars/**/*.{yaml,yml}'
+  - 'molecule/**/*.{yaml,yml}'
 ---
 
 # Ansible Conventions and Best Practices
