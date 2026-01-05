@@ -42,7 +42,9 @@ TBC
 
 Follow the Markdown rules in `.github/instructions/markdown.instructions.md`, which mirror the repository markdownlint configuration.
 
-### YAML Guidelines
+To test locally, run via `pre-commit run markdownlint --all-files` or use the VS Code Markdownlint extension.
+
+### YAML
 
 - empty-lines (yamllint): Limit consecutive blank lines to one.
 - indentation (yamllint): Avoid wrong indentation.
