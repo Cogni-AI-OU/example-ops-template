@@ -34,8 +34,9 @@ applyTo:
     such as "Install," "Configure," or "Copy"
   - Capitalize the first letter of the task name
   - Omit periods from the end of task names for brevity
-  - Omit the role name from role tasks; Ansible will automatically display the role
-    name when running a role
+  - When writing tasks inside a role (in the role's `tasks/` directory), omit the
+    role name from task names since Ansible automatically prefixes them with the
+    role name during execution
   - When including tasks from a separate file, you may include the filename in each
     task name to make tasks easier to locate (e.g., `<TASK_FILENAME> : <TASK_NAME>`)
 - Use comments to provide additional context about **what**, **how**, and/or **why**
