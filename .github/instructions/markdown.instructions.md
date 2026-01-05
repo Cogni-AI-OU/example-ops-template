@@ -46,6 +46,8 @@ Ensure compliance with the following validation requirements:
 - **Formatting**: Ensure that the content is properly formatted and structured according to the guidelines.
 - **Validation**: Run the validation tools to check for compliance with the rules and guidelines.
 
+After making changes, run appropriate validation tools to verify compliance with the markdownlint rules.
+
 ## Project Markdown Lint Rules
 
 The project enforces the following markdownlint rules:
