@@ -57,8 +57,10 @@ TBC
 
 ## Copilot Agent
 
-- When running into firewall issues as GitHub Copilot Agent, refer to: <https://gh.io/copilot/firewall-config>
-  and explain user how to allowlisting additional hosts in the agent's firewall and which hosts to allowlist.
+- If the GitHub Copilot Agent encounters firewall issues,
+  refer to <https://gh.io/copilot/firewall-config>.
+  Then provide guidance on how to allowlist additional hosts in the agent's firewall
+  and suggest updating the list of allowed hosts in `.github/agents/FIREWALL.md`.
 
 ## Common Tasks
 
