@@ -15,7 +15,8 @@ The following markdown content rules are enforced in the validators:
    and deeper levels, as they suggest the content needs better organization or should be split
    into separate documents.
 2. **Lists**: Use bullet points or numbered lists for lists. Ensure proper indentation and spacing.
-3. **Code Blocks**: Use fenced code blocks for code snippets. Specify the language for syntax highlighting.
+3. **Code Blocks**: Use fenced code blocks for code snippets. Always specify the language for syntax
+   highlighting (required for linting compliance).
 4. **Links**: Use proper Markdown syntax for links. Ensure that links are valid and accessible.
 5. **Images**: Use proper Markdown syntax for images. Include alt text for accessibility.
 6. **Tables**: Use Markdown tables for tabular data. Ensure proper formatting and alignment.
@@ -27,8 +28,9 @@ The following markdown content rules are enforced in the validators:
 Follow these guidelines for formatting and structuring your markdown content:
 
 - **Lists**: Use `-` for bullet points and `1.` for numbered lists. Indent nested lists with two spaces.
-- **Code Blocks**: Use triple backticks (```) to create fenced code blocks. Specify the
-  language after the opening backticks for syntax highlighting (e.g., `csharp`).
+- **Code Blocks**: Use triple backticks (```) to create fenced code blocks. Always specify the
+  language after the opening backticks for syntax highlighting (e.g., `csharp`). This is required
+  for linting compliance.
 - **Links**: Use `[link text](URL)` for links. Ensure that the link text is descriptive and the URL is valid.
   - If a URL is long or reused, prefer reference-style links placed at the end of the file
     after `<!-- Named links -->`.
