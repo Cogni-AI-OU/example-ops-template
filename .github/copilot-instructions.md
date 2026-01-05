@@ -53,6 +53,13 @@ Notes:
 
 TBC
 
+## Troubleshooting
+
+## Copilot Agent
+
+- When running into firewall issues as GitHub Copilot Agent, refer to: <https://gh.io/copilot/firewall-config>
+  and explain user how to allowlisting additional hosts in the agent's firewall and which hosts to allowlist.
+
 ## Common Tasks
 
 TBC
