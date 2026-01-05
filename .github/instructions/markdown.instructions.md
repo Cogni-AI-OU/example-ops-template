@@ -26,10 +26,6 @@ The following markdown content rules are enforced in the validators:
 
 Follow these guidelines for formatting and structuring your markdown content:
 
-- **Headings**: Use `##` for H2 and `###` for H3. Ensure that headings are used in a
-  hierarchical manner. Avoid using H4 (`####`) and H5 (`#####`) headings. If your content
-  structure would require headings deeper than H3, reorganize sections or split the content
-  into multiple documents so that it fits within an H2/H3 hierarchy.
 - **Lists**: Use `-` for bullet points and `1.` for numbered lists. Indent nested lists with two spaces.
 - **Code Blocks**: Use triple backticks (```) to create fenced code blocks. Specify the
   language after the opening backticks for syntax highlighting (e.g., `csharp`).
