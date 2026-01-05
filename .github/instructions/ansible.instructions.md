@@ -29,13 +29,14 @@ applyTo:
 - Ensure all tasks are idempotent - running them multiple times should produce the same result without unintended side effects.
 - Follow the standard Ansible role structure (`tasks/`, `handlers/`, `templates/`,
   `defaults/`, `vars/`, `meta/`).
-- Give every play, block, and task a concise but descriptive `name`
+- Give every play, block, and task a concise but descriptive `name`:
   - Start names with an action verb that indicates the operation being performed,
     such as "Install," "Configure," or "Copy"
   - Capitalize the first letter of the task name
   - Omit periods from the end of task names for brevity
-  - Omit the role name from role tasks; Ansible will automatically display the role
-    name when running a role
+  - When writing tasks inside a role (in the role's `tasks/` directory), omit the
+    role name from task names since Ansible automatically prefixes them with the
+    role name during execution
   - When including tasks from a separate file, you may include the filename in each
     task name to make tasks easier to locate (e.g., `<TASK_FILENAME> : <TASK_NAME>`)
 - Use comments to provide additional context about **what**, **how**, and/or **why**
@@ -94,7 +95,8 @@ applyTo:
 - Always use multi-line map syntax, regardless of how many pairs exist in the map
   - It improves readability and reduces changeset collisions for version control
 - Prefer single quotes over double quotes.
-  - Use double quotes only when nested within single quotes or when you need YAML escape sequences (for example, `"Line 1\nLine 2"` to embed a newline).
+  - Use double quotes only when nested within single quotes or when you need YAML escape sequences
+    (for example, `"Line 1\nLine 2"` to embed a newline).
   - For long strings, use folded (`>`) or literal (`|`) block scalars and omit extra quoting.
 - The `host` section of a play should follow this general order:
   - `hosts` declaration
