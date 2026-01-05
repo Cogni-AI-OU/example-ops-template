@@ -49,7 +49,7 @@ Ensure compliance with the following validation requirements:
   - `post_slug`: The URL slug for the post.
   - `microsoft_alias`: The Microsoft alias of the author.
   - `featured_image`: The URL of the featured image.
-  - `categories`: The categories for the post. These categories must be from the list in /categories.txt.
+  - `categories`: The categories for the post. These categories must be from the approved categories list for this repository.
   - `tags`: The tags for the post.
   - `ai_note`: Indicate if AI was used in the creation of the post.
   - `summary`: A brief summary of the post. Recommend a summary based on the content when possible.
