@@ -18,6 +18,13 @@ For a collection of awesome custom agents, visit the [GitHub Awesome Copilot rep
 
 For information on supported AI models, see [Supported Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
 
+## Customizing the development environment
+
+See:
+
+- [Customizing the development environment for GitHub Copilot coding agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment).
+- [Customizing or disabling the firewall for GitHub Copilot coding agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-firewall).
+
 ### MCP Server Setup
 
 - Some agents require MCP servers to function.
