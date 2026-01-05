@@ -31,6 +31,20 @@ applyTo: 'README.md'
 - Add a "Project Layout" section describing key directories (e.g., `.github/instructions/`, `.github/agents/`).
 - Add a "Contributing" section summarizing contribution expectations and linking to any contributing guide if present.
 - Add a "License" section that links to `LICENSE` and the TLDRLegal page for MIT.
+- For lengthy READMEs, include a Table of Contents using a TOC block, e.g.:
+
+  ```markdown
+  ## Table of contents
+
+  <!-- TOC -->
+
+  - [About the project](#about-the-project)
+  ...
+
+  <!-- /TOC -->
+  ```
+
+  Update the TOC block as needed.
 
 ## Formatting
 
