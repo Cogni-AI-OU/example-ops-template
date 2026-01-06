@@ -53,6 +53,13 @@ Notes:
 
 TBC
 
+### Tours
+
+- Keep the `.tours` folder up-to-date (especially `.tours/getting-started.tour`)
+  when making significant changes to the codebase.
+  Update existing tours or create new ones to reflect changes in project structure,
+  workflows, or key files.
+
 ## Troubleshooting
 
 If Copilot or automated checks behave unexpectedly:
