@@ -40,3 +40,10 @@ molecule test
 # Syntax check
 molecule syntax
 ```
+
+## Tools
+
+## Allowed Tools
+
+If you need a tool that isn't in the allowed tools list, suggest adding it to
+[.github/workflows/claude.yml](.github/workflows/claude.yml) under `allowed_tools`.
