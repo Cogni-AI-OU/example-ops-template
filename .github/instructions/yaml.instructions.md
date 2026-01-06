@@ -22,4 +22,4 @@ applyTo:
 - Repository rules come from `.yamllint`.
 - Run `pre-commit run yamllint -a` to verify locally.
 - Use `yq` for parsing and validation of YAML files, especially for long or complex files: `yq . file.yaml`.
-  Note: `jq` is for JSON files; `yq` has similar syntax but is designed for YAML.
+- Note: `jq` is for JSON files; `yq` has similar syntax but is designed for YAML.
