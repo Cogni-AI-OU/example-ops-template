@@ -1,0 +1,156 @@
+---
+name: Test DevContainer
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths:
+      - '.devcontainer/**'
+      - '.github/workflows/devcontainer-test.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '.devcontainer/**'
+      - '.github/workflows/devcontainer-test.yml'
+  workflow_dispatch:
+
+jobs:
+  test-devcontainer:
+    name: Test DevContainer Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and test dev container
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/${{ github.repository }}/devcontainer
+          cacheFrom: ghcr.io/${{ github.repository }}/devcontainer
+          push: filter
+          refFilterForPush: refs/heads/main
+          runCmd: |
+            # Verify the container environment
+            echo "Testing devcontainer build..."
+
+            # Check if pre-commit is installed
+            if command -v pre-commit &> /dev/null; then
+              echo "✓ pre-commit is installed"
+              pre-commit --version
+            else
+              echo "✗ pre-commit is not installed"
+              exit 1
+            fi
+
+            # Check if Python is installed
+            if command -v python3 &> /dev/null; then
+              echo "✓ Python is installed"
+              python3 --version
+            else
+              echo "✗ Python is not installed"
+              exit 1
+            fi
+
+            # Check if pip is installed
+            if command -v pip &> /dev/null; then
+              echo "✓ pip is installed"
+              pip --version
+            else
+              echo "✗ pip is not installed"
+              exit 1
+            fi
+
+            # Check if node is installed
+            if command -v node &> /dev/null; then
+              echo "✓ Node.js is installed"
+              node --version
+            else
+              echo "✗ Node.js is not installed"
+              exit 1
+            fi
+
+            # Check if make is installed
+            if command -v make &> /dev/null; then
+              echo "✓ make is installed"
+              make --version | head -n 1
+            else
+              echo "✗ make is not installed"
+              exit 1
+            fi
+
+            # Check if ripgrep is installed
+            if command -v rg &> /dev/null; then
+              echo "✓ ripgrep is installed"
+              rg --version
+            else
+              echo "✗ ripgrep is not installed"
+              exit 1
+            fi
+
+            # Check if vim is installed
+            if command -v vim &> /dev/null; then
+              echo "✓ vim is installed"
+              vim --version | head -n 1
+            else
+              echo "✗ vim is not installed"
+              exit 1
+            fi
+
+            # Check if docker is available (docker-in-docker feature)
+            if command -v docker &> /dev/null; then
+              echo "✓ docker is installed"
+              docker --version
+            else
+              echo "✗ docker is not installed"
+              exit 1
+            fi
+
+            # Check if actionlint is installed
+            if command -v actionlint &> /dev/null; then
+              echo "✓ actionlint is installed"
+              actionlint --version
+            else
+              echo "✗ actionlint is not installed"
+              exit 1
+            fi
+
+            # Check if gh CLI is installed
+            if command -v gh &> /dev/null; then
+              echo "✓ gh CLI is installed"
+              gh --version
+            else
+              echo "✗ gh CLI is not installed"
+              exit 1
+            fi
+
+            # Check if ansible is installed via pipx
+            if command -v ansible &> /dev/null; then
+              echo "✓ ansible is installed"
+              ansible --version | head -n 1
+            else
+              echo "✗ ansible is not installed"
+              exit 1
+            fi
+
+            # Verify Python packages from requirements.txt
+            echo "Checking Python packages from requirements.txt..."
+            pip list | grep -E "ansible|ansible-lint|docker|molecule|pre-commit|uv" \
+              || echo "Some Python packages may be missing"
+
+            # Verify pre-commit hooks are installed
+            if [ -d ".git/hooks" ] && [ -f ".git/hooks/pre-commit" ]; then
+              echo "✓ pre-commit hooks are installed"
+            else
+              echo "✗ pre-commit hooks not installed (expected in CI)"
+            fi
+
+            echo ""
+            echo "All DevContainer tests passed successfully! ✓"
