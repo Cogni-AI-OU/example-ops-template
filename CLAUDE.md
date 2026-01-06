@@ -43,7 +43,18 @@ molecule syntax
 
 ## Tools
 
-## Allowed Tools
+Claude Code provides access to various tools for interacting with the repository and environment.
+
+### Model Context Protocol (MCP)
+
+MCP servers can be enabled to extend Claude's capabilities with additional tools and integrations.
+If MCP is enabled, you'll have access to specialized tools for:
+
+- External service integrations
+- Enhanced development workflows
+- Custom tool implementations
+
+### Allowed Tools
 
 If you need a tool that isn't in the allowed tools list, suggest adding it to
 [.github/workflows/claude.yml](.github/workflows/claude.yml) in the `ALLOWED_TOOLS` environment variable.
