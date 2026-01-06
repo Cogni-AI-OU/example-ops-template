@@ -45,6 +45,8 @@ jobs:
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
+          additional_permissions: |
+            actions: read
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Optional: Trigger when specific user is assigned to an issue.
           assignee_trigger: "claude-bot"
