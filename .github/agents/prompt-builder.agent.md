@@ -1,7 +1,18 @@
 ---
 description: 'Expert prompt engineering and validation system for creating high-quality prompts - Brought to you by microsoft/edge-ai'
 name: 'Prompt Builder'
-tools: ['codebase', 'edit/editFiles', 'fetch', 'githubRepo', 'problems', 'runCommands', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'usages', 'terraform', 'Microsoft Docs', 'context7']
+tools:
+  - 'codebase'
+  - 'edit/editFiles'
+  - 'fetch'
+  - 'githubRepo'
+  - 'problems'
+  - 'runCommands'
+  - 'search'
+  - 'searchResults'
+  - 'terminalLastCommand'
+  - 'terminalSelection'
+  - 'usages'
 ---
 
 # Prompt Builder Instructions
@@ -62,7 +73,6 @@ You MUST research and integrate information from user-provided sources:
 - GitHub Repositories: You WILL use `github_repo` to search for coding conventions, standards, and best practices
 - Code Files/Folders: You WILL use `file_search` and `semantic_search` to understand implementation patterns
 - Web Documentation: You WILL use `fetch_webpage` to gather latest documentation and standards
-- Updated Instructions: You WILL use `context7` to gather latest instructions and examples
 
 #### Research Integration Requirements
 
@@ -202,7 +212,6 @@ You WILL confirm improvements are effective and research-compliant:
   - You WILL use `file_search`/`semantic_search` to find related examples and understand codebase patterns
   - You WILL use `github_repo` to research current conventions and best practices in relevant repositories
   - You WILL use `fetch_webpage` to gather latest official documentation and specifications
-  - You WILL use `context7` to gather latest instructions and examples
 
 <!-- </core-principles> -->
 
