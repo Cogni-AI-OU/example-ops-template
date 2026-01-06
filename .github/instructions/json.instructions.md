@@ -31,7 +31,8 @@ applyTo:
 
 ## Validation
 
-- Repository indentation rules come from `.editorconfig` (2 spaces for JSON files).
+
+Use the following tools and checks to validate JSON files and ensure they conform to these guidelines.
 - Note: `.editorconfig` sets `trim_trailing_whitespace = false` for JSON files.
 - Use `jq` for validation and formatting: `jq . file.json` to validate standard JSON files.
   Note that `jq` does not support JSONC (JSON with comments).
