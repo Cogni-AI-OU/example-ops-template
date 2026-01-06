@@ -33,6 +33,12 @@ TBC
 
 ## Formatting Guidelines
 
+### JSON
+
+Follow the JSON rules in `.github/instructions/json.instructions.md`, which mirror the repository `.editorconfig` configuration.
+
+To test locally, use `jq` for validation or use the VS Code JSON formatter.
+
 ### Markdown
 
 Follow the Markdown rules in `.github/instructions/markdown.instructions.md`, which mirror the repository markdownlint configuration.
