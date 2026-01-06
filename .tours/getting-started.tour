@@ -10,7 +10,7 @@
     },
     {
       "title": "Project Overview",
-      "description": "## About This Project\n\nThis is a template repository for ops utilities that interact with external APIs. It's designed to provide:\n\n- Python 3.11+ development environment\n- Pre-configured devcontainer for consistent development\n- Comprehensive pre-commit hooks for code quality\n- GitHub Actions for CI/CD\n- Multiple coding standards and guidelines\n\nThe project uses modern Python tooling including `uv` for dependency management and `pre-commit` for automated checks.",
+      "description": "## About This Project\n\nThis is a template repository that provides a standardized starting point for operational projects. It's designed to provide:\n\n- Python 3.11+ development environment\n- Pre-configured devcontainer for consistent development\n- Comprehensive pre-commit hooks for code quality\n- GitHub Actions for CI/CD\n- Multiple coding standards and guidelines\n\nThe project uses modern Python tooling including `uv` for dependency management and `pre-commit` for automated checks.",
       "file": "README.md"
     },
     {
@@ -59,8 +59,8 @@
       "line": 9
     },
     {
-      "title": "VS Code Tasks",
-      "description": "## VS Code Task Configuration\n\nThe `tasks.json` file (if it exists) can define custom tasks for common operations.\n\n### Quick Actions:\n\nYou can use the VS Code Command Palette (Ctrl/Cmd+Shift+P) to:\n- Run pre-commit checks\n- Execute Python scripts\n- Run Ansible playbooks\n\nThe code-runner extension is also configured for quick script execution.",
+      "title": "VS Code Settings",
+      "description": "## VS Code Configuration\n\nThe `settings.json` file configures VS Code behavior for this repository.\n\n### Code Runner Configuration:\n\nThe code-runner extension is configured to execute various file types:\n- Python scripts with `python -u`\n- JavaScript with `node`\n- Pre-commit checks with `pre-commit run --all-files`\n- Ansible Molecule tests for specific scenarios\n\nThese settings enable quick script execution directly from VS Code.",
       "file": ".vscode/settings.json",
       "line": 2
     },
