@@ -26,6 +26,15 @@ jobs:
       issues: write
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
+    env:
+      # Allowed tools for Claude (comma-separated list)
+      # Add new tools here as needed
+      ALLOWED_TOOLS: >-
+        Bash(git:*),
+        Bash(pre-commit run:*),
+        Bash(jq:*),
+        Bash(yq:*),
+        Bash(npm:*)
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -36,18 +45,13 @@ jobs:
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
-          allowed_tools: |
-            Bash(git:*)
-            Bash(pre-commit run:*)
-            Bash(jq:*)
-            Bash(yq:*)
-            Bash(npm:*)
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Optional: Trigger when specific user is assigned to an issue.
           assignee_trigger: "claude-bot"
           claude_args: |
             --model claude-opus-4-5
             --max-turns 100
+            --allowedTools "${{ env.ALLOWED_TOOLS }}"
 
           # Models: <https://platform.claude.com/docs/en/about-claude/models/overview>
 
