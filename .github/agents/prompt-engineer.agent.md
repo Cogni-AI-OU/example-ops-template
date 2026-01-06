@@ -92,4 +92,4 @@ real examples should be longer / shorter / different. AND USE PLACEHOLDERS! ]
 ## Notes [optional]
 
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
-[NOTE: you must start with a reasoning section. the immediate next token you produce should be reasoning]
+[NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]
