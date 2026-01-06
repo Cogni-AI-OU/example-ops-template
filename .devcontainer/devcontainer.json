@@ -16,8 +16,8 @@
         "AndrePimenta.claude-code-chat",
         "Anthropic.claude-code",
         "DavidAnson.vscode-markdownlint",
-        "GitHub.copilot-chat",
         "GitHub.copilot",
+        "GitHub.copilot-chat",
         "vscodevim.vim",
         "vsls-contrib.codetour",
         "xaver.clang-format"
