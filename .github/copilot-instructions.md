@@ -41,7 +41,7 @@ To test locally, run via `pre-commit run markdownlint -a` or use the VS Code Mar
 
 ### YAML
 
-Follow the YAML rules in `.github/instructions/yaml.instructions.md`, which mirror the repository `.yamllint` configuration.
+Follow the YAML rules in `./.github/instructions/yaml.instructions.md`, which mirror the repository `.yamllint` configuration.
 
 Notes:
 
@@ -54,6 +54,12 @@ Notes:
 TBC
 
 ## Troubleshooting
+
+If Copilot or automated checks behave unexpectedly:
+
+- Re-run `pre-commit run -a` locally to surface formatting or linting issues.
+- Verify `.markdownlint.yaml` and `.yamllint` have not been modified incorrectly.
+- If problems persist, open an issue with details of the command run and any error output.
 
 ## Copilot Agent
 
