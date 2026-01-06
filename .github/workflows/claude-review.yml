@@ -1,0 +1,11 @@
+---
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  claude-review:
+    uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main
+    secrets: inherit  # pragma: allowlist secret
