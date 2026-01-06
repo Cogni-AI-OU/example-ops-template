@@ -68,7 +68,7 @@ If Copilot or automated checks behave unexpectedly:
 - Verify `.markdownlint.yaml` and `.yamllint` have not been modified incorrectly.
 - If problems persist, open an issue with details of the command run and any error output.
 
-## Copilot Agent runs
+## Copilot Agent
 
 - If you encounter firewall issues when using the GitHub Copilot Agent,
   refer to <https://gh.io/copilot/firewall-config> for configuration details.
