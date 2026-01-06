@@ -68,6 +68,33 @@ TBC
 
 ## Troubleshooting
 
+### Finding Build Errors
+
+To identify and diagnose the latest build errors:
+
+1. **Check GitHub Actions workflow status:**
+   - Navigate to the "Actions" tab in the repository
+   - Look for the most recent workflow run (typically named "Check")
+   - Failed runs are marked with a red ❌ icon
+
+2. **View detailed error logs:**
+   - Click on the failed workflow run
+   - Review the job summary to identify which job failed (e.g., "actionlint" or "Pre-commit")
+   - Click on the failed job name to expand the logs
+   - Scroll through the logs to find error messages (usually highlighted in red)
+
+3. **Reproduce errors locally:**
+   - For pre-commit errors: Run `pre-commit run -a` to check all files
+   - For specific hooks: Run `pre-commit run <hook-name> -a` (e.g., `markdownlint`, `yamllint`)
+   - For actionlint errors: Install actionlint and run it on workflow files
+
+4. **Common error patterns:**
+   - **Markdown linting errors:** Check `.markdownlint.yaml` for rules; errors show line numbers
+   - **YAML linting errors:** Check `.yamllint` for rules; verify indentation and structure
+   - **JSON formatting errors:** Use `jq . <file>` to validate JSON syntax
+
+### General Troubleshooting
+
 If Copilot or automated checks behave unexpectedly:
 
 - Re-run `pre-commit run -a` locally to surface formatting or linting issues.
