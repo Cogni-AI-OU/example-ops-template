@@ -9,15 +9,18 @@
   // },
 
   // Configure tool-specific properties.
+  // Note: Keep the list in alphabetical order.
   "customizations": {
     "vscode": {
       "extensions": [
+        "AndrePimenta.claude-code-chat",
+        "Anthropic.claude-code",
         "DavidAnson.vscode-markdownlint",
-        "vscodevim.vim",
-        "xaver.clang-format",
         "GitHub.copilot",
         "GitHub.copilot-chat",
-        "vsls-contrib.codetour"
+        "vscodevim.vim",
+        "vsls-contrib.codetour",
+        "xaver.clang-format"
       ]
     }
   },
