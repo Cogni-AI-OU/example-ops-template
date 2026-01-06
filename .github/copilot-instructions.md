@@ -73,15 +73,15 @@ TBC
 To identify and diagnose the latest build errors:
 
 1. **Check GitHub Actions workflow status:**
-   - Navigate to the "Actions" tab in the repository
-   - Look for the most recent workflow run (typically named "Check")
-   - Failed runs are marked with a red X icon
+   - Use `list_workflow_runs` to see recent workflow runs and their status
+   - Look for runs with `conclusion: "failure"` or `status: "completed"` with failures
+   - Note the `run_id` of failed runs (typically the "Check" workflow)
 
 2. **View detailed error logs:**
-   - Click on the failed workflow run
-   - Review the job summary to identify which job failed (e.g., "actionlint" or "Pre-commit")
-   - Click on the failed job name to expand the logs
-   - Scroll through the logs to find error messages (usually highlighted in red)
+   - Use `get_job_logs` with the `run_id` and `failed_only: true` to get logs for all failed jobs
+   - Alternatively, use `list_workflow_jobs` to identify specific failed jobs, then use `get_job_logs`
+     with the `job_id` to get detailed logs for a specific job
+   - Parse the logs to find error messages and failure patterns
 
 3. **Reproduce errors locally:**
    - For pre-commit errors: Run `pre-commit run -a` to check all files
