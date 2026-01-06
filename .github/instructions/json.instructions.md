@@ -24,14 +24,17 @@ applyTo:
   place each element on its own line with proper indentation.
 - **Property Order**: When practical, keep properties in a logical or alphabetical order to improve
   readability and maintainability.
-- **Comments**: JSON does not officially support comments. However, some tools (like VS Code settings)
-  allow `//` style comments. Use them sparingly and only when the tool explicitly supports them.
-  Prefer JSON5 or JSONC formats when extensive comments are needed.
+- **Comments**: JSON does not officially support comments. However, some JSON files in this repository
+  (like `.vscode/settings.json` and `.devcontainer/devcontainer.json`) use JSONC format with `//` style
+  comments, which is supported by VS Code. Use comments sparingly and only in files where the tool
+  explicitly supports them.
 - **Whitespace**: Use consistent spacing around colons (no space before, one space after).
 
 ## Validation
 
 - Repository indentation rules come from `.editorconfig` (2 spaces for JSON files).
-- Use `pre-commit run check-json -a` or similar JSON validation tools to verify syntax.
-- Consider using `jq` for formatting: `jq . file.json` to validate and format JSON files.
+- Use `jq` for validation and formatting: `jq . file.json` to validate standard JSON files.
+  Note that `jq` does not support JSONC (JSON with comments).
 - Many editors provide built-in JSON formatting (e.g., VS Code's "Format Document" command).
+- The repository's pre-commit hooks include `end-of-file-fixer` and `trailing-whitespace` which
+  apply to JSON files.
