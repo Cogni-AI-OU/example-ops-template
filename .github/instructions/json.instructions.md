@@ -8,12 +8,11 @@ applyTo:
 
 ## JSON Content Rules
 
-- Use spaces for indentation (2 spaces per level from .editorconfig); avoid tabs.
-- End files with a newline (from .editorconfig).
+- Use spaces for indentation (2 spaces per level per .editorconfig); avoid tabs.
+- End files with a newline (per .editorconfig).
 - Use double quotes for all strings and property names (JSON standard).
 - Ensure proper comma usage: include commas between elements, but not after the last element in an object or array.
 - Use consistent indentation for nested structures.
-- Avoid trailing whitespace on lines.
 - Keep the JSON structure valid and parseable.
 
 ## JSON Structure and Formatting
@@ -33,8 +32,8 @@ applyTo:
 ## Validation
 
 - Repository indentation rules come from `.editorconfig` (2 spaces for JSON files).
+- Note: `.editorconfig` sets `trim_trailing_whitespace = false` for JSON files.
 - Use `jq` for validation and formatting: `jq . file.json` to validate standard JSON files.
   Note that `jq` does not support JSONC (JSON with comments).
 - Many editors provide built-in JSON formatting (e.g., VS Code's "Format Document" command).
-- The repository's pre-commit hooks include `end-of-file-fixer` and `trailing-whitespace` which
-  apply to JSON files.
+- The repository's pre-commit hooks include `end-of-file-fixer` which applies to JSON files.
