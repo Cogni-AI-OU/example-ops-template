@@ -53,6 +53,13 @@ Notes:
 
 TBC
 
+### Tours
+
+- Keep the `.tours` folder up-to-date (especially `.tours/getting-started.tour`)
+  when making significant changes to the codebase.
+  Update existing tours or create new ones to reflect changes in project structure,
+  workflows, or key files.
+
 ## Troubleshooting
 
 If Copilot or automated checks behave unexpectedly:
@@ -61,7 +68,7 @@ If Copilot or automated checks behave unexpectedly:
 - Verify `.markdownlint.yaml` and `.yamllint` have not been modified incorrectly.
 - If problems persist, open an issue with details of the command run and any error output.
 
-## Copilot Agent
+## Copilot Agent runs
 
 - If you encounter firewall issues when using the GitHub Copilot Agent,
   refer to <https://gh.io/copilot/firewall-config> for configuration details.
