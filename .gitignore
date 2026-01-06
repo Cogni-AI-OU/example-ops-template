@@ -218,3 +218,6 @@ cython_debug/
 
 # Ignore .lock files
 *.lock
+
+# Build tools
+actionlint

@@ -54,9 +54,9 @@
     },
     {
       "title": "GitHub Actions Workflow",
-      "description": "## Continuous Integration\n\nThe `check.yml` workflow runs on every push and pull request:\n\n### Jobs:\n\n1. **actionlint**: Validates GitHub Actions workflow syntax\n2. **pre-commit**: Runs all pre-commit hooks\n\nThis ensures that all code merged into the repository meets quality standards.\n\n### Caching:\nPre-commit hooks are cached to speed up CI runs.",
+      "description": "## Continuous Integration\n\nThe `check.yml` workflow runs on every push and pull request.\n\n### Reusable Workflow:\n\nThis workflow uses a reusable workflow call from the `.github` organization repository:\n- **Location**: `Cogni-AI-OU/.github/.github/workflows/check.yml@main`\n- **Jobs**: actionlint and pre-commit checks\n\nThis centralizes workflow definitions across all organization repositories, ensuring consistency and easier maintenance.\n\n### What It Does:\n\n1. **actionlint**: Validates GitHub Actions workflow syntax\n2. **pre-commit**: Runs all pre-commit hooks with caching\n\nThis ensures that all code merged into the repository meets quality standards.",
       "file": ".github/workflows/check.yml",
-      "line": 9
+      "line": 10
     },
     {
       "title": "VS Code Settings",
