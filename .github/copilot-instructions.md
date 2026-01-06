@@ -63,10 +63,10 @@ If Copilot or automated checks behave unexpectedly:
 
 ## Copilot Agent
 
-- If the GitHub Copilot Agent encounters firewall issues,
-  refer to <https://gh.io/copilot/firewall-config>.
-  Then provide guidance on how to allowlist additional hosts in the agent's firewall
-  and suggest updating the list of allowed hosts in `.github/agents/FIREWALL.md`.
+- If you encounter firewall issues when using the GitHub Copilot Agent,
+  refer to <https://gh.io/copilot/firewall-config> for configuration details.
+  If you need to allowlist additional hosts, update your firewall configuration accordingly
+  and keep the list of allowed hosts in `.github/agents/FIREWALL.md` up to date.
 
 ## Common Tasks
 
