@@ -46,4 +46,4 @@ molecule syntax
 ## Allowed Tools
 
 If you need a tool that isn't in the allowed tools list, suggest adding it to
-[.github/workflows/claude.yml](.github/workflows/claude.yml) under `allowed_tools`.
+[.github/workflows/claude.yml](.github/workflows/claude.yml) in the `ALLOWED_TOOLS` environment variable.
