@@ -75,7 +75,7 @@ To identify and diagnose the latest build errors:
 1. **Check GitHub Actions workflow status:**
    - Navigate to the "Actions" tab in the repository
    - Look for the most recent workflow run (typically named "Check")
-   - Failed runs are marked with a red ❌ icon
+   - Failed runs are marked with a red X icon
 
 2. **View detailed error logs:**
    - Click on the failed workflow run
