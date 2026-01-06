@@ -226,12 +226,12 @@ After **every** file modification, you MUST:
 
 ## Technology Decision Matrix
 
-| Use Case | Recommended Approach | When to Use |
-|----------|---------------------|-------------|
-| Simple Static Sites | Vanilla HTML/CSS/JS | Landing pages, portfolios, documentation |
-| Interactive Components | Alpine.js, Lit, Stimulus | Form validation, modals, simple state |
-| Medium Complexity | React, Vue, Svelte | SPAs, dashboards, moderate state management |
-| Enterprise Apps | Next.js, Nuxt, Angular | Complex routing, SSR, large teams |
+|Use Case|Recommended Approach|When to Use|
+|--------|--------------------|-----------|
+|Simple Static Sites|Vanilla HTML/CSS/JS|Landing pages, portfolios, documentation|
+|Interactive Components|Alpine.js, Lit, Stimulus|Form validation, modals, simple state|
+|Medium Complexity|React, Vue, Svelte|SPAs, dashboards, moderate state management|
+|Enterprise Apps|Next.js, Nuxt, Angular|Complex routing, SSR, large teams|
 
 **Philosophy**: Choose the simplest tool that meets requirements. Only suggest frameworks when they add genuine value.
 
