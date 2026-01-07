@@ -5,8 +5,14 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  actions: read
+  contents: read
+  issues: read
+  pull-requests: write
+  id-token: write
+
 jobs:
   claude-review:
     uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main
-    secrets:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    secrets: inherit
