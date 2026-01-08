@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-This is the organization-wide `.github` repository. It provides
-default community health files, GitHub Actions workflows, issue/PR templates,
-and coding standards that apply across all repositories in the organization.
+This is the `example-ops-template` repository. It provides
+GitHub Actions workflows, issue/PR templates, and coding standards
+for this project.
 
 Key contents:
 
