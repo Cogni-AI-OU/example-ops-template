@@ -216,6 +216,9 @@ cython_debug/
 # Data exports
 *.csv
 
+# Ignore .lock files
+*.lock
+
 # Temporary binary files
 actionlint
 
