@@ -7,6 +7,13 @@ on:
     types: [opened, synchronize]
   workflow_call:
 
+permissions:
+  actions: read
+  contents: read
+  issues: read
+  pull-requests: write
+  id-token: write
+
 jobs:
   claude-review:
     uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main
