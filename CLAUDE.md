@@ -1,60 +1,103 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with this repository.
+This file provides Claude Code-specific guidance. For general agent instructions,
+see [AGENTS.md](AGENTS.md).
 
-## Quick Start
+## Claude Code Configuration
 
-- See [README.md](README.md) for setup and installation instructions
-- See [.tours/getting-started.tour](.tours/getting-started.tour) for a guided walkthrough
+Claude Code is configured via GitHub Actions workflows in this repository.
+The primary workflow is [.github/workflows/claude.yml](.github/workflows/claude.yml).
 
-## Instructions
+### Triggering Claude
 
-For detailed coding standards and formatting guidelines, refer to:
+Claude can be triggered by mentioning `@claude` in:
 
-- [Copilot Instructions](.github/copilot-instructions.md) - Main coding standards
-- [Ansible](.github/instructions/ansible.instructions.md) - Ansible conventions
-- [JSON](.github/instructions/json.instructions.md) - JSON formatting standards
-- [Markdown](.github/instructions/markdown.instructions.md) - Markdown standards
-- [YAML](.github/instructions/yaml.instructions.md) - YAML formatting standards
+- **PR comments**: Comment on a pull request with `@claude` followed by instructions
+- **Inline review comments**: Add `@claude` to a review comment on specific code lines
+- **Issue comments**: Comment on an issue with `@claude` followed by instructions
+- **New issues**: Create an issue with `@claude` in the title or body
+- **Reply to Claude's comments**: Reply to Claude's comments (posted via
+  `github-actions[bot]` with claude-code-action markers) to continue the
+  conversation without needing to mention `@claude` again
 
-## Common Tasks
+**Who can trigger Claude:**
 
-### Linting and Validation
+- Organization owners, members, and collaborators (on any PR/issue)
+- PR authors (on their own PRs only)
+- Issue authors (on their own issues only)
 
-```bash
-# Run all pre-commit checks
-pre-commit run -a
+**Security**: External contributors cannot trigger Claude on other people's PRs or
+issues. This prevents unauthorized API usage and ensures code changes are reviewed
+by trusted users.
 
-# Run specific checks
-pre-commit run markdownlint -a
-pre-commit run yamllint -a
-ansible-lint
-```
+**Note**: Claude's comments appear under the `github-actions[bot]` user because
+they are posted through the GitHub Actions workflow. The workflow identifies
+Claude's comments specifically by looking for the `claude-code-action` marker
+to avoid confusion with other workflows that also post as `github-actions[bot]`.
+This is a limitation of the `anthropics/claude-code-action` and cannot be changed
+to display as `claude[bot]` at the workflow configuration level.
 
-### Testing
+### Environment Variables
 
-```bash
-# Run Molecule tests
-molecule test
+- `ANTHROPIC_API_KEY`: API key for Claude (stored as repository secret)
+- `ALLOWED_TOOLS`: Comma-separated list of tools Claude can use
 
-# Syntax check
-molecule syntax
-```
+### Model Selection
+
+By default, workflows use `claude-opus-4-5`. To change the model, update the
+`--model` argument in the workflow's `claude_args`.
 
 ## Tools
 
-Claude Code provides access to various tools for interacting with the repository and environment.
-
-### Model Context Protocol (MCP)
-
-MCP servers can be enabled to extend Claude's capabilities with additional tools and integrations.
-If MCP is enabled, you'll have access to specialized tools for:
-
-- External service integrations
-- Enhanced development workflows
-- Custom tool implementations
+Claude Code provides access to various tools for interacting with the repository
+and environment.
 
 ### Allowed Tools
 
+The allowed tools are defined in workflow files under the `ALLOWED_TOOLS`
+environment variable. Current categories include:
+
+- **Git operations**: `Bash(git:*)` - Full access for commits and pushes
+- **GitHub CLI**: `Bash(gh issue:*)`, `Bash(gh pr:*)`, `Bash(gh search:*)`
+- **Data processing**: `Bash(jq:*)`, `Bash(yq:*)`
+
 If you need a tool that isn't in the allowed tools list, suggest adding it to
-[.github/workflows/claude.yml](.github/workflows/claude.yml) in the `ALLOWED_TOOLS` environment variable.
+the relevant workflow file in `.github/workflows/`.
+
+**Note on git access**: You have broad git access to commit and push changes.
+The workflow has strict access controls ensuring only trusted users can trigger you.
+Repository administrators are responsible for configuring branch protection and
+monitoring commit activity.
+
+### Model Context Protocol (MCP)
+
+MCP servers extend Claude's capabilities with additional tools and integrations.
+When MCP is enabled via `--mcp-config`, you gain access to:
+
+- GitHub API integrations (issues, PRs, repositories)
+- External service integrations
+- Custom tool implementations
+
+MCP configuration is specified in workflow files using JSON format.
+
+## Prompting Best Practices
+
+When working with Claude in this repository:
+
+- Reference `AGENTS.md` for coding standards and formatting rules
+- Run `pre-commit run -a` before finalizing changes
+- Keep responses concise; avoid restating obvious context
+- Focus on actionable issues rather than stylistic preferences
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Workflow not triggering**: The workflow triggers for `@claude` mentions or replies
+   to comments from `github-actions[bot]`. Check workflow logs for permission issues.
+2. **Tool not allowed**: Check if the tool is in `ALLOWED_TOOLS`; request addition
+   via PR if needed.
+3. **Linting failures**: Run `pre-commit run -a` locally to identify issues before
+   committing.
+4. **MCP connection errors**: Verify the MCP server URL and authentication in
+   workflow configuration.
