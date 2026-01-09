@@ -14,5 +14,5 @@ permissions:
 
 jobs:
   claude-review:
-    uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main
+    uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@dev
     secrets: inherit
