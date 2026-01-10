@@ -6,7 +6,6 @@
 
 Describe the project here.
 
-
 <!-- Named links -->
 
 [pr-reviews-image]: https://img.shields.io/github/issues-pr/Cogni-AI-OU/example-ops-template?label=PR+Reviews&logo=github

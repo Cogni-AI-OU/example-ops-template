@@ -84,14 +84,14 @@ on top of the updated target branch:
 
 ### Key Points
 
-- ❌ **Never** use `git merge <target-branch>` for branch integration
-- ✅ **Always** create backup tags before destructive operations
-- ✅ **Always** verify with `git diff` that only your changes remain
-- ⚠️ **Use** `GIT_EDITOR=true` for non-interactive cherry-pick operations
+- **Never** use `git merge <target-branch>` for branch integration
+- **Always** create backup tags before destructive operations
+- **Always** verify with `git diff` that only your changes remain
+- **Use** `GIT_EDITOR=true` for non-interactive cherry-pick operations
 
 ### Critical: Using `report_progress` Tool
 
-**⚠️ CRITICAL WARNING**: The `report_progress` tool automatically rebases your branch against the remote
+**WARNING**: The `report_progress` tool automatically rebases your branch against the remote
 tracking branch. This **WILL CRASH** the session if your local history has diverged from remote.
 
 **When Crash Occurs:**
