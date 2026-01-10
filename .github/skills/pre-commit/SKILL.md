@@ -161,82 +161,82 @@ Pre-commit supports custom hooks via local repository scripts. Add to `.pre-comm
 
 1. Create script in repository:
 
-```bash
-#!/usr/bin/env bash
-# File: .github/scripts/check-copyright.sh
-set -euo pipefail
+   ```bash
+   #!/usr/bin/env bash
+   # File: .github/scripts/check-copyright.sh
+   set -euo pipefail
 
-for file in "$@"; do
-  if ! grep -q "Copyright $(date +%Y)" "$file"; then
-    echo "Missing copyright header in $file" >&2
-    exit 1
-  fi
-done
-```
+   for file in "$@"; do
+     if ! grep -q "Copyright $(date +%Y)" "$file"; then
+       echo "Missing copyright header in $file" >&2
+       exit 1
+     fi
+   done
+   ```
 
-1. Make executable:
+2. Make executable:
 
-```bash
-chmod +x .github/scripts/check-copyright.sh
-```
+   ```bash
+   chmod +x .github/scripts/check-copyright.sh
+   ```
 
-1. Add to `.pre-commit-config.yaml`:
+3. Add to `.pre-commit-config.yaml`:
 
-```yaml
-- repo: local
-  hooks:
-    - id: check-copyright
-      name: Verify copyright headers
-      entry: .github/scripts/check-copyright.sh
-      language: system
-      types: [python]
-```
+   ```yaml
+   - repo: local
+     hooks:
+       - id: check-copyright
+         name: Verify copyright headers
+         entry: .github/scripts/check-copyright.sh
+         language: system
+         types: [python]
+   ```
 
 ### Example: Local Python Script Hook
 
 1. Create script with uv shebang:
 
-```python
-#!/usr/bin/env -S uv run --script
-# /// script
-# requires-python = ">=3.11"
-# dependencies = [
-#     "pyyaml",
-# ]
-# ///
-import sys
-import yaml
+   ```python
+   #!/usr/bin/env -S uv run --script
+   # /// script
+   # requires-python = ">=3.11"
+   # dependencies = [
+   #     "pyyaml",
+   # ]
+   # ///
+   import sys
+   import yaml
 
-def validate_yaml_keys(filepath):
-    with open(filepath) as f:
-        data = yaml.safe_load(f)
-        if 'required_key' not in data:
-            print(f"Missing required_key in {filepath}", file=sys.stderr)
-            return False
-    return True
+   def validate_yaml_keys(filepath):
+       with open(filepath) as f:
+           data = yaml.safe_load(f)
+           if 'required_key' not in data:
+               print(f"Missing required_key in {filepath}", file=sys.stderr)
+               return False
+       return True
 
-if __name__ == '__main__':
-    all_valid = all(validate_yaml_keys(f) for f in sys.argv[1:])
-    sys.exit(0 if all_valid else 1)
-```
+   if __name__ == '__main__':
+       all_valid = all(validate_yaml_keys(f) for f in sys.argv[1:])
+       sys.exit(0 if all_valid else 1)
+   ```
 
-1. Make executable:
+2. Make executable:
 
-```bash
-chmod +x .github/scripts/validate-yaml-keys.py
-```
+   ```bash
+   chmod +x .github/scripts/validate-yaml-keys.py
+   ```
 
-1. Add to `.pre-commit-config.yaml`:
+3. Add to `.pre-commit-config.yaml`:
 
-```yaml
-- repo: local
-  hooks:
-    - id: validate-yaml-keys
-      name: Check YAML required keys
-      entry: .github/scripts/validate-yaml-keys.py
-      language: system
-      types: [yaml]
-```
+   ```yaml
+   - repo: local
+     hooks:
+       - id: validate-yaml-keys
+         name: Check YAML required keys
+         entry: .github/scripts/validate-yaml-keys.py
+         language: system
+         types: [yaml]
+   ```
 
 ### Local Hook Best Practices
 
