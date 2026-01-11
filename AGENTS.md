@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for Claude automation agents working in this repository.
+Guidance for automation agents working in this repository.
 
 ## Quick Start
 
@@ -18,15 +18,20 @@ For detailed coding standards and formatting guidelines, refer to:
 - [Markdown](.github/instructions/markdown.instructions.md) - Markdown standards
 - [YAML](.github/instructions/yaml.instructions.md) - YAML formatting standards
 
+### Specialized Agents
+
+For specific tasks, use the following specialized agent instructions:
+
+- [Code Tour Agent](.github/agents/code-tour.agent.md) - For creating/updating `.tours/` files
+- [Copilot Plus Agent](.github/agents/copilot-plus.agent.md) - Enhanced Copilot capabilities
+
 ## Common Tasks
 
-### Before the changes
+### Before each commit
 
-Before committing the new changes, install pre-commit via pip and its hooks by:
-
-```bash
-pre-commit install
-```
+- Verify your expected changes with `git diff --no-color`.
+- Use the project linting/validation tools to confirm your changes meet the coding standard.
+- If the repo uses git hooks, run them to validate your changes.
 
 ### Linting and Validation
 
@@ -37,8 +42,13 @@ pre-commit run -a
 # Run specific checks
 pre-commit run markdownlint -a
 pre-commit run yamllint -a
-ansible-lint
 ```
+
+### Understanding the Task
+
+- When the task is not clear, look for additional context.
+- If triggered by a brief comment, check whether the parent comment exists and includes more detail.
+- If it's still ambiguous, communicate with the user and propose options.
 
 ### Testing
 
@@ -49,12 +59,6 @@ molecule test
 # Syntax check
 molecule syntax
 ```
-
-### Updating Defaults
-
-- Edit files in `.github/ISSUE_TEMPLATE/` to modify issue templates
-- Edit `.github/pull_request_template.md` for PR template changes
-- Update `profile/README.md` to change the organization's public profile
 
 ### Adding or Modifying Workflows
 
@@ -115,10 +119,19 @@ tries to auto-rebase (e.g., 113 commits), it encounters conflicts it cannot reso
 **For complete details**, see:
 [`.github/skills/git/SKILL.md` - "Working with Automation Tools"](.github/skills/git/SKILL.md#working-with-automation-tools)
 
+### Environment Setup
+
+```bash
+# Install dependencies
+pip install -r .devcontainer/requirements.txt
+
+# Install pre-commit hooks
+pre-commit install
+```
+
 ## References
 
 - Claude-specific guidance: [CLAUDE.md](CLAUDE.md)
-- Community standards: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - Main documentation: [README.md](README.md)
 
 ## Troubleshooting
@@ -145,8 +158,3 @@ If Copilot or automated checks behave unexpectedly:
 - Re-run `pre-commit run -a` locally to surface formatting or linting issues.
 - Verify `.markdownlint.yaml` and `.yamllint` have not been modified incorrectly.
 - If problems persist, open an issue with details of the command run and any error output.
-
-### Shell commands issues
-
-- Prefix shell commands with `time` to measure execution duration for better visibility.
-- When command takes too long, use `timeout` or similar approach to limit execution time.
