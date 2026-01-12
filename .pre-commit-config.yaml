@@ -92,3 +92,5 @@ repos:
       - id: markdown-link-check
         args:
           - --quiet
+          - --config
+          - .markdown-link-check.json
