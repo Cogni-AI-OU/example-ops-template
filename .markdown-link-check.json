@@ -1,0 +1,60 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://localhost"
+    },
+    {
+      "pattern": "^http://127.0.0.1"
+    },
+    {
+      "pattern": "^https://127.0.0.1"
+    },
+    {
+      "pattern": "^http://example.com"
+    },
+    {
+      "pattern": "^https://example.com"
+    },
+    {
+      "pattern": "^https://github.com/org/repo"
+    },
+    {
+      "pattern": "^https://guides.github.com/features/issues/"
+    },
+    {
+      "pattern": "^https://support.github.com/features/pull-requests"
+    },
+    {
+      "pattern": "^https://docs.ansible.com/"
+    },
+    {
+      "pattern": "^https://gh.io/"
+    },
+    {
+      "pattern": "^https://agents.md/"
+    },
+    {
+      "pattern": "^https://marketplace.visualstudio.com/"
+    },
+    {
+      "pattern": "^https://code.visualstudio.com/"
+    },
+    {
+      "pattern": "^https://yaml-multiline.info/"
+    },
+    {
+      "pattern": "^https://www.tldrlegal.com/"
+    },
+    {
+      "pattern": "^https://img.shields.io/"
+    }
+  ],
+  "timeout": "5s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206, 999]
+}
