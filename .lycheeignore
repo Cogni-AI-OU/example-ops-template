@@ -14,33 +14,16 @@ https://github.com/org/repo
 # URLs that require authentication or may block automated requests
 # Add patterns here as needed based on actual link check failures
 
-# GitHub guides and support pages (often moved or deprecated)
-https://guides.github.com/features/issues/
-https://support.github.com/features/pull-requests
+# External sites that may block automated requests or have rate limiting
+https://www.tldrlegal.com
+https://marketplace.visualstudio.com
+https://yaml-multiline.info
+https://docs.ansible.com
+https://code.visualstudio.com
+https://agents.md
 
-# Ansible documentation (may have redirects or URL changes)
-https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html#term-Fully-Qualified-Collection-Name-FQCN
-https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html#plugin-index
+# GitHub shortlinks that may not resolve in automated checks
+https://gh.io
 
-# GitHub short links and custom domains
-https://gh.io/customagents/cli
-https://gh.io/customagents
-https://gh.io/customagents/config
-https://gh.io/copilot/firewall-config
-https://gh.io/copilot-coding-agent-tips
-https://agents.md/
-
-# VS Code marketplace and documentation (may block automated requests)
-https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour
-https://code.visualstudio.com/docs/devcontainers/containers
-
-# Third-party services (may block automated requests or rate limit)
-https://yaml-multiline.info/
-https://www.tldrlegal.com/license/mit-license
-
-# Badge images (shields.io may return non-200 status codes for some badges)
-https://img.shields.io/github/issues-pr/Cogni-AI-OU/example-ops-template
-https://img.shields.io/badge/License-MIT-blue.svg
-
-# Relative links that may fail in certain contexts
-../../actions
+# Badge images (shields.io) that may have rate limiting
+https://img.shields.io
