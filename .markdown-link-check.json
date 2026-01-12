@@ -28,10 +28,7 @@
       "pattern": "^https://support.github.com/features/pull-requests"
     },
     {
-      "pattern": "^https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html#term-Fully-Qualified-Collection-Name-FQCN"
-    },
-    {
-      "pattern": "^https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html#plugin-index"
+      "pattern": "^https://docs.ansible.com/"
     },
     {
       "pattern": "^https://gh.io/"
@@ -53,9 +50,6 @@
     },
     {
       "pattern": "^https://img.shields.io/"
-    },
-    {
-      "pattern": "^\\.\\./\\.\\./actions"
     }
   ],
   "timeout": "5s",
