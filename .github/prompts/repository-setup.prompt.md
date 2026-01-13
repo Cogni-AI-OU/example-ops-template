@@ -77,7 +77,6 @@ exist. Do not skip items just because a file already exists.
 
 - [ ] **`.markdown-link-check.json`**
   - Check if file exists in repository root
-  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.markdown-link-check.json`
   - Purpose: Configuration for markdown-link-check to customize link validation behavior
   - Action: Create if missing with standard configuration
   - Standard settings: timeout, ignorePatterns for localhost/example.com, retryOn429, aliveStatusCodes
@@ -256,7 +255,6 @@ exist. Do not skip items just because a file already exists.
 
 - [ ] **`.github/workflows/AGENTS.md`**
   - Check if file exists
-  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/workflows/AGENTS.md`
   - Purpose: Agent catalog describing workflows, triggers, and inputs
   - Action: Create if missing; update when workflows are added, removed, or renamed
 
@@ -273,7 +271,6 @@ exist. Do not skip items just because a file already exists.
 
 - [ ] **`.github/prompts/AGENTS.md`**
   - Check if file exists
-  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/prompts/AGENTS.md`
   - Purpose: Catalog of prompts with format and intended use for agents
   - Action: Create if missing; update when prompts change
 
@@ -424,7 +421,6 @@ exist. Do not skip items just because a file already exists.
 
 - [ ] **`.github/instructions/AGENTS.md`**
   - Check if file exists
-  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/instructions/AGENTS.md`
   - Purpose: Catalog of instruction files with scopes for agents
   - Action: Create if missing and keep in sync when instruction files change
 
