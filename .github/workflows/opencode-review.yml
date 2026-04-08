@@ -2,7 +2,7 @@
 # Note: Keep keys and envs in alphabetical order.
 name: OpenCode Review
 on:
-  pull_request:
+  pull_request_target:
     # Note: synchronize not included to avoid too frequent reviews on every push.
     types:
       - edited
