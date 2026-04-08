@@ -4,7 +4,12 @@ name: OpenCode Review
 on:
   pull_request:
     # Note: synchronize not included to avoid too frequent reviews on every push.
-    types: [edited, opened, ready_for_review, reopened, review_requested]
+    types:
+      - edited
+      - opened
+      - ready_for_review
+      - reopened
+      - review_requested
   workflow_call:
 permissions:
   actions: read

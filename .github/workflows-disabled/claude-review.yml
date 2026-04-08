@@ -4,9 +4,7 @@
 # Examples: <https://github.com/anthropics/claude-code-action/tree/main/examples>
 # Note: Keep keys and envs in alphabetical order.
 name: Claude Code Review
-# yamllint disable-line rule:truthy
-
-on:
+on:  # yamllint disable-line rule:truthy
   pull_request:
     # Note: synchronize not included to avoid too frequent reviews on every push.
     types: [edited, opened, ready_for_review, reopened, review_requested]

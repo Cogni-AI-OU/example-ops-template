@@ -123,4 +123,3 @@ To safely use OpenCode with git access, repository administrators must configure
 - Regularly audit OpenCode's tool usage and permissions
 - Rotate `OPENCODE_API_KEY` periodically
 - Monitor workflow run logs for unexpected behavior
-
