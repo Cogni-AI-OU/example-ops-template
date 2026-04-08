@@ -10,5 +10,10 @@
     },
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
-    "code-runner.fileDirectoryAsCwd": true
+    "code-runner.fileDirectoryAsCwd": true,
+    "chat.tools.terminal.autoApprove": {
+        "gh": true,
+        "pipx": true,
+        "pre-commit": true
+    }
 }
