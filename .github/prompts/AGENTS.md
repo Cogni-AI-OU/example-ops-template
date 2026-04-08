@@ -9,6 +9,7 @@ For a human-readable overview, see [README.md](README.md).
 
 | Prompt | Format | Purpose |
 | ------ | ------ | ------- |
+| [pr-review.prompt.md](pr-review.prompt.md) | Markdown | Prompt template for OpenCode PR review comments and inline feedback |
 | [repository-setup.prompt.md](repository-setup.prompt.md) | Markdown | Full repository setup checklist using org standards from Cogni-AI-OU/.github |
 
 ## Notes

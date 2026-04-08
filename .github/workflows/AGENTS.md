@@ -10,8 +10,8 @@ For a human-readable overview, see [README.md](README.md).
 | Workflow | Purpose | Key triggers / notes |
 | -------- | ------- | -------------------- |
 | [check.yml](check.yml) | Linting and quality gates via actionlint and pre-commit | push, pull_request, schedule; reusable via `workflow_call` |
-| [claude-review.yml](claude-review.yml) | Automated PR review with Claude | pull_request (non-bot), `workflow_call` with `pr_number` |
-| [claude.yml](claude.yml) | Interactive Claude mentions on issues/PRs | issue_comment, pull_request_review_comment, workflow_dispatch, `workflow_call` |
+| [opencode.yml](opencode.yml) | OpenCode agent invocation via comments or manual triggers | issue_comment keywords `/oc` or `/opencode`, workflow_dispatch, `workflow_call` |
+| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request_target (trusted authors), `/review` comment by OWNER/MEMBER, workflow_dispatch, `workflow_call` |
 | [devcontainer-ci.yml](devcontainer-ci.yml) | Build/test devcontainer and required tools/packages | push/pull_request touching .devcontainer or workflow; schedule; `workflow_call` |
 
 ## Details
@@ -22,21 +22,23 @@ For a human-readable overview, see [README.md](README.md).
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main`.
 - Jobs: `actionlint`, `pre-commit`.
 
-### claude-review.yml
+### opencode.yml
 
-- Purpose: AI code review that comments on PRs.
-- Inputs: `pr_number` (required for `workflow_call`), `model` (default `claude-opus-4-5`),
-  `additional_prompt` (optional extra review instructions).
-- Trigger: pull_request (skips bot authors) and `workflow_call`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main`.
+- Purpose: invoke OpenCode agents via slash commands or manual triggers.
+- Inputs: `agent` (default `build`), `model` (default `opencode/claude-opus-4-5`), `prompt` (optional override).
+- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
+- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
-### claude.yml
+### opencode-review.yml
 
-- Purpose: respond to `@claude` mentions for interactive assistance.
-- Input: `model` (default `claude-opus-4-5`).
-- Triggers: issue_comment, pull_request_review_comment, workflow_dispatch, `workflow_call`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/claude.yml@main`.
-- Access: restricted to OWNER, MEMBER, COLLABORATOR, CONTRIBUTOR associations.
+- Purpose: OpenCode-driven PR review.
+- Inputs: agent (build), model (opencode/claude-opus-4-5), additional_prompt, pr_number (req for call/dispatch),
+  prompt (default pr-review).
+- Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
+  workflow_dispatch.
+- Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
+- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main`.
 
 ### devcontainer-ci.yml
 

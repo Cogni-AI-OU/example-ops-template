@@ -1,9 +1,6 @@
 ---
-# See: <https://github.com/anthropics/claude-code-action>
-# Docs: <https://github.com/anthropics/claude-code-action/tree/main/docs>
-# Examples: <https://github.com/anthropics/claude-code-action/tree/main/examples>
 # Note: Keep keys and envs in alphabetical order.
-name: Claude Code
+name: OpenCode
 on:
   issue_comment:
     types:
@@ -27,9 +24,9 @@ permissions:
   issues: write
   pull-requests: write
 jobs:
-  claude:
+  opencode:
     # See: https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows
-    uses: Cogni-AI-OU/.github/.github/workflows/claude.yml@main
+    uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
     # Job-level permissions are passed to the reusable workflow
     permissions:
       actions: read
