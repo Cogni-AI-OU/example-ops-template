@@ -27,7 +27,7 @@ For a human-readable overview, see [README.md](README.md).
 - Purpose: invoke OpenCode agents via slash commands or manual triggers.
 - Inputs: `agent` (default `build`), `model` (default `opencode/claude-opus-4-5`), `prompt` (optional override).
 - Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
-- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
+- Permissions: `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
 ### opencode-review.yml
