@@ -1,6 +1,6 @@
 # Agent Prompts
 
-This directory contains prompt files that can be used with AI agents (Claude Code, GitHub Copilot, etc.)
+This directory contains prompt files that can be used with AI agents (OpenCode, GitHub Copilot, etc.)
 to perform standardized tasks across repositories.
 
 - For the agent-facing prompt catalog, see [AGENTS.md](AGENTS.md).
@@ -14,7 +14,7 @@ This directory supports two types of prompt formats:
 Markdown prompts (`.prompt.md`) are human-readable prompt templates designed for use in:
 
 - **VS Code**: Reference these prompts in GitHub Copilot Chat or other AI assistants within your IDE
-- **Claude Code**: Copy and paste content directly or reference the file URL
+- **OpenCode**: Copy and paste content directly or reference the file URL
 - **Manual use**: Easy to read and adapt for any AI tool
 
 Markdown prompts are ideal for detailed, structured instructions with checklists and examples.
