@@ -5,6 +5,13 @@ to perform standardized tasks across repositories.
 
 - For the agent-facing prompt catalog, see [AGENTS.md](AGENTS.md).
 
+## Available Prompt Files
+
+- [default.prompt.yml](default.prompt.yml): General-purpose starter prompt for GitHub Models workflows.
+- [pr-review.prompt.md](pr-review.prompt.md): Manual pull request review checklist and inline comment template.
+- [repository-setup.prompt.md](repository-setup.prompt.md): Repository standardization checklist for adopting org defaults.
+- [test.prompt.yml](test.prompt.yml): Minimal example prompt for GitHub Models experiments.
+
 ## Prompt File Formats
 
 This directory supports two types of prompt formats:
