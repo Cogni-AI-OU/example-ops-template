@@ -16,6 +16,7 @@ on:
   pull_request_review:
     types:
       - submitted
+  workflow_dispatch:
   workflow_call:
 permissions:
   actions: read

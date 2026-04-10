@@ -64,7 +64,7 @@ See [FIREWALL.md](FIREWALL.md) for recommended hosts to allow and the official g
 
 ### MCP Server Setup
 
-Some agents require MCP servers to function. The Claude Code Action provides
+Some agents require MCP servers to function. The OpenCode workflows provide
 built-in MCP servers for GitHub operations (`github_comment` and
 `github_inline_comment`).
 
@@ -77,10 +77,10 @@ You can add custom MCP servers for additional integrations.
 - File-based config cannot use GitHub Actions secrets (`${{ secrets.* }}`). Use
   inline config for secrets.
 - HTTP-based MCP servers (using `"type": "http"`) may work with inline config
-  but can fail with file-based config due to how the Claude Code process loads
+  but can fail with file-based config due to how the OpenCode process loads
   external files.
 - **Current configuration**: This repository uses inline `--mcp-config` for the
-  GitHub Copilot MCP endpoint (see `.github/workflows/claude-review.yml`) as it's
+  GitHub Copilot MCP endpoint (see `.github/workflows/opencode-review.yml`) as it's
   an HTTP-based server. File-based config is available for custom command-based
   MCP servers if needed.
 
@@ -88,16 +88,16 @@ Follow the instructions in the agent's documentation to configure the necessary 
 
 ## Security Considerations
 
-### Claude Code Agent Git Access
+### OpenCode Agent Git Access
 
-When using Claude Code (triggered via `@claude` in comments), the agent has broad
+When using OpenCode (triggered via `/oc` or `/opencode` comments), the agent has broad
 git access via `Bash(git:*)` to enable autonomous code changes. This requires
 proper repository safeguards.
 
 **Access controls in place:**
 
-- Only trusted users (OWNER, MEMBER, COLLABORATOR, CONTRIBUTOR) can trigger Claude
-- PR/issue authors can only trigger Claude on their own content
+- Only trusted users (OWNER, MEMBER, COLLABORATOR, CONTRIBUTOR) can trigger OpenCode
+- PR/issue authors can only trigger OpenCode on their own content
 - External contributors are explicitly blocked
 
 **Required repository protections:**
@@ -111,26 +111,26 @@ Repository administrators must configure:
 
 **Best practices:**
 
-- Review Claude's commits before merging PRs
-- Use draft PRs for Claude's work requiring explicit promotion
+- Review OpenCode commits before merging PRs
+- Use draft PRs for OpenCode work requiring explicit promotion
 - Monitor workflow logs for unexpected behavior
 - Rotate API keys periodically
 
 ## Troubleshooting
 
-### Claude Not Responding to Comments
+### OpenCode Not Responding to Comments
 
-If Claude isn't responding to your comments, verify:
+If OpenCode isn't responding to your comments, verify:
 
 1. **Permissions**: You must have one of these roles:
    - Repository OWNER, MEMBER, COLLABORATOR, or CONTRIBUTOR
    - PR/issue author (on your own content only)
 
 2. **Trigger conditions** for PR review comments:
-   - Your comment contains `@claude`, OR
-   - You're replying to a comment from `github-actions[bot]` (Claude's responses), OR
-   - You're replying to a comment that contains `@claude`
+   - Your comment contains `/oc` or `/opencode`, OR
+   - You're replying to a comment from `github-actions[bot]` (OpenCode responses), OR
+   - You're replying to a comment that contains `/oc` or `/opencode`
 
 The workflow uses a two-stage filter to prevent abuse while allowing natural
 conversation flow. Check the Actions tab in your repository for workflow run details
-if Claude doesn't respond as expected.
+if OpenCode doesn't respond as expected.

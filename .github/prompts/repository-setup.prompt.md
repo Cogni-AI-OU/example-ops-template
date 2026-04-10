@@ -140,6 +140,7 @@ exist. Do not skip items just because a file already exists.
         types: [opened]
       pull_request_review:
         types: [submitted]
+      workflow_call:
     jobs:
       opencode:
         uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
