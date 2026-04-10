@@ -6,15 +6,15 @@ For general project guidance, see [README.md](README.md).
 
 ## Directory-Specific Agent files
 
-Read these Agent files when working in corresponding dirs:
+Read these Agent files when working in corresponding directories:
 
-- [`.github/AGENTS.md`](.github/AGENTS.md)
-- [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md)
-- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md)
-- [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md)
-- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md)
+- [`.github/AGENTS.md`](.github/AGENTS.md) - top-level GitHub directory agent guidance
+- [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md) - formatting and language rules catalog
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) - loadable skills and SKILL.md index
+- [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md) - reusable GitHub Actions workflows catalog
+- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md) - available prompt files index
 
-Note: Keep this list up-to-date.
+Note: Update this list whenever a new directory-level `AGENTS.md` file is added, renamed, or removed.
 
 ### Creating new Agents file
 
