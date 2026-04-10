@@ -26,6 +26,22 @@ permissions:
   pull-requests: write
 jobs:
   opencode:
+    if: >-
+      github.event_name == 'workflow_call' ||
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.sender.type != 'Bot' &&
+        (
+          (github.event_name == 'issue_comment' &&
+          contains(fromJson('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association)) ||
+          (github.event_name == 'issues' &&
+          contains(fromJson('["COLLABORATOR","MEMBER","OWNER"]'), github.event.issue.author_association)) ||
+          (github.event_name == 'pull_request_review' &&
+          contains(fromJson('["COLLABORATOR","MEMBER","OWNER"]'), github.event.review.author_association)) ||
+          (github.event_name == 'pull_request_review_comment' &&
+          contains(fromJson('["COLLABORATOR","MEMBER","OWNER"]'), github.event.comment.author_association))
+        )
+      )
     # See: https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows
     uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
     # Job-level permissions are passed to the reusable workflow

@@ -11,6 +11,10 @@ on:
       - reopened
       - review_requested
   workflow_call:
+    inputs:
+      pr_number:
+        required: false
+        type: number
 permissions:
   actions: read
   contents: write
@@ -29,7 +33,7 @@ jobs:
     # See: https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows
     uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main
     with:
-      pr_number: ${{ github.event.pull_request.number }}
+      pr_number: ${{ (github.event_name == 'workflow_call' && inputs.pr_number) || github.event.pull_request.number }}
     # Job-level permissions are passed to the reusable workflow
     permissions:
       actions: read
