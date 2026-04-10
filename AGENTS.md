@@ -8,15 +8,15 @@ For general project guidance, see [README.md](README.md).
 
 Read these Agent files when working in corresponding directories:
 
-- [`.github/AGENTS.md`](.github/AGENTS.md) - top-level GitHub directory agent guidance
-- [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md) - formatting and language rules catalog
-- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) - loadable skills and SKILL.md index
-- [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md) - reusable GitHub Actions workflows catalog
-- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md) - available prompt files index
+- [`.github/AGENTS.md`](.github/AGENTS.md) - guidance for the top-level `.github/` directory
+- [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md) - guidance for formatting and language rules
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) - guidance for available skills and `SKILL.md` files
+- [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md) - guidance for reusable GitHub Actions workflows
+- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md) - guidance for available prompt files
 
 Note: Update this list whenever a new directory-level `AGENTS.md` file is added, renamed, or removed.
 
-### Creating new Agents file
+### Creating new Agent files
 
 Create or update Agents files when task-critical guidance should be reusable by future agents.
 
