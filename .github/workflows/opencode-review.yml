@@ -19,6 +19,13 @@ permissions:
   pull-requests: write
 jobs:
   opencode-review:
+    if: >-
+      github.event_name == 'workflow_call' ||
+      (
+        github.event_name == 'pull_request_target' &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        contains(fromJson('["COLLABORATOR","MEMBER","OWNER"]'), github.event.pull_request.author_association)
+      )
     # See: https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows
     uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main
     with:
