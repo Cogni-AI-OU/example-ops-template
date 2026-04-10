@@ -25,7 +25,7 @@ Create or update Agents files when task-critical guidance should be reusable by 
 - Include new user-provided rules, examples, and process expectations.
 - Keep guidance focused on durable patterns, not one-off findings.
 - Place files in the most relevant subdirectory and keep placeholders generic.
-- Prefer updating a relevant `SKILL.md` when the guidance is discipline-specific.
+- Prefer updating a relevant `SKILL.md` when the guidance is domain-specific.
 
 ## Required References
 
