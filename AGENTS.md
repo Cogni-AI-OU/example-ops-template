@@ -4,6 +4,29 @@ Guidance for coding agents working in this repository.
 
 For general project guidance, see [README.md](README.md).
 
+## Directory-Specific Agent files
+
+Read these Agent files when working in corresponding dirs:
+
+- [`.github/AGENTS.md`](.github/AGENTS.md)
+- [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md)
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md)
+- [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md)
+- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md)
+
+Note: Keep this list up-to-date.
+
+### Creating new Agents file
+
+Create or update Agents files when task-critical guidance should be reusable by future agents.
+
+- Add concise, expert-level instructions that improve autonomous execution.
+- Capture recurring troubleshooting resolutions and proven workflows.
+- Include new user-provided rules, examples, and process expectations.
+- Keep guidance focused on durable patterns, not one-off findings.
+- Place files in the most relevant subdirectory and keep placeholders generic.
+- Prefer updating a relevant `SKILL.md` when the guidance is discipline-specific.
+
 ## Required References
 
 - Project overview and install steps: [README.md](README.md)
@@ -11,15 +34,6 @@ For general project guidance, see [README.md](README.md).
 - Language and format rules: see [.github/instructions/AGENTS.md](.github/instructions/AGENTS.md)
 - Workflow and navigation help: [.tours/getting-started.tour](.tours/getting-started.tour)
 - For enhanced agent capabilities, see [Copilot Plus](.github/agents/copilot-plus.agent.md)
-
-## Agent Catalogs
-
-Use these catalogs for authoritative, machine-readable lists of resources:
-
-- Skills: [.github/skills/AGENTS.md](.github/skills/AGENTS.md) - loadable skills and their SKILL.md entries
-- Instructions: [.github/instructions/AGENTS.md](.github/instructions/AGENTS.md) - formatting and language rules
-- Workflows: [.github/workflows/AGENTS.md](.github/workflows/AGENTS.md) - reusable GitHub Actions with inputs/triggers
-- Prompts: [.github/prompts/AGENTS.md](.github/prompts/AGENTS.md) - available prompt files
 
 ### Specialized Agents
 
