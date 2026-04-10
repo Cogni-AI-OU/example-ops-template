@@ -6,7 +6,7 @@ For general project guidance, see [README.md](README.md).
 
 ## Directory-Specific Agent files
 
-Read these Agent files when working in corresponding directories:
+Read these agent files when working in corresponding directories:
 
 - [`.github/AGENTS.md`](.github/AGENTS.md) - guidance for the top-level `.github/` directory
 - [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md) - guidance for formatting and language rules
@@ -16,7 +16,7 @@ Read these Agent files when working in corresponding directories:
 
 Note: Update this list whenever a new directory-level `AGENTS.md` file is added, renamed, or removed.
 
-### Creating new Agent files
+### Creating new agent files
 
 Create or update Agents files when task-critical guidance should be reusable by future agents.
 
