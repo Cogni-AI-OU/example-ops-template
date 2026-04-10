@@ -130,6 +130,7 @@ If OpenCode isn't responding to your comments, verify:
    - Your comment contains `/oc` or `/opencode`, OR
    - You're replying to a comment from `github-actions[bot]` (OpenCode responses), OR
    - You're replying to a comment that contains `/oc` or `/opencode`
+   - `@claude` comments are no longer used in this repository's workflow wrappers
 
 The workflow uses a two-stage filter to prevent abuse while allowing natural
 conversation flow. Check the Actions tab in your repository for workflow run details
