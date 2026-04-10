@@ -10,9 +10,9 @@ Read these Agent files when working in corresponding directories:
 
 - [`.github/AGENTS.md`](.github/AGENTS.md) - guidance for the top-level `.github/` directory
 - [`.github/instructions/AGENTS.md`](.github/instructions/AGENTS.md) - guidance for formatting and language rules
+- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md) - guidance for available prompt files
 - [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) - guidance for available skills and `SKILL.md` files
 - [`.github/workflows/AGENTS.md`](.github/workflows/AGENTS.md) - guidance for reusable GitHub Actions workflows
-- [`.github/prompts/AGENTS.md`](.github/prompts/AGENTS.md) - guidance for available prompt files
 
 Note: Update this list whenever a new directory-level `AGENTS.md` file is added, renamed, or removed.
 
