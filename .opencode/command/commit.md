@@ -15,9 +15,9 @@ ci:
 ignore:
 wip:
 
-For anything in the packages/web use the docs: prefix.
+For documentation, prompts, or onboarding changes use the docs: prefix.
 
-For anything in the packages/app use the ignore: prefix.
+For workflow, devcontainer, or automation changes prefer the ci: prefix.
 
 prefer to explain WHY something was done from an end user perspective instead of
 WHAT was done.
