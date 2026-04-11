@@ -12,8 +12,15 @@
     "code-runner.saveFileBeforeRun": true,
     "code-runner.fileDirectoryAsCwd": true,
     "chat.tools.terminal.autoApprove": {
+        "ansible": true,
+        "ansible-galaxy": true,
+        "ansible-playbook": true,
         "gh": true,
+        "git": true,
         "pipx": true,
-        "pre-commit": true
+        "pre-commit": true,
+        "set": true,
+        "time": true,
+        "true": true
     }
 }
