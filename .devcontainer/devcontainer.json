@@ -39,7 +39,7 @@
     "ghcr.io/sliekens/devcontainer-features/opencode:1": {}
   },
 
-  // Pre-create opencode directories on host before container starts (required for bind mounts)
+  // Pre-create host directories so OpenCode can bind-mount persistent config and cache data into the container
   "initializeCommand": "mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\"",
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.

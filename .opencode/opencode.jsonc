@@ -10,6 +10,7 @@
     }
   },
   "mcp": {
+    // Context7 provides remote docs and context lookups during OpenCode sessions.
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
