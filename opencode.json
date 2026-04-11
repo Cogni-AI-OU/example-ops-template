@@ -1,6 +1,6 @@
 {
   "agent": {
-    "docs-writter": {
+    "docs-writer": {
       "description": "Writes concise technical documentation",
       "options": {},
       "permission": {}
