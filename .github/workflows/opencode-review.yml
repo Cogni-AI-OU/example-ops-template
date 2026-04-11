@@ -18,7 +18,6 @@ on:
   workflow_call:
     inputs:
       additional_prompt:
-        default: ''
         description: Additional instructions for the review prompt
         required: false
         type: string
@@ -44,7 +43,6 @@ on:
   workflow_dispatch:
     inputs:
       additional_prompt:
-        default: ''
         description: Additional instructions for the review prompt
         required: false
         type: string

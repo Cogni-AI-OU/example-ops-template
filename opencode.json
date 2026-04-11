@@ -6,7 +6,7 @@
       "permission": {}
     },
     "pr-reviewer": {
-      "description": "Reviews pull request for best practices and potential issues",
+      "description": "Reviews pull requests for best practices and potential issues",
       "options": {},
       "permission": {}
     },

@@ -24,7 +24,6 @@ on:
         required: false
         type: string
       prompt:
-        default: ''
         description: Custom prompt to override the default prompt
         required: false
         type: string
@@ -92,7 +91,6 @@ on:
       prompt:
         description: Custom prompt to override the default prompt
         required: false
-        default: ''
 jobs:
   opencode:
     if: |
