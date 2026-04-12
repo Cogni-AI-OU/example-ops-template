@@ -208,10 +208,37 @@ jobs:
           { echo 'prompt<<EOF'; cat "$prompt_file"; echo 'EOF'; } >> "$GITHUB_OUTPUT"
       - uses: anomalyco/opencode/github@latest
         env:
+          GITHUB_EVENT_NAME: ${{ github.event_name == 'pull_request_target' && 'pull_request' || github.event_name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          # Keep shell permissions aligned with .vscode/settings.json allowlist and in alphabetical order.
           OPENCODE_PERMISSION: |-
-            { "bash": {  "*": "deny", "gh pr review*": "deny", "gh*": "allow", "pre-commit*": "allow" } }
+            {
+              "bash": {
+                "*": "deny",
+                "ansible*": "allow",
+                "ansible-galaxy*": "allow",
+                "ansible-playbook*": "allow",
+                "awk*": "allow",
+                "continue*": "allow",
+                "cp*": "allow",
+                "ex*": "allow",
+                "gh*": "allow",
+                "gh pr review*": "deny",
+                "git*": "allow",
+                "hexdump*": "allow",
+                "links*": "allow",
+                "mawk*": "allow",
+                "pipx*": "allow",
+                "pre-commit*": "allow",
+                "set*": "allow",
+                "time*": "allow",
+                "timeout*": "allow",
+                "touch*": "allow",
+                "true*": "allow",
+                "vim*": "allow"
+              }
+            }
         with:
           agent: ${{ inputs.agent || 'build' }}
           # See: <https://opencode.ai/docs/models/>
