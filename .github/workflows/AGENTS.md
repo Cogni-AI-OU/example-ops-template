@@ -11,7 +11,7 @@ For a human-readable overview, see [README.md](README.md).
 | -------- | ------- | -------------------- |
 | [check.yml](check.yml) | Linting and quality gates via actionlint and pre-commit | push, pull_request, schedule, workflow_run (after OpenCode); reusable via `workflow_call` |
 | [opencode.yml](opencode.yml) | OpenCode agent invocation via comments or manual triggers | issue_comment keywords `/oc` or `/opencode`, workflow_dispatch, `workflow_call` |
-| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request_target (trusted authors), `/review` comment by OWNER/MEMBER, workflow_dispatch, `workflow_call` |
+| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request (trusted authors), `/review` comment by OWNER/MEMBER, workflow_dispatch, `workflow_call` |
 | [devcontainer-ci.yml](devcontainer-ci.yml) | Build/test devcontainer and required tools/packages | push/pull_request touching .devcontainer or workflow; schedule; `workflow_call` |
 
 ## Details
@@ -45,7 +45,7 @@ For a human-readable overview, see [README.md](README.md).
   `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
   default `opencode/gpt-5.3-codex`), additional_prompt, pr_number (req for call/dispatch),
   prompt (default pr-review).
-- Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
+- Triggers: pull_request (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
   workflow_dispatch.
 - Guardrail: align review default behavior with OpenCode by using workflow-level
   `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
