@@ -115,7 +115,7 @@ configuration, see [.github/GITHUB-WORKFLOWS.md](.github/GITHUB-WORKFLOWS.md).
 ## Organization Profile
 
 For information about Cogni AI OÜ, our mission, and how to collaborate, see our
-[organization profile](profile/README.md).
+[organization profile](https://github.com/Cogni-AI-OU/.github/blob/main/profile/README.md).
 
 ## Contributing
 
