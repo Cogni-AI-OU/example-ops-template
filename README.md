@@ -5,7 +5,8 @@
 [![License][license-image]][license-link]
 
 Template repository for applying Cogni-AI-OU operations standards, reusable workflows,
-prompt catalogs, coding instructions, and agent guidance to a project repository.
+prompt catalogs, coding instructions, and agent guidance to a project repository,
+including Claude and OpenCode automation.
 
 ## Getting Started
 
@@ -24,16 +25,18 @@ prompt catalogs, coding instructions, and agent guidance to a project repository
    ```
 
 3. Review the core guidance:
-   - [AGENTS.md](AGENTS.md) for repository-wide agent guidance
-   - [CLAUDE.md](CLAUDE.md) for Claude-specific guidance
-   - [.github/copilot-instructions.md](.github/copilot-instructions.md) for coding standards
-   - [.tours/getting-started.tour](.tours/getting-started.tour) for a guided walkthrough
+    - [AGENTS.md](AGENTS.md) for repository-wide agent guidance
+    - [CLAUDE.md](CLAUDE.md) for Claude-specific guidance
+    - [.github/copilot-instructions.md](.github/copilot-instructions.md) for coding standards
+    - [.github/agents/README.md](.github/agents/README.md) for installed custom agent profiles
+    - [.tours/getting-started.tour](.tours/getting-started.tour) for a guided walkthrough
 
 ## Development
 
 - Keep repository standards aligned with
   [.github/prompts/repository-setup.prompt.md](.github/prompts/repository-setup.prompt.md).
 - Use reusable workflows in [.github/workflows/](.github/workflows/) instead of duplicating CI logic.
+- Use the checked-in `.opencode/` and `opencode.json` files when enabling OpenCode automation.
 - Run targeted checks when iterating locally:
 
   ```bash
@@ -42,11 +45,13 @@ prompt catalogs, coding instructions, and agent guidance to a project repository
   ```
 
 - Set `ANTHROPIC_API_KEY` in repository secrets to enable the Claude workflows.
+- Set `OPENCODE_API_KEY` in repository secrets to enable the OpenCode workflows.
 
 ## Project Layout
 
 - `.devcontainer/`: shared development container configuration and dependencies
 - `.github/`: workflows, prompts, instructions, matchers, and contribution metadata
+- `.opencode/`: OpenCode agent, command, and local configuration assets
 - `.tours/`: VS Code CodeTour onboarding guides
 - `AGENTS.md`: repository-specific agent execution guidance
 - `CLAUDE.md`: Claude Code workflow guidance
@@ -60,7 +65,9 @@ This repository includes guidance for multiple agent surfaces and reusable promp
 | -------------- | -------- | ------- |
 | [AGENTS.md](AGENTS.md) | All agents | Repository-specific guidance and workflows |
 | [CLAUDE.md](CLAUDE.md) | Claude | Claude-specific configuration |
+| [.github/agents/](.github/agents/) | Custom agents | Shared custom agent profiles including Cogni AI |
 | [.github/copilot-instructions.md](.github/copilot-instructions.md) | Copilot | Coding standards and project context |
+| [.opencode/](.opencode/) | OpenCode | Agent, command, and config assets for OpenCode automation |
 | [.github/prompts/](.github/prompts/) | All | Prompt templates for chat and GitHub Models |
 | [.github/skills/](.github/skills/) | All agents | Reusable capabilities for common tasks |
 | [.github/instructions/](.github/instructions/) | Linters & agents | Language-specific editing standards |

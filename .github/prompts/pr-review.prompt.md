@@ -25,5 +25,14 @@ Guidelines:
 Command MUST be like this and use values from `<repo>`, `<pr-number>`, and `<pr-sha>`:
 
 ```bash
-gh api   --method POST   -H "Accept: application/vnd.github+json"   -H "X-GitHub-Api-Version: 2022-11-28"   /repos/<repo>/pulls/<pr-number>/comments   -f 'body=[summary of issue]'   -f 'commit_id=<pr-sha>'   -f 'path=[path-to-file]'   -f 'side=RIGHT'   -F "line=[line]"
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /repos/<repo>/pulls/<pr-number>/comments \
+  -f 'body=[summary of issue]' \
+  -f 'commit_id=<pr-sha>' \
+  -f 'path=[path-to-file]' \
+  -f 'side=RIGHT' \
+  -F "line=[line]"
 ```
