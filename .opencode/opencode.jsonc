@@ -6,37 +6,7 @@
   ],
   "provider": {
     "opencode": {
-      "options": {},
-      "tools": {
-        "read": true,
-        "edit": true,
-        "bash": true
-      },
-      // Keep shell permissions aligned with .vscode/settings.json allowlist and in alphabetical order.
-      "permission": {
-        "bash": {
-          "ansible": "allow",
-          "ansible-galaxy": "allow",
-          "ansible-playbook": "allow",
-          "awk": "allow",
-          "continue": "allow",
-          "cp": "allow",
-          "ex": "allow",
-          "gh": "allow",
-          "git": "allow",
-          "hexdump": "allow",
-          "links": "allow",
-          "mawk": "allow",
-          "pipx": "allow",
-          "pre-commit": "allow",
-          "set": "allow",
-          "time": "allow",
-          "timeout": "allow",
-          "touch": "allow",
-          "true": "allow",
-          "vim": "allow"
-        }
-      }
+      "options": {}
     }
   },
   "mcp": {
