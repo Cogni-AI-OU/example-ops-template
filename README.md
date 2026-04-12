@@ -1,36 +1,31 @@
-# Cogni AI OÜ - Organization Configuration
+# Example Ops Template
 
 [![PR Reviews][pr-reviews-image]][pr-reviews-link]
 [![License][license-image]][license-link]
 
-This is a special `.github` repository that provides default community health
-files and configurations for all repositories in the Cogni AI OÜ organization.
+Template repository for applying Cogni-AI-OU operations standards, reusable workflows,
+prompt catalogs, coding instructions, and agent guidance to a project repository.
+This template mirrors the structure and conventions of the
+[Cogni-AI-OU/.github](https://github.com/Cogni-AI-OU/.github) organization repository.
 
-## What is a .github Repository?
+## What This Template Provides
 
-The `.github` repository is a special GitHub repository that serves as a central
-location for organization-wide defaults. It automatically provides community
-health files (like issue templates, code of conduct, contributing guidelines,
-etc.) to any repository in the organization that doesn't have its own versions.
+This template repository includes the standard operations infrastructure for
+Cogni-AI-OU projects:
 
 ### Key Features
 
-- **Default Issue Templates**: Standardized bug reports, feature requests, and
-  other issue types
-- **Code of Conduct**: Organization-wide behavioral standards
-- **Contributing Guidelines**: How to contribute to projects
-- **Pull Request Templates**: Standardized PR descriptions
-- **GitHub Actions Workflows**: Reusable CI/CD and automation workflows
-- **Organization Profile**: Public-facing information via `profile/README.md`
-- **AI Agent Configurations**: Enhanced agents and skills for automated development
+- **GitHub Actions Workflows**: CI/CD and automation (OpenCode, pre-commit, etc.)
+- **AI Agent Configurations**: AGENTS.md, skills, and prompts for automated development
+- **Coding Instructions**: Language-specific standards in `.github/instructions/`
+- **Pre-commit Hooks**: Linting and validation tooling
+- **Code Tours**: Guided walkthroughs for repository onboarding
 
-### How It Works
+### How to Use
 
-1. Files in individual repositories' `.github/` directories take precedence over
-   these defaults
-2. If a repository doesn't have a specific file, GitHub falls back to this
-   repository
-3. Changes here automatically apply organization-wide
+1. Create a new repository from this template
+2. Customize the configuration files for your project
+3. Remove or modify sections that don't apply to your use case
 
 ## Getting Started
 
@@ -133,7 +128,7 @@ This repository is licensed under MIT. See [LICENSE](LICENSE) for the full text.
 
 <!-- Named links -->
 
-[pr-reviews-image]: https://img.shields.io/github/issues-pr/Cogni-AI-OU/.github?label=PR+Reviews&logo=github
-[pr-reviews-link]: https://github.com/Cogni-AI-OU/.github/pulls
+[pr-reviews-image]: https://img.shields.io/github/issues-pr/Cogni-AI-OU/example-ops-template?label=PR+Reviews&logo=github
+[pr-reviews-link]: https://github.com/Cogni-AI-OU/example-ops-template/pulls
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-link]: https://tldrlegal.com/license/mit-license
