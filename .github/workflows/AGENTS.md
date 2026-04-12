@@ -33,6 +33,7 @@ For a human-readable overview, see [README.md](README.md).
   `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gemini-3.1-pro`; workflow_dispatch
   default `opencode/gemini-3.1-pro`), `prompt` (optional override).
 - Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+- Concurrency: Only one run per issue/PR/branch at a time; new runs cancel pending ones.
 - Guardrail: comment-triggered runs do not populate `inputs.*`; back shared OpenCode defaults
   with workflow-level `env` values instead of hardcoding agent/model literals in steps.
 - Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
@@ -47,6 +48,7 @@ For a human-readable overview, see [README.md](README.md).
   prompt (default pr-review).
 - Triggers: pull_request (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
   workflow_dispatch.
+- Concurrency: Only one run per issue/PR/branch at a time; new runs cancel pending ones.
 - Guardrail: align review default behavior with OpenCode by using workflow-level
   `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
 - Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.

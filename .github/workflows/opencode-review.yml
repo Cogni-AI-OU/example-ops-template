@@ -2,6 +2,11 @@
 # See: <https://opencode.ai/docs/github/>
 # Note: Keep keys and envs in alphabetical order.
 name: OpenCode Review
+# Prevent concurrent runs on the same PR to avoid push conflicts.
+# When a new run is triggered, the previous pending run is cancelled.
+concurrency:
+  cancel-in-progress: true
+  group: opencode-review-${{ github.event.issue.number || github.event.pull_request.number || github.ref }}
 on:
   issue_comment:
     types:

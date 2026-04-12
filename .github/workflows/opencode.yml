@@ -2,6 +2,11 @@
 # See: <https://opencode.ai/docs>
 # Note: Keep keys and envs in alphabetical order.
 name: OpenCode
+# Prevent concurrent runs on the same branch to avoid push conflicts.
+# When a new run is triggered, the previous pending run is cancelled.
+concurrency:
+  cancel-in-progress: true
+  group: opencode-${{ github.event.issue.number || github.event.pull_request.number || github.ref }}
 on:
   issue_comment:
     types:
