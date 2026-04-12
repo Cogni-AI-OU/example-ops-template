@@ -77,9 +77,7 @@ pre-commit run flake8 -a
 
 - `.github/`: default templates, workflows, instructions, prompts, skills, and agent configuration
 - `.tours/`: guided walkthroughs for repository onboarding
-- `profile/`: the public organization profile shown on GitHub
 - `AGENTS.md`: repository-specific guidance for automation agents
-- `CODE_OF_CONDUCT.md`: organization-wide community standards
 - `README.md`: repository overview and local development workflow
 
 ## AI Agents
