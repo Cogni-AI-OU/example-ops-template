@@ -1,4 +1,3 @@
-
 # Example repo Ops template
 
 [![PR Reviews][pr-reviews-image]][pr-reviews-link]
