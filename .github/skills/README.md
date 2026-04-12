@@ -14,7 +14,7 @@ For more information, see
 
 ## Skills catalog
 
-The full, machine-readable list of skills lives in [AGENTS.md](AGENTS.md). Use it when you need the
+The full, machine-readable list of skills lives in [cogni-ai/AGENTS.md](cogni-ai/AGENTS.md). Use it when you need the
 authoritative catalog for agent loading. This README stays human-focused.
 
 ## Creating skills
