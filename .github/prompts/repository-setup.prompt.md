@@ -267,6 +267,7 @@ exist. Do not skip items just because a file already exists.
   - Action: Include relevant prompt files; keep formats (Markdown/YAML) as upstream
   - Available prompts:
     - `default.prompt.yml` - Default prompt for agent-ai workflow
+    - `pr-review.prompt.md` - PR review checklist and inline comment guidance
     - `repository-setup.prompt.md` - This setup prompt
     - `test.prompt.yml` - Example prompt
   - Customize: Add prompts for repository-specific tasks as needed
@@ -438,7 +439,7 @@ exist. Do not skip items just because a file already exists.
     - `FIREWALL.md` - Firewall allowlist for Copilot agents (always include)
     - `README.md` - Documentation of available agents
   - Optional agents:
-    - `copilot-plus.agent.md` - Enhanced Copilot with critical thinking
+    - `prodigy-engineer.agent.md` - Advanced autonomous engineer with strategic reasoning
   - Customize: Add repository-specific agents as needed
 
 - [ ] **`.github/skills/` directory**

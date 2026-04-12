@@ -30,7 +30,7 @@ This is the primary tour for new contributors and provides a comprehensive walkt
 - Development environment setup with devcontainers
 - Coding standards and best practices for Python, Markdown, YAML, and Ansible
 - Pre-commit hooks and automated validation tools
-- GitHub Actions CI/CD workflows
+- GitHub Actions CI/CD workflows, including OpenCode automation
 - Contribution guidelines and workflow
 
 **When to use**: Start here if you're new to the repository or want to understand the overall project structure.
