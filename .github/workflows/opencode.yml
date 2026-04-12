@@ -2,6 +2,19 @@
 # See: <https://opencode.ai/docs>
 # Note: Keep keys and envs in alphabetical order.
 name: OpenCode
+# Prevent concurrent runs on the same branch to avoid push conflicts.
+# When a new run is triggered, the previous pending run is cancelled.
+concurrency:
+  cancel-in-progress: false
+  group: >-
+    ${{
+      github.workflow
+    }}-${{
+      github.event.pull_request.number ||
+      github.event.issue.number ||
+      github.head_ref ||
+      github.ref_name
+    }}
 on:
   issue_comment:
     types:
@@ -122,11 +135,39 @@ jobs:
         run: pip install pre-commit
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
+        timeout-minutes: 60
         env:
+          GITHUB_EVENT_NAME: ${{ github.event_name == 'pull_request_target' && 'pull_request' || github.event_name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          # Keep shell permissions aligned with .vscode/settings.json allowlist and in alphabetical order.
           OPENCODE_PERMISSION: |-
-            { "bash": {  "*": "deny", "gh pr review*": "deny", "gh*": "allow", "pre-commit*": "allow" } }
+            {
+              "bash": {
+                "*": "deny",
+                "ansible*": "allow",
+                "ansible-galaxy*": "allow",
+                "ansible-playbook*": "allow",
+                "awk*": "allow",
+                "continue*": "allow",
+                "cp*": "allow",
+                "ex*": "allow",
+                "gh*": "allow",
+                "gh pr review*": "deny",
+                "git*": "allow",
+                "hexdump*": "allow",
+                "links*": "allow",
+                "mawk*": "allow",
+                "pipx*": "allow",
+                "pre-commit*": "allow",
+                "set*": "allow",
+                "time*": "allow",
+                "timeout*": "allow",
+                "touch*": "allow",
+                "true*": "allow",
+                "vim*": "allow"
+              }
+            }
         with:
           agent: ${{ inputs.agent }}
           model: >-

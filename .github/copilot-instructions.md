@@ -2,16 +2,16 @@
 
 ## Project Overview
 
-This is the `example-ops-template` repository. It provides
-GitHub Actions workflows, issue/PR templates, and coding standards
-for this project.
+This is the organization-wide `.github` repository. It provides
+default community health files, GitHub Actions workflows, issue/PR templates,
+and coding standards that apply across all repositories in the organization.
 
 Key contents:
 
 - **Community health files**: CODE_OF_CONDUCT.md, issue templates, PR templates
 - **Reusable workflows**: CI/CD, linting, automated reviews
 - **Organization profile**: Public-facing info in `profile/README.md`
-- **Agent configurations**: `AGENTS.md`, `CLAUDE.md` for AI coding assistants
+- **Agent configurations**: `AGENTS.md` for AI coding assistants
 
 ### Getting started
 
@@ -60,6 +60,7 @@ Follow the YAML rules in `./.github/instructions/yaml.instructions.md`, which mi
 
 Notes:
 
+- Project utilizes Codespaces with config at `.devcontainer/devcontainer.json` and requirements at `.devcontainer/requirements.txt`.
 - GitHub Actions run pre-commit checks (`.pre-commit-config.yaml`).
 - To verify locally, run `pre-commit run yamllint -a` from the repo root.
 
@@ -94,21 +95,20 @@ runtime and as the source of required controller-side dependencies.
 
 ## Project Structure
 
-TODO: To be updated.
-
 ```text
 .
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Issue templates (bug reports, feature requests)
-│   ├── instructions/         # Language-specific coding standards
-│   ├── workflows/            # GitHub Actions workflows
+│   ├── agents/              # AI agent configurations
+│   ├── instructions/        # Language-specific coding standards
+│   ├── skills/              # Agent skills definitions
+│   ├── workflows/           # GitHub Actions workflows
 │   ├── copilot-instructions.md
 │   └── pull_request_template.md
 ├── .tours/                   # VS Code guided tours
 ├── profile/
 │   └── README.md             # Organization profile (shown on GitHub org page)
 ├── AGENTS.md                 # AI agent guidance
-├── CLAUDE.md                 # Claude-specific configuration
 ├── CODE_OF_CONDUCT.md        # Community standards
 └── README.md                 # Repository documentation
 ```
@@ -132,11 +132,12 @@ To identify and diagnose the latest build errors:
    - For actionlint errors: Install actionlint and run it on workflow files
 
 2. **Common error patterns:**
-   - **Ansible missing Python modules:** If a module such as `requests` or `docker` is installed for the
-     main container Python but Ansible still cannot import it, check `ansible --version` to identify the
-     interpreter in use. In Codespaces/devcontainers, Ansible may run from a pipx-managed environment, so
-     install controller-side libraries there as well, for example with
-     `pipx inject ansible -r .devcontainer/requirements-ansible.txt`.
+   - **Ansible missing Python modules:** If a module such as `requests` or
+     `docker` is installed for the main container Python but Ansible still
+     cannot import it, check `ansible --version` to identify the interpreter in
+     use. In Codespaces/devcontainers, Ansible may run from a pipx-managed
+     environment, so install controller-side libraries there as well, for
+     example with `pipx inject ansible -r .devcontainer/requirements-ansible.txt`.
    - **Markdown linting errors:** Check `.markdownlint.yaml` for rules; errors show line numbers
    - **YAML linting errors:** Check `.yamllint` for rules; verify indentation and structure
    - **JSON formatting errors:** Use `jq . <file>` to validate JSON syntax
