@@ -39,6 +39,20 @@ python -m linkcheckmd .
 The tool checks both local file references and remote URLs, making it easy to
 catch broken links before pushing changes.
 
+### OpenCode Workflows
+
+The repository also includes OpenCode automation for interactive issue/PR help
+and pull request reviews.
+
+- `opencode.yml`: responds to `/oc`, `/opencode`, or `@opencode` from trusted
+  users and can also be run manually with `workflow_dispatch`
+- `opencode-review.yml`: runs review automation for trusted PRs or `/review`
+  comments and supports manual dispatch for a specific PR number
+
+Both workflows use the reusable organization workflows from
+`Cogni-AI-OU/.github` and expect `OPENCODE_API_KEY` to be configured in
+repository secrets.
+
 ## Workflow Templates
 
 The `workflow-templates/` directory contains reference workflows that are not
