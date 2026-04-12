@@ -1,21 +1,44 @@
-# Example repo Ops template
+# Cogni AI OÜ - Organization Configuration
 
 [![PR Reviews][pr-reviews-image]][pr-reviews-link]
-[![Status][gha-image-check-main]][gha-link-check-main]
 [![License][license-image]][license-link]
 
-Template repository for applying Cogni-AI-OU operations standards, reusable workflows,
-prompt catalogs, coding instructions, and agent guidance to a project repository,
-including Claude and OpenCode automation.
+This is a special `.github` repository that provides default community health
+files and configurations for all repositories in the Cogni AI OÜ organization.
+
+## What is a .github Repository?
+
+The `.github` repository is a special GitHub repository that serves as a central
+location for organization-wide defaults. It automatically provides community
+health files (like issue templates, code of conduct, contributing guidelines,
+etc.) to any repository in the organization that doesn't have its own versions.
+
+### Key Features
+
+- **Default Issue Templates**: Standardized bug reports, feature requests, and
+  other issue types
+- **Code of Conduct**: Organization-wide behavioral standards
+- **Contributing Guidelines**: How to contribute to projects
+- **Pull Request Templates**: Standardized PR descriptions
+- **GitHub Actions Workflows**: Reusable CI/CD and automation workflows
+- **Organization Profile**: Public-facing information via `profile/README.md`
+- **AI Agent Configurations**: Enhanced agents and skills for automated development
+
+### How It Works
+
+1. Files in individual repositories' `.github/` directories take precedence over
+   these defaults
+2. If a repository doesn't have a specific file, GitHub falls back to this
+   repository
+3. Changes here automatically apply organization-wide
 
 ## Getting Started
 
 1. Install the local validation tooling:
 
    ```bash
-   python3 -m pip install pre-commit
-   pre-commit install
-   python3 -m pip install -r .devcontainer/requirements.txt
+   pip install pre-commit
+   pip install -r .devcontainer/requirements.txt
    ```
 
 2. Run the repository checks:
@@ -25,67 +48,94 @@ including Claude and OpenCode automation.
    ```
 
 3. Review the core guidance:
-    - [AGENTS.md](AGENTS.md) for repository-wide agent guidance
-    - [CLAUDE.md](CLAUDE.md) for Claude-specific guidance
-    - [.github/copilot-instructions.md](.github/copilot-instructions.md) for coding standards
-    - [.github/agents/README.md](.github/agents/README.md) for installed custom agent profiles
-    - [.tours/getting-started.tour](.tours/getting-started.tour) for a guided walkthrough
+   - This README for repository scope and the local workflow
+   - [.tours/getting-started.tour](.tours/getting-started.tour) for a guided walkthrough
+   - [AGENTS.md](AGENTS.md) for repository-specific agent guidance
 
 ## Development
 
-- Keep repository standards aligned with
-  [.github/prompts/repository-setup.prompt.md](.github/prompts/repository-setup.prompt.md).
-- Use reusable workflows in [.github/workflows/](.github/workflows/) instead of duplicating CI logic.
-- Use the checked-in `.opencode/` and `opencode.json` files when enabling OpenCode automation.
-- Run targeted checks when iterating locally:
+### Setup
 
-  ```bash
-  pre-commit run markdownlint -a
-  pre-commit run yamllint -a
-  ```
+```bash
+# Install pre-commit hooks
+pip install pre-commit
+pre-commit install
 
-- Set `ANTHROPIC_API_KEY` in repository secrets to enable the Claude workflows.
-- Set `OPENCODE_API_KEY` in repository secrets to enable the OpenCode workflows.
+# Install Python dependencies (for devcontainer)
+pip install -r .devcontainer/requirements.txt
+```
+
+### Testing and Validation
+
+```bash
+# Run all pre-commit checks
+pre-commit run -a
+
+# Run specific checks
+pre-commit run markdownlint -a
+pre-commit run yamllint -a
+pre-commit run black -a
+pre-commit run flake8 -a
+```
 
 ## Project Layout
 
-- `.devcontainer/`: shared development container configuration and dependencies
-- `.github/`: workflows, prompts, instructions, matchers, and contribution metadata
-- `.opencode/`: OpenCode agent, command, and local configuration assets
-- `.tours/`: VS Code CodeTour onboarding guides
-- `AGENTS.md`: repository-specific agent execution guidance
-- `CLAUDE.md`: Claude Code workflow guidance
-- `README.md`: repository overview and local development entry point
+- `.github/`: default templates, workflows, instructions, prompts, skills, and agent configuration
+- `.tours/`: guided walkthroughs for repository onboarding
+- `profile/`: the public organization profile shown on GitHub
+- `AGENTS.md`: repository-specific guidance for automation agents
+- `CODE_OF_CONDUCT.md`: organization-wide community standards
+- `README.md`: repository overview and local development workflow
 
 ## AI Agents
 
-This repository includes guidance for multiple agent surfaces and reusable prompt assets.
+This repository provides AI agent configurations for automated development.
+
+### Agent Configuration Files
 
 | File/Directory | Audience | Purpose |
 | -------------- | -------- | ------- |
 | [AGENTS.md](AGENTS.md) | All agents | Repository-specific guidance and workflows |
-| [CLAUDE.md](CLAUDE.md) | Claude | Claude-specific configuration |
-| [.github/agents/](.github/agents/) | Custom agents | Shared custom agent profiles including Cogni AI |
 | [.github/copilot-instructions.md](.github/copilot-instructions.md) | Copilot | Coding standards and project context |
-| [.opencode/](.opencode/) | OpenCode | Agent, command, and config assets for OpenCode automation |
-| [.github/prompts/](.github/prompts/) | All | Prompt templates for chat and GitHub Models |
-| [.github/skills/](.github/skills/) | All agents | Reusable capabilities for common tasks |
-| [.github/instructions/](.github/instructions/) | Linters & agents | Language-specific editing standards |
+| [.github/agents/](.github/agents/) | Orchestrators | Specialized agent configs for specific tasks |
+| [.github/skills/](.github/skills/) | All agents | Reusable capabilities (git, GitHub Actions, etc.) |
+| [.github/prompts/](.github/prompts/) | All | Prompt templates (`.md` for VSCode, `.yaml` for GitHub Models) |
+| [.github/instructions/](.github/instructions/) | Linters & agents | Language-specific code standards |
+
+See also:
+
+- [`AGENTS.md` file format specification](https://agents.md/)
+- [Best practices for using GitHub Copilot](https://gh.io/copilot-coding-agent-tips).
+
+## GitHub Actions
+
+For documentation on GitHub Actions workflows, problem matchers, and CI/CD
+configuration, see [.github/GITHUB-WORKFLOWS.md](.github/GITHUB-WORKFLOWS.md).
+
+## Organization Profile
+
+For information about Cogni AI OÜ, our mission, and how to collaborate, see our
+[organization profile](profile/README.md).
 
 ## Contributing
 
-See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for contribution expectations.
-Before opening a PR, run `pre-commit run -a` and confirm the relevant workflows still apply.
+See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for organization-wide
+contribution guidelines and expectations for issues, pull requests, and CI.
+
+## References
+
+- [How to Use the .github Repository](https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/)
+- [Creating a Default Community Health File](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file)
 
 ## License
 
-This repository is licensed under MIT. See [LICENSE](LICENSE) for the full text.
+MIT
+
+See: [LICENSE](./LICENSE)
 
 <!-- Named links -->
 
-[pr-reviews-image]: https://img.shields.io/github/issues-pr/Cogni-AI-OU/example-ops-template?label=PR+Reviews&logo=github
-[pr-reviews-link]: https://github.com/Cogni-AI-OU/example-ops-template/pulls
-[gha-image-check-main]: https://github.com/Cogni-AI-OU/example-ops-template/actions/workflows/check.yml/badge.svg?branch=main
-[gha-link-check-main]: https://github.com/Cogni-AI-OU/example-ops-template/actions?query=workflow%3ACheck+branch%3Amain
+[pr-reviews-image]: https://img.shields.io/github/issues-pr/Cogni-AI-OU/.github?label=PR+Reviews&logo=github
+[pr-reviews-link]: https://github.com/Cogni-AI-OU/.github/pulls
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-link]: https://tldrlegal.com/license/mit-license

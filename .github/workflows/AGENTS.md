@@ -9,11 +9,9 @@ For a human-readable overview, see [README.md](README.md).
 
 | Workflow | Purpose | Key triggers / notes |
 | -------- | ------- | -------------------- |
-| [check.yml](check.yml) | Linting and quality gates via actionlint and pre-commit | push, pull_request, schedule; reusable via `workflow_call` |
-| [claude-review.yml](claude-review.yml) | Automated PR review with Claude | pull_request (non-bot), `workflow_call` with `pr_number` |
-| [claude.yml](claude.yml) | Interactive Claude mentions on issues/PRs | issue_comment, pull_request_review_comment, workflow_dispatch, `workflow_call` |
-| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request_target (trusted authors), `/review` comments, workflow_dispatch, `workflow_call` |
-| [opencode.yml](opencode.yml) | Interactive OpenCode mentions on issues/PRs | issue_comment and review comment `/oc` or `/opencode`, workflow_dispatch, `workflow_call` |
+| [check.yml](check.yml) | Linting and quality gates via actionlint and pre-commit | push, pull_request, schedule, workflow_run (after OpenCode); reusable via `workflow_call` |
+| [opencode.yml](opencode.yml) | OpenCode agent invocation via comments or manual triggers | issue_comment keywords `/oc` or `/opencode`, workflow_dispatch, `workflow_call` |
+| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request_target (trusted authors), `/review` comment by OWNER/MEMBER, workflow_dispatch, `workflow_call` |
 | [devcontainer-ci.yml](devcontainer-ci.yml) | Build/test devcontainer and required tools/packages | push/pull_request touching .devcontainer or workflow; schedule; `workflow_call` |
 
 ## Details
@@ -21,41 +19,38 @@ For a human-readable overview, see [README.md](README.md).
 ### check.yml
 
 - Purpose: run actionlint and pre-commit to enforce workflow and repo standards.
+- Triggers: `push`, `pull_request`, `schedule`, `workflow_call`, `workflow_dispatch`,
+  `workflow_run` (after OpenCode/OpenCode Review workflows complete successfully).
+- Bot-PR support: `workflow_run` trigger enables checks on PRs created by bots
+  (e.g., `opencode-agent`), since normal `pull_request` events don't trigger for bot actors.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main`.
-- Jobs: `actionlint`, `pre-commit`.
+- Jobs: `actionlint`, `link-checker`, `pre-commit`.
 
-### claude-review.yml
+### opencode.yml
 
-- Purpose: AI code review that comments on PRs.
-- Inputs: `pr_number` (required for `workflow_call`), `model` (default `claude-opus-4-5`),
-  `additional_prompt` (optional extra review instructions).
-- Trigger: pull_request (skips bot authors) and `workflow_call`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/claude-review.yml@main`.
-
-### claude.yml
-
-- Purpose: respond to `@claude` mentions for interactive assistance.
-- Input: `model` (default `claude-opus-4-5`).
-- Triggers: issue_comment, pull_request_review_comment, workflow_dispatch, `workflow_call`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/claude.yml@main`.
-- Access: restricted to OWNER, MEMBER, COLLABORATOR, CONTRIBUTOR associations.
+- Purpose: invoke OpenCode agents via slash commands or manual triggers.
+- Inputs: `agent` (default `cogni-ai`), `model` (workflow_call default via
+  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gemini-3.1-pro`; workflow_dispatch
+  default `opencode/gemini-3.1-pro`), `prompt` (optional override).
+- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+- Guardrail: comment-triggered runs do not populate `inputs.*`; back shared OpenCode defaults
+  with workflow-level `env` values instead of hardcoding agent/model literals in steps.
+- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
+- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
 ### opencode-review.yml
 
 - Purpose: OpenCode-driven PR review.
-- Inputs: `pr_number` (required for `workflow_call`/`workflow_dispatch`), `agent`, `model`,
-  `prompt`, and `additional_prompt`.
-- Triggers: pull_request_target for trusted authors, `/review` issue/review comments from trusted users,
-  `workflow_call`, and `workflow_dispatch`.
+- Inputs: agent (cogni-ai), model (workflow_call default via
+  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
+  default `opencode/gpt-5.3-codex`), additional_prompt, pr_number (req for call/dispatch),
+  prompt (default pr-review).
+- Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
+  workflow_dispatch.
+- Guardrail: align review default behavior with OpenCode by using workflow-level
+  `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
+- Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main`.
-
-### opencode.yml
-
-- Purpose: respond to `/oc`, `/opencode`, or `@opencode` mentions for interactive assistance.
-- Inputs: `agent`, `model`, and `prompt`.
-- Triggers: issue_comment, pull_request_review_comment, workflow_dispatch, `workflow_call`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
-- Access: restricted to trusted non-bot collaborators, contributors, members, and owners.
 
 ### devcontainer-ci.yml
 
@@ -67,13 +62,35 @@ For a human-readable overview, see [README.md](README.md).
 - Permissions: callers must grant `packages: write` when pushing images to GHCR.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main`.
 
-## Model selection
+## Model selection (Claude workflows)
 
 - `claude-haiku-4-5`: fastest, best for quick tasks.
 - `claude-opus-4-5`: default balance.
 - `claude-sonnet-4-5`: most capable.
 - Provide `model` input when calling `claude.yml` or `claude-review.yml`; defaults to `claude-opus-4-5`.
-- OpenCode workflows accept `opencode/*` model IDs and default to `opencode/claude-opus-4-5`.
+
+## Synchronized Configuration
+
+The following configuration values **MUST** be kept in sync across multiple files:
+
+### OPENCODE_PERMISSION
+
+The `OPENCODE_PERMISSION` environment variable defines the bash command allowlist for OpenCode agents.
+It must be identical in both workflow files:
+
+| File | Location |
+| ---- | -------- |
+| [opencode.yml](opencode.yml) | Line ~130 (env section) |
+| [opencode-review.yml](opencode-review.yml) | Line ~210 (env section) |
+
+### Model options list
+
+The `model` input options for `workflow_dispatch` must be identical in both workflow files:
+
+| File | Location |
+| ---- | -------- |
+| [opencode.yml](opencode.yml) | Lines ~48-90 (workflow_dispatch inputs) |
+| [opencode-review.yml](opencode-review.yml) | Lines ~67-107 (workflow_dispatch inputs) |
 
 ## Notes
 

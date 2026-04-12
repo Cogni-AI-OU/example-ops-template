@@ -1,17 +1,9 @@
 # Agent Prompts
 
-This directory contains prompt files that can be used with AI agents
-(OpenCode, Claude Code, GitHub Copilot, etc.) to perform standardized tasks
-across repositories.
+This directory contains prompt files that can be used with AI agents (Claude Code, GitHub Copilot, etc.)
+to perform standardized tasks across repositories.
 
 - For the agent-facing prompt catalog, see [AGENTS.md](AGENTS.md).
-
-## Available Prompt Files
-
-- [default.prompt.yml](default.prompt.yml): General-purpose starter prompt for GitHub Models workflows.
-- [pr-review.prompt.md](pr-review.prompt.md): Manual pull request review checklist and inline comment template.
-- [repository-setup.prompt.md](repository-setup.prompt.md): Repository standardization checklist for adopting org defaults.
-- [test.prompt.yml](test.prompt.yml): Minimal example prompt for GitHub Models experiments.
 
 ## Prompt File Formats
 
@@ -19,11 +11,9 @@ This directory supports two types of prompt formats:
 
 ### Markdown Format (`.md`)
 
-Markdown prompts (`.prompt.md`) are human-readable prompt templates designed
-for use in:
+Markdown prompts (`.prompt.md`) are human-readable prompt templates designed for use in:
 
 - **VS Code**: Reference these prompts in GitHub Copilot Chat or other AI assistants within your IDE
-- **OpenCode**: Reference the file from `/oc` or `/opencode` issue and PR commands
 - **Claude Code**: Copy and paste content directly or reference the file URL
 - **Manual use**: Easy to read and adapt for any AI tool
 
@@ -31,8 +21,7 @@ Markdown prompts are ideal for detailed, structured instructions with checklists
 
 ### YAML Format (`.yml` or `.yaml`)
 
-YAML prompts (`.prompt.yml` or `.prompt.yaml`) follow the
-[GitHub Models prompt format](https://docs.github.com/en/github-models/use-github-models/storing-prompts-in-github-repositories)
+YAML prompts (`.prompt.yml` or `.prompt.yaml`) follow the [GitHub Models prompt format](https://docs.github.com/en/github-models/use-github-models/storing-prompts-in-github-repositories)
 and are designed for:
 
 - **GitHub Models**: Direct integration with GitHub's AI model playground
@@ -46,21 +35,9 @@ model configuration.
 
 ### Markdown Prompts (`.prompt.md`)
 
-#### With Claude Code
-
-1. **In an Issue or PR**: Mention `@claude` and provide the prompt content or reference the file:
-
-   ```text
-   @claude Please follow the checklist in
-   https://github.com/Cogni-AI-OU/.github/blob/main/.github/prompts/repository-setup.prompt.md
-   to review and update this repository's configuration.
-   ```
-
-2. **Directly**: Copy the prompt content and paste it into a Claude Code conversation.
-
 #### With OpenCode
 
-1. **In an Issue or PR**: Use `/oc` or `/opencode` and reference the prompt file:
+1. **In an Issue or PR**: Use `/oc` or `/opencode` command and provide the prompt content or reference the file:
 
    ```text
    /opencode Please follow the checklist in
@@ -197,7 +174,6 @@ See: [Storing prompts in GitHub repositories](https://docs.github.com/en/github-
 ## Additional Resources
 
 - [AGENTS.md](../../AGENTS.md) - General agent guidance
-- [CLAUDE.md](../../CLAUDE.md) - Claude-specific configuration
 - [Copilot Instructions](../copilot-instructions.md) - Coding standards
 - [GitHub Actions Workflows](../workflows/) - Reusable workflows
 - [Instructions](../instructions/) - Language-specific guidelines
