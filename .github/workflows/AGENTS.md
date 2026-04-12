@@ -62,13 +62,6 @@ For a human-readable overview, see [README.md](README.md).
 - Permissions: callers must grant `packages: write` when pushing images to GHCR.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main`.
 
-## Model selection (Claude workflows)
-
-- `claude-haiku-4-5`: fastest, best for quick tasks.
-- `claude-opus-4-5`: default balance.
-- `claude-sonnet-4-5`: most capable.
-- Provide `model` input when calling `claude.yml` or `claude-review.yml`; defaults to `claude-opus-4-5`.
-
 ## Synchronized Configuration
 
 The following configuration values **MUST** be kept in sync across multiple files:
