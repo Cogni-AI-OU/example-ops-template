@@ -26,6 +26,7 @@
           "cp": "allow",
           "ex": "allow",
           "gh": "allow",
+          "gh pr review": "deny",
           "git": "allow",
           "hexdump": "allow",
           "links": "allow",
