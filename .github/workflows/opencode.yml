@@ -129,6 +129,11 @@ jobs:
         with:
           persist-credentials: false  # Prevents duplicate Authorization header
           submodules: recursive
+      - name: Load cogni-ai-agent-skills subtree
+        run: >-
+          git subtree add --prefix=.github/skills/cogni-ai-agent-skills --squash
+          https://github.com/Cogni-AI-OU/cogni-ai-agent-skills main && git reset
+          HEAD^
       - uses: actions/setup-python@v6.1.0
         with:
           python-version: '3.12'
