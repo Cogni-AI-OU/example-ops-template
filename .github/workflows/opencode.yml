@@ -134,6 +134,8 @@ jobs:
           python-version: '3.12'
       - name: Install pre-commit
         run: pip install pre-commit
+      - name: Run pre-commit
+        run: pre-commit run -a || true
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
         timeout-minutes: 60
