@@ -21,7 +21,7 @@ For a human-readable overview, see [README.md](README.md).
   of actual available skills in this project.
 - Resolve candidate skills from that catalog, then load the relevant
   `SKILL.md` file or files before proceeding.
-- If the submodule catalog is unavailable, state that the actual skill list
+- If the subtree catalog is unavailable, state that the actual skill list
   could not be loaded and continue only with explicitly available local skill
   files.
 
