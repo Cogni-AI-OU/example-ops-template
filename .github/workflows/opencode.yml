@@ -104,6 +104,8 @@ on:
       prompt:
         description: Custom prompt to override the default prompt
         required: false
+env:
+  OPENCODE_MODEL_DEFAULT: opencode/gpt-5.3-codex
 jobs:
   opencode:
     if: |
@@ -171,7 +173,5 @@ jobs:
             }
         with:
           agent: ${{ inputs.agent }}
-          model: >-
-            ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.model || 'opencode/gpt-5.3-codex' }}
+          model: ${{ inputs.model || env.OPENCODE_MODEL_DEFAULT }}
           prompt: ${{ inputs.prompt || '' }}
