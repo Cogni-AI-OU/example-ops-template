@@ -15,7 +15,7 @@ For more information, see
 ## Skills catalog
 
 The full, machine-readable list of skills lives in
-[cogni-ai-agent-skills AGENTS.md](https://github.com/Cogni-AI-OU/cogni-ai-agent-skills/blob/main/AGENTS.md).
+[cogni-ai-agent-skills AGENTS.md](cogni-ai-skills/AGENTS.md).
 Use it when you need the authoritative catalog for agent loading. This README
 stays human-focused.
 
