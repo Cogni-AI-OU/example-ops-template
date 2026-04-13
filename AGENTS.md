@@ -8,27 +8,13 @@ For general project invariants see [README.md](README.md).
 
 Read and merge these when operating inside corresponding sub-directories (order = precedence):
 
+- [`.opencode/AGENTS.md`](.opencode/AGENTS.md)
 - [`.github/AGENTS.md`](.github/AGENTS.md)
-- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) to discover the available
-  skill catalog before interpreting the user request
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) (list of available skills)
+- [`.vscode/AGENTS.md`](.vscode/AGENTS.md) (command permissions and tasks)
 - Any `AGENTS.md` or `SKILL.md` in ancestor, then current directory tree
 
-## Mandatory Skill Loading Protocol
-
-- Before any tool invocation, code delta, or execution plan, MUST read
-  [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) when present.
-- Treat [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) as the
-  authoritative catalog of available skills; follow its links to candidate
-  `SKILL.md` files.
-- Deterministically route user intent to skills in this order: exact
-  skill-name match, exact alias/tag match, normalized phrase match,
-  description/activation keyword match.
-- If multiple skills match, load all non-overlapping relevant skills ordered
-  by the routing score above; if two skills conflict, the more task-specific
-  `SKILL.md` wins.
-- If the user request includes domain terms that plausibly map to a skill,
-  MUST inspect the best-matching `SKILL.md` before proceeding.
-- If no skill matches after catalog inspection, proceed without a skill and state that no relevant skill was found.
+## Core Agent Execution Protocol (Mandatory for All Forks)
 
 **Maintenance invariant**:
 
@@ -67,16 +53,19 @@ Read and merge these when operating inside corresponding sub-directories (order 
   then verification loops.
 - Favor tables, checklists, and contract-style boundaries over linear text.
 - Zero scaffolding. Maximal information-theoretic density. Surgical imperative syntax.
-
-## Core Agent Execution Protocol (Mandatory for All Forks)
-
 **Pre-execution reverse-prompting activation**:
 
+- **CI/CD Failure Escalation**: When CI/CD pipelines or automated checks fail, do NOT immediately
+  patch local configuration files or create suppressions to hide errors. Investigate the execution
+  environment and upstream dependencies. If the root cause originates outside the repository scope,
+  state the required upstream fix clearly and halt rather than introducing local entropy.
+- Read, assimilate, and strictly enforce the invariants defined in the main `AGENTS.md`,
+  along with any directory-specific `AGENTS.md` and related files, `.github/copilot-instructions.md`,
+  and autonomously load any relevant `.instructions.md` rules or `SKILL.md` workflows before formulating a strategy.
 - Declare required inputs, missing context, edge cases, and optimal strategy before any tool invocation or code delta.
 - Snapshot current problem state in one entropy-minimized sentence.
 - Enumerate risks against classic-mistakes matrix and Top-10 Risks List.
 - Apply noise-pruning filter + single-variable delta rule for all experiments.
-- Complete the Mandatory Skill Loading Protocol, then load the highest-confidence relevant `SKILL.md` files before execution.
 
 **Strategic vs tactical default**:
 
@@ -120,7 +109,6 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - Quality, security, performance gates satisfied.
 - User objective resolved at target fidelity (+20% over prior baseline).
 - AGENTS.md/SKILL.md updated if new reusable primitive discovered.
-
 
 ## GitHub Actions Runtime
 
@@ -235,42 +223,62 @@ the agent MUST integrate remote changes with a merge commit workflow.
 - For latest version see:
   <https://github.com/Cogni-AI-OU/.github/blob/main/AGENTS.md>
 - For latest standard see: <https://agents.md/>
-```
 
 ## Common Tasks
 
 ### Before each commit
 
 - Verify your expected changes with `git diff --no-color`.
+- Ensure no temporary, dummy, or unrelated test files are included in the commit.
 - Use the project linting/validation tools to confirm your changes meet the coding standard.
 - If the repo uses git hooks, run them to validate your changes.
 
-### Linting and Validation
+### File operations
 
-```bash
-# Run all pre-commit checks
-pre-commit run -a
+**Editing files**
 
-# Run specific checks
-pre-commit run markdownlint -a
-pre-commit run yamllint -a
-```
+- When modifying or creating documentation and plain text files, always enforce line-wrapping and length
+  limits in accordance with project-defined standards (such as `.markdownlint.yaml` or `.editorconfig`).
+
+**Editing files with ex**
+
+- While files should normally be edited directly via MCP tools, `ex` (Vim in Ex mode) provides powerful
+  non-interactive text manipulation directly from the terminal shell.
+- Use `ex` when it is more beneficial to manipulate text programmatically, such as rapidly wrapping long lines,
+  performing complex regex parsing, or safely editing a few lines in-place within an automated script context.
+  It is especially useful for large files where patching the whole file via MCP could take a lot of context
+  processing for simple changes.
+- For detailed commands and examples, see [`.github/skills/vim-ex/SKILL.md`](.github/skills/vim-ex/SKILL.md).
+
+**Renaming/removing files**
+
+- Use `git mv`, `git rm`, or equivalent Git-aware tooling (instead of `mv` or `rm`) to preserve history
+  when working with files under source control.
+
+## Feature-specific Notes
+
+### opencode
+
+OpenCode (if installed), it uses XDG base directories (not a single `~/.opencode` dir):
+
+| Directory | Purpose |
+|-----------|---------|
+| `~/.local/share/opencode` | Data **and** auth credentials (`auth.json` lives here) |
+| `~/.config/opencode` | User configuration (`opencode.json`/`opencode.jsonc`) |
+| `~/.cache/opencode` | Ephemeral binary cache - not worth persisting |
+| `~/.local/state/opencode` | Runtime state - not worth persisting |
+
+## Tooling
+
+- Use MCP when possible.
+- Use `pre-commit` for linting and validation if installed.
+- For dumping links use `links -dump` if installed.
 
 ### Understanding the Task
 
 - When the task is not clear, look for additional context.
 - If triggered by a brief comment, check whether the parent comment exists and includes more detail.
 - If it's still ambiguous, communicate with the user and propose options.
-
-### Testing
-
-```bash
-# Run Molecule tests
-molecule test
-
-# Syntax check
-molecule syntax
-```
 
 ### Adding or Modifying Workflows
 
@@ -294,6 +302,9 @@ on top of the updated target branch:
 3. Reset your branch to target (with backup)
 4. Cherry-pick your feature commits
 5. Verify only your changes remain
+
+**For detailed step-by-step instructions with commands**, see:
+[`.github/skills/git/SKILL.md`](.github/skills/git/SKILL.md)
 
 ### Key Points
 
@@ -324,6 +335,9 @@ tries to auto-rebase (e.g., 113 commits), it encounters conflicts it cannot reso
 3. Push new branch: `git push origin <feature>-v2`
 
 **Error Patterns:** `Rebasing (1/XXX)` with large numbers, `CONFLICT (content)`, session crash with `GitError`
+
+**For complete details**, see:
+[`.github/skills/git/SKILL.md` - "Working with Automation Tools"](.github/skills/git/SKILL.md#working-with-automation-tools)
 
 ## References
 
