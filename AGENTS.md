@@ -16,7 +16,7 @@ Read and merge these when operating inside corresponding sub-directories (order 
 ## Mandatory Skill Loading Protocol
 
 - Before any tool invocation, code delta, or execution plan, MUST initialize
-  submodules with `git submodule update --init --recursive` so skill catalogs are
+  submodules with `git submodule update --init` so skill catalogs are
   present locally.
 - After submodule initialization, MUST read
   [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) when present.
