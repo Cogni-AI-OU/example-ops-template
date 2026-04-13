@@ -71,13 +71,14 @@ The following configuration values **MUST** be kept in sync across multiple file
 
 ### OPENCODE_PERMISSION
 
-The `OPENCODE_PERMISSION` environment variable defines the bash command allowlist for OpenCode agents.
-It must be identical in both workflow files:
+The OpenCode bash command allow/deny list must stay synchronized across workflow, local OpenCode, and VS Code auto-approve configs.
 
 | File | Location |
 | ---- | -------- |
 | [opencode.yml](opencode.yml) | Line ~130 (env section) |
 | [opencode-review.yml](opencode-review.yml) | Line ~210 (env section) |
+| [.opencode/opencode.jsonc](../../.opencode/opencode.jsonc) | `agent.cogni-ai.permission.bash` |
+| [.vscode/settings.json](../../.vscode/settings.json) | `chat.tools.terminal.autoApprove` |
 
 ### Model options list
 

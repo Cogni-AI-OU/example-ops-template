@@ -161,6 +161,7 @@ jobs:
                 "mawk*": "allow",
                 "pipx*": "allow",
                 "pre-commit*": "allow",
+                "printf*": "allow",
                 "set*": "allow",
                 "time*": "allow",
                 "timeout*": "allow",
