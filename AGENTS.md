@@ -8,7 +8,7 @@ For general project invariants see [README.md](README.md).
 
 Read and merge these when operating inside corresponding sub-directories (order = precedence):
 
-- [`.opencode/AGENTS.md`](.opencode/AGENTS.md)
+- `.opencode/AGENTS.md`
 - [`.github/AGENTS.md`](.github/AGENTS.md)
 - [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) to discover the available
   skill catalog before interpreting the user request
@@ -69,6 +69,7 @@ Read and merge these when operating inside corresponding sub-directories (order 
   then verification loops.
 - Favor tables, checklists, and contract-style boundaries over linear text.
 - Zero scaffolding. Maximal information-theoretic density. Surgical imperative syntax.
+
 ## Core Agent Execution Protocol (Mandatory for All Forks)
 
 **Pre-execution reverse-prompting activation**:
@@ -128,7 +129,6 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - Quality, security, performance gates satisfied.
 - User objective resolved at target fidelity (+20% over prior baseline).
 - AGENTS.md/SKILL.md updated if new reusable primitive discovered.
-
 
 ## GitHub Actions Runtime
 
@@ -267,12 +267,12 @@ pre-commit run yamllint -a
 
 ### File operations
 
-**Editing files**
+### Editing files
 
 - When modifying or creating documentation and plain text files, always enforce line-wrapping and length
   limits in accordance with project-defined standards (such as `.markdownlint.yaml` or `.editorconfig`).
 
-**Editing files with ex**
+### Editing files with ex
 
 - While files should normally be edited directly via MCP tools, `ex` (Vim in Ex mode) provides powerful
   non-interactive text manipulation directly from the terminal shell.
@@ -280,9 +280,9 @@ pre-commit run yamllint -a
   performing complex regex parsing, or safely editing a few lines in-place within an automated script context.
   It is especially useful for large files where patching the whole file via MCP could take a lot of context
   processing for simple changes.
-- For detailed commands and examples, see [`.github/skills/vim-ex/SKILL.md`](.github/skills/vim-ex/SKILL.md).
+- For detailed commands and examples, see `.github/skills/vim-ex/SKILL.md`.
 
-**Renaming/removing files**
+### Renaming/removing files
 
 - Use `git mv`, `git rm`, or equivalent Git-aware tooling (instead of `mv` or `rm`) to preserve history
   when working with files under source control.
@@ -293,12 +293,12 @@ pre-commit run yamllint -a
 
 OpenCode (if installed), it uses XDG base directories (not a single `~/.opencode` dir):
 
-| Directory | Purpose |
-|-----------|---------|
+| Directory                 | Purpose                                                |
+| ------------------------- | ------------------------------------------------------ |
 | `~/.local/share/opencode` | Data **and** auth credentials (`auth.json` lives here) |
-| `~/.config/opencode` | User configuration (`opencode.json`/`opencode.jsonc`) |
-| `~/.cache/opencode` | Ephemeral binary cache - not worth persisting |
-| `~/.local/state/opencode` | Runtime state - not worth persisting |
+| `~/.config/opencode`      | User configuration (`opencode.json`/`opencode.jsonc`)  |
+| `~/.cache/opencode`       | Ephemeral binary cache - not worth persisting          |
+| `~/.local/state/opencode` | Runtime state - not worth persisting                   |
 
 ## Tooling
 
@@ -321,7 +321,6 @@ molecule test
 # Syntax check
 molecule syntax
 ```
-
 
 ### Adding or Modifying Workflows
 
@@ -347,7 +346,7 @@ on top of the updated target branch:
 5. Verify only your changes remain
 
 **For detailed step-by-step instructions with commands**, see:
-[`.github/skills/git/SKILL.md`](.github/skills/git/SKILL.md)
+`.github/skills/git/SKILL.md`
 
 ### Key Points
 
@@ -380,7 +379,7 @@ tries to auto-rebase (e.g., 113 commits), it encounters conflicts it cannot reso
 **Error Patterns:** `Rebasing (1/XXX)` with large numbers, `CONFLICT (content)`, session crash with `GitError`
 
 **For complete details**, see:
-[`.github/skills/git/SKILL.md` - "Working with Automation Tools"](.github/skills/git/SKILL.md#working-with-automation-tools)
+`.github/skills/git/SKILL.md` - "Working with Automation Tools"
 
 ## References
 
