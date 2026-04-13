@@ -121,6 +121,76 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - User objective resolved at target fidelity (+20% over prior baseline).
 - AGENTS.md/SKILL.md updated if new reusable primitive discovered.
 
+
+## GitHub Actions Runtime
+
+When executing autonomously within a GitHub Actions environment, adhere strictly to these
+interaction constraints:
+
+### OpenCode PR Context & Response Routing
+
+**Context & Targeting Invariants**:
+
+- **Extract Context**: Parse the `## Pull Request Context` block containing `**Base Branch:**` dynamically.
+- **Dynamic PR Targeting**: ALWAYS target this explicitly provided **Base Branch** when creating/updating PRs.
+
+**Response Detection & Routing**:
+Check `github.event_name` and payload to identify trigger source:
+
+- **General PR comment** (`issue_comment`):
+  - Condition: `if: ${{ github.event.issue.pull_request }}`
+  - Reply Method: `gh pr comment`
+- **Issue comment** (`issue_comment`):
+  - Condition: `if: ${{ !github.event.issue.pull_request }}`
+  - Reply Method: `gh issue comment`
+- **Inline code review** (`pull_request_review_comment`):
+  - Reply Method: `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies -f body="..."`
+
+**Routing Invariants**:
+
+- **Symmetric Routing**: ALWAYS reply via the exact originating channel. NEVER cross threads.
+- Parse `github.event.comment.id` and `in_reply_to_id` to maintain thread continuity.
+
+### Branch Sync Policy (No Rebase During Runtime)
+
+When the prompt asks to "pull" or "sync with base" in GitHub Actions runtime,
+the agent MUST integrate remote changes with a merge commit workflow.
+
+- **MUST NOT** run any rebase-based update command during runtime.
+- **FORBIDDEN**: `gh pr update-branch --rebase`, `git pull --rebase`,
+  `git rebase`, or any history rewrite that changes commit SHAs.
+- **MUST** use pull-with-merge semantics: `git pull --no-rebase`.
+- **MUST** preserve remote branch compatibility for post-run auto PR/push logic.
+
+**Execution Steps (strict order)**:
+
+1. Determine PR base/head from context (`## Pull Request Context`, `gh pr view`).
+2. Ensure work is on the PR head branch (not detached HEAD).
+3. Sync head branch from remote with merge semantics:
+   `git pull --no-rebase origin <head-branch>`.
+4. If base changes must be integrated into head, merge base explicitly:
+   `git fetch origin <base-branch> && git merge --no-ff origin/<base-branch>`.
+5. Resolve conflicts, commit merge if required, then push normally (no force).
+
+**Verification Gate (required before push)**:
+
+- Confirm no rebase command was executed in this run.
+- Confirm `git log --oneline --graph -n 10` shows merge topology
+  (no rewritten linearized history from rebase).
+- Proceed with normal `git push` only after these checks pass.
+
+### General Constraints
+
+- **Contextual Continuity**: Maintain conversation context within the originating thread.
+- If replying to an inline comment, your response MUST appear as a reply in that same thread.
+
+### GitHub Runtime Decision Policy
+
+- **Default to Best Practice:** Implement the most recommended path autonomously when multiple options exist.
+- **Document Trade-offs:** Capture unresolved decisions, explicit options, and impacts in the PR description.
+- **Never Stall:** Proceed immediately with safe defaults. Request preference feedback in the PR instead of waiting.
+- **Report Defensively:** Present recommended option first; list alternatives only if they alter scope or risk.
+
 ## Required References
 
 - Project overview & install: [README.md](README.md)
@@ -191,14 +261,6 @@ pre-commit run yamllint -a
 - When the task is not clear, look for additional context.
 - If triggered by a brief comment, check whether the parent comment exists and includes more detail.
 - If it's still ambiguous, communicate with the user and propose options.
-
-### GitHub Runtime Decision Policy
-
-- In GitHub runtime execution (including OpenCode agent runs), when multiple valid implementation paths exist, implement the most recommended/best-practice option by default.
-- In outputs, present the selected recommended option first, then list alternative options only when they materially affect scope, risk, or maintenance.
-- If follow-up product or process decisions are still required, continue with the recommended default and capture the unresolved questions in the PR description/comments, including explicit option sets and impact trade-offs.
-- Do not stall execution waiting for preference confirmation when a safe recommended default exists; request feedback in the PR for optional deviations.
-- Reference incident: <https://github.com/Cogni-AI-OU/example-ops-template/actions/runs/24348229750/job/71095129845>.
 
 ### Testing
 
