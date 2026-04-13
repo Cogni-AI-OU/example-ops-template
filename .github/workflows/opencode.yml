@@ -32,7 +32,7 @@ on:
         required: false
         type: string
       model:
-        default: opencode/claude-opus-4-5
+        default: ${{ vars.OPENCODE_MODEL_DEFAULT || 'opencode/gemini-3.1-pro' }}
         description: Model to use for OpenCode
         required: false
         type: string
@@ -55,7 +55,7 @@ on:
         required: false
         type: choice
       model:
-        default: opencode/claude-opus-4-5
+        default: opencode/gemini-3.1-pro
         description: Model to use for OpenCode
         options:
           - opencode/big-pickle
@@ -104,6 +104,8 @@ on:
       prompt:
         description: Custom prompt to override the default prompt
         required: false
+env:
+  OPENCODE_MODEL_DEFAULT: opencode/gemini-3.1-pro
 jobs:
   opencode:
     if: |
@@ -172,7 +174,5 @@ jobs:
             }
         with:
           agent: ${{ inputs.agent }}
-          model: >-
-            ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.model || 'opencode/claude-opus-4-5' }}
+          model: ${{ inputs.model || env.OPENCODE_MODEL_DEFAULT }}
           prompt: ${{ inputs.prompt || '' }}

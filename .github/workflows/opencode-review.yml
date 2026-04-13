@@ -32,7 +32,7 @@ on:
         required: false
         type: string
       model:
-        default: opencode/claude-opus-4-5
+        default: ${{ vars.OPENCODE_MODEL_DEFAULT || 'opencode/gemini-3.1-pro' }}
         description: Model to use for OpenCode
         required: false
         type: string
@@ -64,7 +64,7 @@ on:
         required: false
         type: choice
       model:
-        default: opencode/claude-opus-4-5
+        default: opencode/gemini-3.1-pro
         description: Model to use for OpenCode
         options:
           - opencode/big-pickle
@@ -121,6 +121,8 @@ on:
           - pr-review
         required: false
         type: choice
+env:
+  OPENCODE_MODEL_DEFAULT: opencode/gemini-3.1-pro
 jobs:
   opencode-review:
     # Run automatically for trusted PRs, including Copilot-authored PRs,
@@ -244,9 +246,7 @@ jobs:
         with:
           agent: ${{ inputs.agent || 'build' }}
           # See: <https://opencode.ai/docs/models/>
-          model: >-
-            ${{ (github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch')
-            && inputs.model || 'opencode/claude-opus-4-5' }}
+          model: ${{ inputs.model || env.OPENCODE_MODEL_DEFAULT }}
           prompt: |-
             Pull request needs to be reviewed in the context of the following repository:
             <repo>
