@@ -9,7 +9,26 @@ For general project invariants see [README.md](README.md).
 Read and merge these when operating inside corresponding sub-directories (order = precedence):
 
 - [`.github/AGENTS.md`](.github/AGENTS.md)
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) to discover the available
+  skill catalog before interpreting the user request
 - Any `AGENTS.md` or `SKILL.md` in ancestor, then current directory tree
+
+## Mandatory Skill Loading Protocol
+
+- Before any tool invocation, code delta, or execution plan, MUST read
+  [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) when present.
+- Treat [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) as the
+  authoritative catalog of available skills; follow its links to candidate
+  `SKILL.md` files.
+- Deterministically route user intent to skills in this order: exact
+  skill-name match, exact alias/tag match, normalized phrase match,
+  description/activation keyword match.
+- If multiple skills match, load all non-overlapping relevant skills ordered
+  by the routing score above; if two skills conflict, the more task-specific
+  `SKILL.md` wins.
+- If the user request includes domain terms that plausibly map to a skill,
+  MUST inspect the best-matching `SKILL.md` before proceeding.
+- If no skill matches after catalog inspection, proceed without a skill and state that no relevant skill was found.
 
 **Maintenance invariant**:
 
@@ -57,6 +76,7 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - Snapshot current problem state in one entropy-minimized sentence.
 - Enumerate risks against classic-mistakes matrix and Top-10 Risks List.
 - Apply noise-pruning filter + single-variable delta rule for all experiments.
+- Complete the Mandatory Skill Loading Protocol, then load the highest-confidence relevant `SKILL.md` files before execution.
 
 **Strategic vs tactical default**:
 
