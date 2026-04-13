@@ -24,7 +24,8 @@ For a human-readable overview, see [README.md](README.md).
 - Bot-PR support: `workflow_run` trigger enables checks on PRs created by bots
   (e.g., `opencode-agent`), since normal `pull_request` events don't trigger for bot actors.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main`.
-- Jobs: `actionlint`, `link-checker`, `pre-commit`.
+- Jobs: `actionlint`, `link-checker`, `pre-commit` (from reusable workflow);
+  `link-checker` (local, with recursive submodule checkout for validating links in submodules).
 
 ### opencode.yml
 
