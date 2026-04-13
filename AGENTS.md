@@ -10,11 +10,27 @@ Read and merge these when operating inside corresponding sub-directories (order 
 
 - [`.opencode/AGENTS.md`](.opencode/AGENTS.md)
 - [`.github/AGENTS.md`](.github/AGENTS.md)
-- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) (list of available skills)
+- [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) to discover the available
+  skill catalog before interpreting the user request
 - [`.vscode/AGENTS.md`](.vscode/AGENTS.md) (command permissions and tasks)
 - Any `AGENTS.md` or `SKILL.md` in ancestor, then current directory tree
 
-## Core Agent Execution Protocol (Mandatory for All Forks)
+## Mandatory Skill Loading Protocol
+
+- Before any tool invocation, code delta, or execution plan, MUST read
+  [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) when present.
+- Treat [`.github/skills/AGENTS.md`](.github/skills/AGENTS.md) as the
+  authoritative catalog of available skills; follow its links to candidate
+  `SKILL.md` files.
+- Deterministically route user intent to skills in this order: exact
+  skill-name match, exact alias/tag match, normalized phrase match,
+  description/activation keyword match.
+- If multiple skills match, load all non-overlapping relevant skills ordered
+  by the routing score above; if two skills conflict, the more task-specific
+  `SKILL.md` wins.
+- If the user request includes domain terms that plausibly map to a skill,
+  MUST inspect the best-matching `SKILL.md` before proceeding.
+- If no skill matches after catalog inspection, proceed without a skill and state that no relevant skill was found.
 
 **Maintenance invariant**:
 
@@ -53,6 +69,8 @@ Read and merge these when operating inside corresponding sub-directories (order 
   then verification loops.
 - Favor tables, checklists, and contract-style boundaries over linear text.
 - Zero scaffolding. Maximal information-theoretic density. Surgical imperative syntax.
+## Core Agent Execution Protocol (Mandatory for All Forks)
+
 **Pre-execution reverse-prompting activation**:
 
 - **CI/CD Failure Escalation**: When CI/CD pipelines or automated checks fail, do NOT immediately
@@ -66,6 +84,7 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - Snapshot current problem state in one entropy-minimized sentence.
 - Enumerate risks against classic-mistakes matrix and Top-10 Risks List.
 - Apply noise-pruning filter + single-variable delta rule for all experiments.
+- Complete the Mandatory Skill Loading Protocol, then load the highest-confidence relevant `SKILL.md` files before execution.
 
 **Strategic vs tactical default**:
 
@@ -109,6 +128,7 @@ Read and merge these when operating inside corresponding sub-directories (order 
 - Quality, security, performance gates satisfied.
 - User objective resolved at target fidelity (+20% over prior baseline).
 - AGENTS.md/SKILL.md updated if new reusable primitive discovered.
+
 
 ## GitHub Actions Runtime
 
@@ -224,6 +244,7 @@ the agent MUST integrate remote changes with a merge commit workflow.
   <https://github.com/Cogni-AI-OU/.github/blob/main/AGENTS.md>
 - For latest standard see: <https://agents.md/>
 
+
 ## Common Tasks
 
 ### Before each commit
@@ -232,6 +253,17 @@ the agent MUST integrate remote changes with a merge commit workflow.
 - Ensure no temporary, dummy, or unrelated test files are included in the commit.
 - Use the project linting/validation tools to confirm your changes meet the coding standard.
 - If the repo uses git hooks, run them to validate your changes.
+
+### Linting and Validation
+
+```bash
+# Run all pre-commit checks
+pre-commit run -a
+
+# Run specific checks
+pre-commit run markdownlint -a
+pre-commit run yamllint -a
+```
 
 ### File operations
 
@@ -279,6 +311,17 @@ OpenCode (if installed), it uses XDG base directories (not a single `~/.opencode
 - When the task is not clear, look for additional context.
 - If triggered by a brief comment, check whether the parent comment exists and includes more detail.
 - If it's still ambiguous, communicate with the user and propose options.
+
+### Testing
+
+```bash
+# Run Molecule tests
+molecule test
+
+# Syntax check
+molecule syntax
+```
+
 
 ### Adding or Modifying Workflows
 

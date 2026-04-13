@@ -14,6 +14,8 @@ permissions:
 jobs:
   check:
     uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
+    with:
+      submodules: recursive
   link-checker:
     name: Link Checker (recursive)
     runs-on: ubuntu-latest
