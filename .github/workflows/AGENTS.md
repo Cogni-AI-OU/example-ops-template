@@ -7,12 +7,16 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Workflow catalog
 
-| Workflow | Purpose | Key triggers / notes |
-| -------- | ------- | -------------------- |
-| [check.yml](check.yml) | Linting and quality gates via actionlint and pre-commit | push, pull_request, schedule, workflow_run (after OpenCode); reusable via `workflow_call` |
-| [opencode.yml](opencode.yml) | OpenCode agent invocation via comments or manual triggers | issue_comment keywords `/oc` or `/opencode`, workflow_dispatch, `workflow_call` |
-| [opencode-review.yml](opencode-review.yml) | OpenCode PR review | pull_request (trusted authors), `/review` comment by OWNER/MEMBER, workflow_dispatch, `workflow_call` |
-| [devcontainer-ci.yml](devcontainer-ci.yml) | Build/test devcontainer and required tools/packages | push/pull_request touching .devcontainer or workflow; schedule; `workflow_call` |
+- **[check.yml](check.yml)**: Linting and quality gates via actionlint and pre-commit.  
+  *Key triggers / notes:* `push`, `pull_request`, `schedule`, `workflow_run` (after OpenCode);
+  reusable via `workflow_call`
+- **[devcontainer-ci.yml](devcontainer-ci.yml)**: Build/test devcontainer and required tools/packages.  
+  *Key triggers / notes:* `push`/`pull_request` touching `.devcontainer` or workflow; `schedule`; `workflow_call`
+- **[opencode.yml](opencode.yml)**: OpenCode agent invocation via comments or manual triggers.  
+  *Key triggers / notes:* `issue_comment` keywords `/oc` or `/opencode`, `workflow_dispatch`, `workflow_call`
+- **[opencode-review.yml](opencode-review.yml)**: OpenCode PR review.  
+  *Key triggers / notes:* `pull_request_target` (trusted authors), `/review` comment by OWNER/MEMBER,
+  `workflow_dispatch`, `workflow_call`
 
 ## Details
 
