@@ -7,23 +7,23 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Skills
 
-- **[context-aware-ops](context-aware-ops/SKILL.md)**: Intelligent resource management with size checking and filtering
-- **[git](git/SKILL.md)**: Guide for using git with non-interactive, safe operations
-- **[git-expert](git-expert/SKILL.md)**: Advanced Git operations including interactive rebasing, reflog recovery,
-  bisecting, complex conflict resolution, and history manipulation
-- **[github-actions](github-actions/SKILL.md)**: Diagnosing and debugging failing GitHub Actions workflows
-- **[molecule](molecule/SKILL.md)**: Molecule testing workflows for Ansible roles
-- **[pre-commit](pre-commit/SKILL.md)**: Using pre-commit to validate code formatting, linting, and security checks
-- **[robust-commands](robust-commands/SKILL.md)**: Resilient command execution with automatic fallbacks and error recovery
-- **[shell](shell/SKILL.md)**: Efficient shell command execution with timing, timeouts, and best practices
-- **[skill-writer](skill-writer/SKILL.md)**: Generate or update SKILL.md files for GitHub Copilot coding agents
-- **[vim-ex](vim-ex/SKILL.md)**: Non-interactive file editing with Vim Ex mode (in favor of sed, shell or Python editing)
+## Mandatory Catalog Loading
+
+- Before selecting or loading any skill, MUST read
+  [cogni-ai-skills/AGENTS.md](cogni-ai-skills/AGENTS.md).
+- Treat [cogni-ai-skills/AGENTS.md](cogni-ai-skills/AGENTS.md) as the
+  authoritative list of actual available skills in this repository.
+- Resolve candidate skills from that catalog, then load the relevant
+  `SKILL.md` file or files before proceeding.
+- If the submodule catalog is unavailable, state that the actual skill list
+  could not be loaded and continue only with explicitly available local skill
+  files.
 
 ## Usage
 
 - Load skills from this catalog when the agent needs specialized guidance.
 - Follow the instructions in each `SKILL.md`; do not duplicate content here.
-- Keep this table in sync when adding or removing skills.
+- Keep references in this file and README links in sync when adding or removing skills.
 
 ## Troubleshooting
 

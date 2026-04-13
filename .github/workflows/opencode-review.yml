@@ -190,6 +190,7 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+          submodules: recursive
       - uses: actions/setup-python@v6.1.0
         with:
           python-version: '3.12'
