@@ -11,6 +11,11 @@ http://example.com
 https://example.com
 https://github.com/org/repo
 
+# Submodule paths that may not exist in non-recursive checkouts
+# The org reusable workflow runs link-check without submodules: recursive
+# Local link-checker job uses recursive checkout and validates these paths
+file://.*cogni-ai-skills/.*
+
 # URLs that fail due to network blocks
 # If DNS/firewall is the issue, allowlist the host in .github/agents/FIREWALL.md
 # Only ignore here when link checks still fail after that.
