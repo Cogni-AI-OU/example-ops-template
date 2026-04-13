@@ -192,6 +192,14 @@ pre-commit run yamllint -a
 - If triggered by a brief comment, check whether the parent comment exists and includes more detail.
 - If it's still ambiguous, communicate with the user and propose options.
 
+### GitHub Runtime Decision Policy
+
+- In GitHub runtime execution (including OpenCode agent runs), when multiple valid implementation paths exist, implement the most recommended/best-practice option by default.
+- In outputs, present the selected recommended option first, then list alternative options only when they materially affect scope, risk, or maintenance.
+- If follow-up product or process decisions are still required, continue with the recommended default and capture the unresolved questions in the PR description/comments, including explicit option sets and impact trade-offs.
+- Do not stall execution waiting for preference confirmation when a safe recommended default exists; request feedback in the PR for optional deviations.
+- Reference incident: <https://github.com/Cogni-AI-OU/example-ops-template/actions/runs/24348229750/job/71095129845>.
+
 ### Testing
 
 ```bash
