@@ -7,13 +7,14 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Skills
 
-See [cogni-ai/AGENTS.md](cogni-ai/AGENTS.md) for the authoritative catalog of available skills provided by the submodule.
+See [cogni-ai-skills/AGENTS.md](cogni-ai-skills/AGENTS.md) for the authoritative catalog of available skills
+provided by the submodule.
 
 ## Usage
 
 - Load skills from this catalog when the agent needs specialized guidance.
 - Follow the instructions in each `SKILL.md`; do not duplicate content here.
-- Keep this table in sync when adding or removing skills.
+- Keep references in this file and README links in sync when adding or removing skills.
 
 ## Troubleshooting
 
