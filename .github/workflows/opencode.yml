@@ -32,7 +32,7 @@ on:
         required: false
         type: string
       model:
-        default: opencode/claude-opus-4-5
+        default: opencode/gpt-5.3-codex
         description: Model to use for OpenCode
         required: false
         type: string
@@ -55,7 +55,7 @@ on:
         required: false
         type: choice
       model:
-        default: opencode/claude-opus-4-5
+        default: opencode/gpt-5.3-codex
         description: Model to use for OpenCode
         options:
           - opencode/big-pickle
@@ -173,5 +173,5 @@ jobs:
           agent: ${{ inputs.agent }}
           model: >-
             ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.model || 'opencode/claude-opus-4-5' }}
+            && inputs.model || 'opencode/gpt-5.3-codex' }}
           prompt: ${{ inputs.prompt || '' }}
