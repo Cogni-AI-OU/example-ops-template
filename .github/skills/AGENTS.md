@@ -9,7 +9,10 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Mandatory Catalog Loading
 
-- Before selecting or loading any skill, MUST read
+- Before selecting or loading any skill, MUST initialize submodules with
+  `git submodule update --init --recursive` so the `cogni-ai-skills` catalog is
+  available in the local checkout.
+- After submodule initialization, MUST read
   [cogni-ai-skills/AGENTS.md](cogni-ai-skills/AGENTS.md).
 - Treat [cogni-ai-skills/AGENTS.md](cogni-ai-skills/AGENTS.md) as the
   authoritative list of actual available skills in this repository.
