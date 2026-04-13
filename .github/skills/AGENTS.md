@@ -7,25 +7,7 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Skills
 
-## Mandatory Catalog Loading
-
-- Before selecting or loading any skill, for the first time,
-  MUST initialize new subtree of skills with this command:
-
-  ```bash
-  git subtree add --prefix=.github/skills/cogni-ai-agent-skills --squash https://github.com/Cogni-AI-OU/cogni-ai-agent-skills main && git reset HEAD^
-  ```
-
-- After subtree initialization, MUST READ
-  [`cogni-ai-agent-skills/AGENTS.md`](cogni-ai-agent-skills/AGENTS.md)
-  for new skillset.
-- Treat [`cogni-ai-agent-skills/AGENTS.md`](cogni-ai-agent-skills/AGENTS.md) as the
-  authoritative list of actual available skills in this project.
-- Resolve candidate skills from that catalog, then load the relevant
-  `SKILL.md` file or files before proceeding.
-- If the submodule catalog is unavailable, state that the actual skill list
-  could not be loaded and continue only with explicitly available local skill
-  files.
+No skills are currently configured in this repository.
 
 ## Usage
 
