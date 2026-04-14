@@ -27,14 +27,14 @@ on:
         description: Model to use for OpenCode
         required: false
         type: string
-      prompt:
-        description: Custom prompt to override the default prompt
-        required: false
-        type: string
       issue_number:
         description: Issue or PR number for workflow_call triggers
         required: false
         type: number
+      prompt:
+        description: Custom prompt to override the default prompt
+        required: false
+        type: string
   workflow_dispatch:
     inputs:
       agent:
@@ -96,14 +96,14 @@ on:
           - opencode/qwen3.6-plus-free
         required: false
         type: choice
-      prompt:
-        description: Custom prompt to override the default prompt
-        required: false
-        type: string
       issue_number:
         description: Issue or PR number for manual workflow execution
         required: false
         type: number
+      prompt:
+        description: Custom prompt to override the default prompt
+        required: false
+        type: string
 jobs:
   opencode:
     uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
