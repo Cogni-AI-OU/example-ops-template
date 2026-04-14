@@ -176,10 +176,22 @@ exist. Do not skip items just because a file already exists.
       pull_request_target:
         types: [edited, opened, ready_for_review, reopened, review_requested]
       workflow_call:
+        inputs:
+          pr_number:
+            description: Pull request number for workflow_call triggers
+            required: true
+            type: number
       workflow_dispatch:
+        inputs:
+          pr_number:
+            description: Pull request number for manual workflow execution
+            required: true
+            type: number
     jobs:
       opencode-review:
         uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main
+        with:
+          pr_number: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
         permissions:
           actions: read
           contents: write
@@ -414,14 +426,20 @@ exist. Do not skip items just because a file already exists.
   - Check if file exists
   - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/mcp-config.json`
   - Purpose: MCP server configuration for GitHub Copilot
-  - Action: Create if missing
+  - Action: Create or update to org baseline
+  - Update flow: Detect existing file and replace or merge with canonical org baseline
+    content. Write standardized/configured content when absent or differs, flagging or
+    auto-committing as appropriate.
   - Content: Configuration that provides access to built-in GitHub tools
 
 - [ ] **`.github/AGENTS.md`**
   - Check if file exists
   - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/AGENTS.md`
   - Purpose: Entry point for agent work in the `.github` directory
-  - Action: Create if missing
+  - Action: Create or update to org baseline
+  - Update flow: Detect existing file and replace or merge with canonical org baseline
+    content. Write standardized/configured content when absent or differs, flagging or
+    auto-committing as appropriate.
 
 ### Phase 8: Additional Organization Files
 
