@@ -37,6 +37,7 @@ For a human-readable overview, see [README.md](README.md).
 ### opencode.yml
 
 - Purpose: invoke OpenCode agents via slash commands or manual triggers.
+- Inputs: `agent`, `model`, `prompt` (used to override defaults on manual dispatch/calls).
 - Triggers: `workflow_dispatch`, `workflow_call`, or issue comments and PR review comments with `/oc` or `/opencode`
   from trusted (non-bot) collaborators/members/owners.
 - Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
