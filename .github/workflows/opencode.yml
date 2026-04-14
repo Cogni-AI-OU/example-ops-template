@@ -38,11 +38,11 @@ on:
   workflow_dispatch:
     inputs:
       agent:
-        default: cogni-ai
+        default: cogni-ai-architect
         description: Agent to use.
         options:
           - build
-          - cogni-ai
+          - cogni-ai-architect
           - compaction
           - plan
           - summary
