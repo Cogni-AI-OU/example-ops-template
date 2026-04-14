@@ -31,6 +31,10 @@ on:
         description: Custom prompt to override the default prompt
         required: false
         type: string
+      issue_number:
+        description: Issue or PR number for workflow_call triggers
+        required: false
+        type: number
   workflow_dispatch:
     inputs:
       agent:
@@ -96,6 +100,10 @@ on:
         description: Custom prompt to override the default prompt
         required: false
         type: string
+      issue_number:
+        description: Issue or PR number for manual workflow execution
+        required: false
+        type: number
 jobs:
   opencode:
     uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
@@ -103,6 +111,7 @@ jobs:
       agent: ${{ inputs.agent }}
       model: ${{ inputs.model }}
       prompt: ${{ inputs.prompt }}
+      issue_number: ${{ github.event.issue.number || github.event.pull_request.number || inputs.issue_number }}
     permissions:
       actions: read
       contents: write
