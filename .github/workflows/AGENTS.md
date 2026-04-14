@@ -38,9 +38,9 @@ For a human-readable overview, see [README.md](README.md).
 
 - Purpose: invoke OpenCode agents via slash commands or manual triggers.
 - Inputs: `agent`, `model`, `prompt`, `issue_number` (used to override defaults on manual dispatch/calls).
-- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments and PR review comments with `/oc` or `/opencode`
-  from trusted (non-bot) collaborators/members/owners.
-- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
+- Triggers: `workflow_dispatch`, `workflow_call`, `issues: opened`, `pull_request_review: submitted`, or issue comments
+  and PR review comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+- Permissions: `actions: read`, `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
 ### opencode-review.yml
@@ -56,8 +56,10 @@ For a human-readable overview, see [README.md](README.md).
 ## Configuration Delegation
 
 The `OPENCODE_PERMISSION` environment variable and `model` input options are now managed
-centrally by the wrapper workflow (`Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`).
-Callers should use the wrapper's inputs or environment variables instead of defining them locally.
+centrally by the local wrapper (`.github/workflows/opencode.yml`).
+Callers should use that wrapper's inputs/environment (`OPENCODE_PERMISSION`, `model`, `prompt`)
+instead of defining them locally so future readers fix the correct file and avoid reintroducing
+missing-input regressions.
 
 ## Notes
 
