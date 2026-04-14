@@ -6,10 +6,10 @@
     ".github/skills/AGENTS.md"
   ],
   "agent": {
-    "cogni-ai": {
+    "cogni-ai-architect": {
       "mode": "primary",
       "model": "opencode/gemini-3.1-pro",
-      "prompt": "{file:../.github/agents/cogni-ai.agent.md}",
+      "prompt": "{file:../.github/agents/cogni-ai-architect.agent.md}",
       "tools": {
         "write": true,
         "edit": true,

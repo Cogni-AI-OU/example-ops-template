@@ -37,53 +37,29 @@ For a human-readable overview, see [README.md](README.md).
 ### opencode.yml
 
 - Purpose: invoke OpenCode agents via slash commands or manual triggers.
-- Inputs: `agent` (default `cogni-ai`), `model` (workflow_call default via
-  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
-  default `opencode/gpt-5.3-codex`), `prompt` (optional override).
-- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
-- Guardrail: comment-triggered runs do not populate `inputs.*`; back shared OpenCode defaults
-  with workflow-level `env` values instead of hardcoding agent/model literals in steps.
-- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
+- Inputs: `agent`, `model`, `prompt`, `issue_number` (used to override defaults on manual dispatch/calls).
+- Triggers: `workflow_dispatch`, `workflow_call`, `issues: opened`, `pull_request_review: submitted`, or issue comments
+  and PR review comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+- Permissions: `actions: read`, `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
 ### opencode-review.yml
 
 - Purpose: OpenCode-driven PR review.
-- Inputs: agent (cogni-ai), model (workflow_call default via
-  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
-  default `opencode/gpt-5.3-codex`), additional_prompt, pr_number (req for call/dispatch),
-  prompt (default pr-review).
+- Inputs: `pr_number` (req for call/dispatch). Note that `opencode-review.yml` only
+  exposes `pr_number` so callers should use the wrapper's inputs instead.
 - Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
   workflow_dispatch.
-- Guardrail: align review default behavior with OpenCode by using workflow-level
-  `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
-- Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
+- Permissions: `actions: read`, `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main`.
 
-## Synchronized Configuration
+## Configuration Delegation
 
-The following configuration values **MUST** be kept in sync across multiple files:
-
-### OPENCODE_PERMISSION
-
-The OpenCode bash command allow/deny list must stay synchronized across
-workflow, local OpenCode, and VS Code auto-approve configs.
-
-| File | Location |
-| ---- | -------- |
-| [opencode.yml](opencode.yml) | Line ~130 (env section) |
-| [opencode-review.yml](opencode-review.yml) | Line ~210 (env section) |
-| [.opencode/opencode.jsonc](../../.opencode/opencode.jsonc) | `agent.cogni-ai.permission.bash` |
-| [.vscode/settings.json](../../.vscode/settings.json) | `chat.tools.terminal.autoApprove` |
-
-### Model options list
-
-The `model` input options for `workflow_dispatch` must be identical in both workflow files:
-
-| File | Location |
-| ---- | -------- |
-| [opencode.yml](opencode.yml) | Lines ~48-90 (workflow_dispatch inputs) |
-| [opencode-review.yml](opencode-review.yml) | Lines ~67-107 (workflow_dispatch inputs) |
+The local wrapper workflow [`opencode.yml`](opencode.yml) exposes the callable
+`agent`, `model`, and `prompt` inputs and delegates execution to
+`Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
+Keep the local interface aligned here, and treat the remote workflow as the
+centralized implementation/defaults layer.
 
 ## Notes
 
