@@ -197,8 +197,9 @@ the agent MUST integrate remote changes with a merge commit workflow.
 - **Strict File Syncing**: When syncing configuration files from an external repository or
   template, only modify or copy the specific files requested.
 - **No Untracked Additions**: NEVER automatically commit untracked files or workspace artifacts
-  (like `.github/ISSUE_TEMPLATE/*` or `CODE_OF_CONDUCT.md`) unless explicitly specified in the
-  synchronization checklist or explicitly asked by the user.
+  (like temporary API payloads, script outputs, `.github/ISSUE_TEMPLATE/*`, or `CODE_OF_CONDUCT.md`) unless explicitly
+  specified in the synchronization checklist or explicitly asked by the user. Always clean up temporary files created
+  during execution.
 - **Selective Sync**: Do not blindly copy entire directories from remote templates. Cherry-pick
   only the files that are meant to be updated or created.
 
@@ -260,7 +261,9 @@ the agent MUST integrate remote changes with a merge commit workflow.
 ### Before each commit
 
 - Verify your expected changes with `git diff --no-color`.
-- Ensure no temporary, dummy, or unrelated test files are included in the commit.
+- Ensure no temporary, dummy, or unrelated test files (such as API payloads, bash script outputs, or generated
+  markdown comments) are included in the commit. NEVER use blanket `git add .` without verifying the exact
+  list of staged files.
 - Use the project linting/validation tools to confirm your changes meet the coding standard.
 - If the repo uses git hooks, run them to validate your changes.
 

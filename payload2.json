@@ -1,7 +1,0 @@
-{
-  "body": "Defect: Missing functionality - Delegate inputs to reusable workflow\n\nPass the inputs down so the wrapper workflow can use them.\n\n```suggestion\n    uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main\n    with:\n      agent: ${{ inputs.agent }}\n      model: ${{ inputs.model }}\n      prompt: ${{ inputs.prompt }}\n```",
-  "commit_id": "f91bd6e00d0baf4aa8a8e583794c576bb9e0c3cc",
-  "path": ".github/workflows/opencode.yml",
-  "side": "RIGHT",
-  "line": 22
-}
