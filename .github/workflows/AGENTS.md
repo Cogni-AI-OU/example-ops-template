@@ -50,7 +50,7 @@ For a human-readable overview, see [README.md](README.md).
   exposes `pr_number` so callers should use the wrapper's inputs instead.
 - Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
   workflow_dispatch.
-- Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
+- Permissions: `actions: read`, `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main`.
 
 ## Configuration Delegation
