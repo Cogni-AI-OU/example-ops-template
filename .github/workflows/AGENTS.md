@@ -38,11 +38,13 @@ For a human-readable overview, see [README.md](README.md).
 
 - Purpose: invoke OpenCode agents via slash commands or manual triggers.
 - Inputs: `agent` (default `cogni-ai`), `model` (workflow_call default via
-  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
-  default `opencode/gpt-5.3-codex`), `prompt` (optional override).
-- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
+  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gemini-3.1-pro`; workflow_dispatch
+  default `opencode/gemini-3.1-pro`), `prompt` (optional override).
+- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments and PR review comments with `/oc` or `/opencode`
+  from trusted (non-bot) collaborators/members/owners.
 - Guardrail: comment-triggered runs do not populate `inputs.*`; back shared OpenCode defaults
   with workflow-level `env` values instead of hardcoding agent/model literals in steps.
+- Concurrency: Only one run per issue/PR/branch at a time; new runs cancel pending ones.
 - Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
 
@@ -55,6 +57,7 @@ For a human-readable overview, see [README.md](README.md).
   prompt (default pr-review).
 - Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
   workflow_dispatch.
+- Concurrency: Only one run per issue/PR/branch at a time; new runs cancel pending ones.
 - Guardrail: align review default behavior with OpenCode by using workflow-level
   `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
 - Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
@@ -66,15 +69,13 @@ The following configuration values **MUST** be kept in sync across multiple file
 
 ### OPENCODE_PERMISSION
 
-The OpenCode bash command allow/deny list must stay synchronized across
-workflow, local OpenCode, and VS Code auto-approve configs.
+The `OPENCODE_PERMISSION` environment variable defines the bash command allowlist for OpenCode agents.
+It must be identical in both workflow files:
 
 | File | Location |
 | ---- | -------- |
 | [opencode.yml](opencode.yml) | Line ~130 (env section) |
 | [opencode-review.yml](opencode-review.yml) | Line ~210 (env section) |
-| [.opencode/opencode.jsonc](../../.opencode/opencode.jsonc) | `agent.cogni-ai.permission.bash` |
-| [.vscode/settings.json](../../.vscode/settings.json) | `chat.tools.terminal.autoApprove` |
 
 ### Model options list
 

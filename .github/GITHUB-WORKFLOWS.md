@@ -53,6 +53,14 @@ common repository management tasks. For agent-loading guidance and catalog, see
 [prompts/AGENTS.md](prompts/AGENTS.md). For human-oriented details, see
 [prompts/README.md](prompts/README.md).
 
+## MCP Configuration
+
+The `.github/mcp-config.json` configuration provides GitHub Copilot access to built-in tools:
+
+- **Repository & Code:** `get_file_contents`, `search_code`, `search_repositories`, `list_branches`, `list_commits`
+- **Issues & PRs:** `get_issue`, `list_pull_requests`, `create_pull_request`
+- **Actions:** `list_workflows`, `list_workflow_runs`, `get_job_logs`
+
 ## Problem Matchers
 
 GitHub Actions problem matchers automatically annotate files with errors and
@@ -79,6 +87,26 @@ annotations directly and don't need the problem matcher.
 
 Problem matchers are registered in the `.github/workflows/check.yml` workflow
 before running the corresponding tools.
+
+### Using Matchers in Reusable Workflows
+
+When using the `check.yml` workflow as a reusable workflow (via `workflow_call`),
+the matcher files are automatically provided from this repository. You don't need
+to copy the matcher files to your repository.
+
+If you want to use custom matcher files, you can specify them using the inputs:
+
+```yaml
+jobs:
+  check:
+    uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
+    with:
+      actionlint-matcher-path: .github/custom-actionlint-matcher.json
+      pre-commit-matcher-path: .github/custom-pre-commit-matcher.json
+```
+
+If these inputs are not provided, the workflow will automatically use the default
+matcher files from this repository.
 
 ## Security
 
@@ -123,3 +151,41 @@ To safely use OpenCode with git access, repository administrators must configure
 - Regularly audit OpenCode's tool usage and permissions
 - Rotate `OPENCODE_API_KEY` periodically
 - Monitor workflow run logs for unexpected behavior
+
+## OpenCode Tools
+
+### OpenCode (MCP) Tools
+
+When operating via OpenCode in the GitHub Actions runtime, the following MCP tools are available and
+should be utilized to perform tasks effectively:
+
+- **vscode**: `getProjectSetupInfo`, `installExtension`, `memory`, `newWorkspace`, `resolveMemoryFileUri`, `runCommand`,
+  `vscodeAPI`, `extensions`, `askQuestions`
+- **execute**: `runNotebookCell`, `testFailure`, `getTerminalOutput`, `killTerminal`, `sendToTerminal`,
+  `createAndRunTask`, `runInTerminal`
+- **read**: `getNotebookSummary`, `problems`, `readFile`, `viewImage`, `terminalSelection`, `terminalLastCommand`
+- **edit**: `createDirectory`, `createFile`, `createJupyterNotebook`, `editFiles`, `editNotebook`, `rename`
+- **search**: `changes`, `codebase`, `fileSearch`, `listDirectory`, `textSearch`, `usages`
+- **web**: `fetch`, `githubRepo`
+- **browser**: `openBrowserPage`
+- **agent**: `runSubagent`
+- **misc**: `vscode.mermaid-chat-features/renderMermaidDiagram`, `ms-python.python/getPythonEnvironmentInfo`,
+  `ms-python.python/getPythonExecutableCommand`, `ms-python.python/installPythonPackage`, `todo`
+
+### OpenCode Core Native Agent Tools
+
+In addition to the MCP integrations, the agent runtime provides a set of core built-in capabilities
+(often logged during builds as `Glob`, `Todo` or `TodoWrite`, `Edit`, etc.). These are executed directly by
+the agent's core engine, rather than through the OpenCode MCP protocol.
+
+Available native tools include:
+
+- **File System & Search**: `Glob` (fast file pattern matching), `Grep` (fast content search),
+  `Read` (read files/directories)
+- **File Mutation**: `Edit` (exact string replacements), `Write` (overwrite/create files)
+- **Execution**: `Bash` (persistent shell session for terminal operations like git, npm, etc.)
+- **Agentic Tracking**: `Todo` / `TodoWrite` (creates and manages structured task lists for complex sessions)
+- **Research & Sub-agents**: `Task` (launch specialized subagents), `Webfetch`, `Websearch`, `Codesearch`
+
+*Note: The native tools `Glob`, `Read`, `Grep`, `Edit`, and `Write` are explicitly prioritized over their shell
+equivalents (such as `find`, `cat`, `grep`, `sed`) to ensure precise context retention and safety.*

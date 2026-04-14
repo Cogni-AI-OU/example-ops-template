@@ -192,6 +192,16 @@ the agent MUST integrate remote changes with a merge commit workflow.
 - **Contextual Continuity**: Maintain conversation context within the originating thread.
 - If replying to an inline comment, your response MUST appear as a reply in that same thread.
 
+### Workspace & Syncing Invariants
+
+- **Strict File Syncing**: When syncing configuration files from an external repository or
+  template, only modify or copy the specific files requested.
+- **No Untracked Additions**: NEVER automatically commit untracked files or workspace artifacts
+  (like `.github/ISSUE_TEMPLATE/*` or `CODE_OF_CONDUCT.md`) unless explicitly specified in the
+  synchronization checklist or explicitly asked by the user.
+- **Selective Sync**: Do not blindly copy entire directories from remote templates. Cherry-pick
+  only the files that are meant to be updated or created.
+
 ### GitHub Runtime Decision Policy
 
 - **Default to Best Practice:** Implement the most recommended path autonomously when multiple options exist.

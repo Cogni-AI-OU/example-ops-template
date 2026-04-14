@@ -13,7 +13,8 @@ For a human-readable overview, see [README.md](README.md).
   MUST initialize new subtree of skills with this command:
 
   ```bash
-  git subtree add --prefix=.github/skills/cogni-ai-agent-skills --squash https://github.com/Cogni-AI-OU/cogni-ai-agent-skills main && git reset HEAD^
+  git subtree add --prefix=.github/skills/cogni-ai-agent-skills \
+    --squash https://github.com/Cogni-AI-OU/cogni-ai-agent-skills main && git reset HEAD^
   ```
 
 - After subtree initialization, MUST READ `cogni-ai-agent-skills/AGENTS.md` for new skillset.
