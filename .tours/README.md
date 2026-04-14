@@ -1,175 +1,74 @@
-# Code Tours
+# VS Code Tours
 
-This directory contains interactive code tours that provide guided walkthroughs of the repository structure,
-development setup, and contribution guidelines.
+This directory contains interactive code tours for exploring and understanding
+this repository's structure, features, and conventions.
 
 ## What are Code Tours?
 
-Code Tours are interactive, guided walkthroughs of a codebase that help developers quickly understand the structure,
-conventions, and workflows of a project. They're powered by the
-[CodeTour VS Code extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) and allow
-repository maintainers to create step-by-step tours that navigate through files and provide contextual explanations.
+Code tours are guided walkthroughs that help you navigate through a codebase
+step-by-step. Each tour highlights specific files, directories, and code
+sections with explanatory descriptions, making it easier to:
 
-### Benefits
+- Onboard new contributors
+- Understand complex workflows
+- Learn project conventions and standards
+- Discover key features and configurations
 
-- **Faster Onboarding**: New contributors can quickly understand the project structure without reading extensive
-  documentation
-- **Interactive Learning**: Tours guide you through the actual code, making learning more engaging and practical
-- **Contextual Documentation**: Documentation lives alongside the code it describes, making it easier to keep up-to-date
-- **Self-Paced**: Users can navigate through tours at their own speed, pause, and revisit steps as needed
-
-## Available Tours
-
-### Getting Started Tour
-
-**File**: `getting-started.tour`
-
-This is the primary tour for new contributors and provides a comprehensive walkthrough of:
-
-- Repository structure and organization
-- Development environment setup with devcontainers
-- Coding standards and best practices for Python, Markdown, YAML, and Ansible
-- Pre-commit hooks and automated validation tools
-- GitHub Actions CI/CD workflows, including OpenCode automation
-- Contribution guidelines and workflow
-
-**When to use**: Start here if you're new to the repository or want to understand the overall project structure.
-
-## How to Use Code Tours
+## Using Code Tours
 
 ### Prerequisites
 
-1. **VS Code**: Code Tours work with Visual Studio Code
-2. **CodeTour Extension**: Install the [CodeTour extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-   from the VS Code marketplace
+Install the **CodeTour** extension for Visual Studio Code:
 
-### Using the Devcontainer (Recommended)
-
-This repository includes a pre-configured devcontainer that automatically includes the CodeTour extension:
-
-1. Open the repository in VS Code
-2. When prompted, click "Reopen in Container" (or use Command Palette: "Remote-Containers: Reopen in Container")
-3. Once the container is built, the CodeTour extension will be available automatically
-
-### Manual Setup
-
-If you're not using the devcontainer:
-
-1. Install the CodeTour extension from the VS Code marketplace
-2. Open the repository in VS Code
-3. Tours will be automatically detected from the `.tours` directory
+- **Extension ID**: `vsls-contrib.codetour`
+- **Marketplace**: [CodeTour Extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
+- **Installation**: Search for "CodeTour" in the VS Code Extensions view or
+  click the marketplace link
 
 ### Starting a Tour
 
-There are several ways to start a code tour:
+1. Open this repository in VS Code
+2. Look for the CodeTour icon in the Activity Bar (left sidebar)
+3. Click on a tour from the list to begin
+4. Use the navigation controls to step through the tour
 
-1. **From the CodeTour Panel**:
-   - Click on the CodeTour icon in the Activity Bar (looks like a map with a route)
-   - Select a tour from the list
-   - Click the play button to start
+Alternatively, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and
+type "CodeTour: Start Tour" to select a tour.
 
-2. **From Command Palette**:
-   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
-   - Type "CodeTour: Start Tour"
-   - Select the tour you want to begin
+## Available Tours
 
-3. **Automatic Start**:
-   - Tours marked with `"isPrimary": true` may start automatically when you open the repository
+### Getting Started
 
-### Navigating Through a Tour
+**File**: `getting-started.tour`
 
-Once a tour is started, you can:
+A comprehensive walkthrough covering:
 
-- **Next Step**: Click the "Next" button or press `Ctrl+Right` (or `Cmd+Right` on macOS)
-- **Previous Step**: Click the "Previous" button or press `Ctrl+Left` (or `Cmd+Left` on macOS)
-- **Exit Tour**: Click the "End Tour" button or press `Esc`
-- **Jump to Step**: Click on any step in the CodeTour panel to jump directly to it
+- Repository overview and purpose
+- Community health files (Code of Conduct, issue/PR templates)
+- GitHub Actions workflows and pre-commit hooks
+- Coding standards and formatting guidelines
+- Configuration files for linters and formatters
+- AI agent configurations
 
-### Tour Features
-
-Code tours can:
-
-- Navigate to specific files and line numbers
-- Display rich markdown descriptions with code blocks, lists, and formatting
-- Highlight specific code sections
-- Show directory structures
-- Provide contextual explanations and best practices
+**Recommended for**: New contributors and anyone wanting to understand the
+organization-wide defaults and standards.
 
 ## Creating New Tours
 
-If you're a maintainer looking to create or update tours, here are some guidelines:
+To create or update tours, refer to the
+[code-tour.agent.md](../.github/agents/code-tour.agent.md) agent documentation,
+which provides comprehensive guidance on CodeTour best practices and schema.
 
-### Tour File Format
+Key considerations:
 
-Tours are JSON files with the following structure:
-
-```json
-{
-  "$schema": "https://aka.ms/codetour-schema",
-  "title": "Tour Title",
-  "description": "Brief description of what this tour covers",
-  "isPrimary": false,
-  "steps": [
-    {
-      "title": "Step Title",
-      "description": "Markdown-formatted description",
-      "file": "path/to/file.ext",
-      "line": 42
-    }
-  ]
-}
-```
-
-### Best Practices
-
-- **Clear Titles**: Use descriptive titles that indicate what the tour covers
-- **Logical Flow**: Structure steps in a logical order that builds understanding progressively
-- **Rich Descriptions**: Use markdown formatting to make descriptions clear and engaging
-- **Focused Content**: Keep each step focused on one concept or area
-- **Update Regularly**: Keep tours up-to-date with code changes to avoid confusion
-- **Mark Primary Tours**: Set `"isPrimary": true` for the main onboarding tour
-
-### Creating a Tour
-
-1. **Using the Extension**:
-   - Open Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
-   - Type "CodeTour: Record Tour"
-   - Follow the prompts to create steps
-
-2. **Manual Creation**:
-   - Create a new `.tour` file in the `.tours` directory
-   - Follow the JSON structure above
-   - Add steps with file paths, line numbers, and descriptions
-
-3. **Testing**:
-   - Start the tour to ensure all steps navigate correctly
-   - Verify that descriptions display properly
-   - Check that file paths and line numbers are accurate
-
-## Maintaining Tours
-
-Tours should be updated when:
-
-- File paths or structure changes
-- Line numbers referenced in tours shift due to code changes
-- New features or workflows are added
-- Coding standards or conventions are updated
-- Dependencies or tooling changes significantly
-
-**Tip**: When making significant changes to referenced files, check if any tours need updating.
+- Use descriptive titles and step names
+- Follow a logical flow (high-level to detailed)
+- Include context and explanations in step descriptions
+- Store tours in this `.tours` directory
+- Keep tours up-to-date when making significant changes to the codebase
 
 ## Additional Resources
 
 - [CodeTour Documentation](https://github.com/microsoft/codetour)
-- [CodeTour VS Code Extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-- [VS Code Devcontainers](https://code.visualstudio.com/docs/devcontainers/containers)
-
-## Questions or Issues?
-
-If you encounter problems with tours or have suggestions for new tours, please:
-
-- Open an issue in the repository
-- Tag it with appropriate labels (e.g., `documentation`, `enhancement`)
-- Provide details about what tour content would be helpful
-
-Happy touring! 🗺️
+- [CodeTour Schema](https://aka.ms/codetour-schema)
+- [Agent Documentation](../.github/agents/code-tour.agent.md)

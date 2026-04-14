@@ -117,6 +117,8 @@ exist. Do not skip items just because a file already exists.
     jobs:
       check:
         uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
+        with:
+          submodules: 'false'  # Set to 'true' or 'recursive' if repository uses submodules
     ```
 
   - Customize: Add additional jobs if needed for project-specific checks
@@ -165,9 +167,16 @@ exist. Do not skip items just because a file already exists.
     ---
     name: OpenCode Review
     on:
+      issue_comment:
+        types: [created]
+      pull_request_review_comment:
+        types: [created]
       pull_request:
         types: [edited, opened, ready_for_review, reopened, review_requested]
+      pull_request_target:
+        types: [edited, opened, ready_for_review, reopened, review_requested]
       workflow_call:
+      workflow_dispatch:
     jobs:
       opencode-review:
         uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main
@@ -180,7 +189,8 @@ exist. Do not skip items just because a file already exists.
         secrets: inherit
     ```
 
-  - Note: Requires `OPENCODE_API_KEY` secret to be set in repository settings
+  - Note: Requires `OPENCODE_API_KEY` secret to be set in repository settings. For fork PRs, ensure
+    `OPENCODE_API_KEY` is available (e.g., via `pull_request_target`).
 
 - [ ] **`.github/workflows/devcontainer-ci.yml`**
   - Check if file exists (only if `.devcontainer/` directory exists)
@@ -267,6 +277,7 @@ exist. Do not skip items just because a file already exists.
   - Action: Include relevant prompt files; keep formats (Markdown/YAML) as upstream
   - Available prompts:
     - `default.prompt.yml` - Default prompt for agent-ai workflow
+    - `pr-review.prompt.md` - PR review prompt
     - `repository-setup.prompt.md` - This setup prompt
     - `test.prompt.yml` - Example prompt
   - Customize: Add prompts for repository-specific tasks as needed
@@ -399,57 +410,18 @@ exist. Do not skip items just because a file already exists.
   - Content: Project overview, coding standards, formatting guidelines, troubleshooting
   - Customize: Add repository-specific standards, dependencies, build/test commands
 
-- [ ] **`.github/instructions/` directory**
-  - Check if directory exists with language-specific instruction files
-  - Reference: `https://github.com/Cogni-AI-OU/.github/tree/main/.github/instructions`
-  - Purpose: Detailed formatting and content rules for different file types
-  - Action: Copy relevant instruction files based on languages used in repository
-  - Available files:
-    - `README.md` - Overview of instructions
-    - `ansible.instructions.md` - Ansible conventions
-    - `blog.instructions.md` - Blog post standards (if applicable)
-    - `json.instructions.md` - JSON formatting
-    - `markdown.instructions.md` - Markdown standards
-    - `readme.instructions.md` - README guidelines
-    - `yaml.instructions.md` - YAML formatting
-  - Customize: Only include files relevant to languages/formats used in repository
-
-- [ ] **`.github/instructions/AGENTS.md`**
+- [ ] **`.github/mcp-config.json`**
   - Check if file exists
-  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/instructions/AGENTS.md`
-  - Purpose: Catalog of instruction files with scopes for agents
-  - Action: Create if missing and keep in sync when instruction files change
+  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/mcp-config.json`
+  - Purpose: MCP server configuration for GitHub Copilot
+  - Action: Create if missing
+  - Content: Configuration that provides access to built-in GitHub tools
 
-- [ ] **`.github/agents/` directory**
-  - Check if directory exists with custom agent files
-  - Reference: `https://github.com/Cogni-AI-OU/.github/tree/main/.github/agents`
-  - Purpose: Custom agent definitions for specialized tasks
-  - Action: Copy relevant agent files based on repository needs
-  - Required agents:
-    - `code-tour.agent.md` - For creating/updating `.tours/` files (always include)
-    - `cogni-ai.agent.md` - Enhanced Agent with critical thinking
-  - Other files:
-    - `AGENTS.md` - Instruction file with scopes for agents (always include)
-    - `FIREWALL.md` - Firewall allowlist for Copilot agents (always include)
-    - `README.md` - Documentation of available agents
-  - Customize: Add repository-specific agents as needed
-
-- [ ] **`.github/skills/` directory**
-  - Check if directory exists with skill files
-  - Reference: `https://github.com/Cogni-AI-OU/.github/tree/main/.github/skills`
-  - Purpose: Agent Skills for GitHub Copilot coding agent
-  - Action: Create directory with README.md; optionally copy skill subdirectories
-  - Required files:
-    - `README.md` - Overview of agent skills and how to use them
-    - `context-aware-ops/` - Intelligent resource management
-    - `git/` - Guide for safe git operations
-    - `github-actions/` - Debugging failing workflows
-    - `pre-commit/` - Using pre-commit hooks effectively
-    - `robust-commands/` - Resilient command execution
-    - `skill-writer/` - Generate/update SKILL.md files
-  - Optional skills (copy as needed):
-    - Check remote
-  - Customize: Add repository-specific skills as needed
+- [ ] **`.github/AGENTS.md`**
+  - Check if file exists
+  - Reference: `https://github.com/Cogni-AI-OU/.github/blob/main/.github/AGENTS.md`
+  - Purpose: Entry point for agent work in the `.github` directory
+  - Action: Create if missing
 
 ### Phase 8: Additional Organization Files
 
