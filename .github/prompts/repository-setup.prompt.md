@@ -179,20 +179,26 @@ exist. Do not skip items just because a file already exists.
             required: false
             type: string
     jobs:
-      opencode:
+      opencode-auto:
+        if: ${{ github.event_name != 'workflow_dispatch' && github.event_name != 'workflow_call' }}
         uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
         with:
-          agent: >-
-            ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.agent }}
-          model: >-
-            ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.model }}
-          prompt: >-
-            ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-            && inputs.prompt }}
-          issue_number: >-
-            ${{ github.event.issue.number || github.event.pull_request.number || inputs.issue_number }}
+          issue_number: ${{ github.event.issue.number || github.event.pull_request.number }}
+        permissions:
+          actions: read
+          contents: write
+          id-token: write
+          issues: write
+          pull-requests: write
+        secrets: inherit
+      opencode:
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call' }}
+        uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
+        with:
+          agent: ${{ inputs.agent }}
+          model: ${{ inputs.model }}
+          prompt: ${{ inputs.prompt }}
+          issue_number: ${{ inputs.issue_number }}
         permissions:
           actions: read
           contents: write

@@ -55,11 +55,11 @@ For a human-readable overview, see [README.md](README.md).
 
 ## Configuration Delegation
 
-The `OPENCODE_PERMISSION` environment variable and `model` input options are now managed
-centrally by the local wrapper (`.github/workflows/opencode.yml`).
-Callers should use that wrapper's inputs/environment (`OPENCODE_PERMISSION`, `model`, `prompt`)
-instead of defining them locally so future readers fix the correct file and avoid reintroducing
-missing-input regressions.
+The local wrapper workflow [`opencode.yml`](opencode.yml) exposes the callable
+`agent`, `model`, and `prompt` inputs and delegates execution to
+`Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
+Keep the local interface aligned here, and treat the remote workflow as the
+centralized implementation/defaults layer.
 
 ## Notes
 
