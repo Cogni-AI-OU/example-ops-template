@@ -117,6 +117,12 @@ interaction constraints:
 
 ### OpenCode PR Context & Response Routing
 
+**Workspace & Syncing Invariants**:
+
+- **Strict Sync List**: When executing a sync or file update task based on a prompt, ONLY modify, create, or commit files that are explicitly mentioned in the sync list.
+- **Untracked Files Prevention**: NEVER automatically commit untracked files (such as default templates, `CODE_OF_CONDUCT.md`, `.github/ISSUE_TEMPLATE/`, or `.github/pull_request_template.md`) unless they are specifically requested or part of the explicit sync list.
+- **Dirty Workspace Handling**: If the workspace contains dirty files or untracked files that are outside the scope of the current task, ignore them or clean them up. Do not include them in the pull request.
+
 **Context & Targeting Invariants**:
 
 - **Extract Context**: Parse the `## Pull Request Context` block containing `**Base Branch:**` dynamically.
