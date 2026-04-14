@@ -187,7 +187,7 @@ jobs:
           files_json=$(jq -c '.files | map(.path)' pr_files.json)
           echo "files=${files_json}" >> "$GITHUB_OUTPUT"
         env:
-          GH_TOKEN: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v6
         with:
           fetch-depth: 1
@@ -233,7 +233,7 @@ jobs:
       - uses: anomalyco/opencode/github@latest
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name == 'pull_request_target' && 'pull_request' || github.event_name }}
-          GITHUB_TOKEN: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           # Keep shell permissions aligned with .vscode/settings.json allowlist and in alphabetical order.
           OPENCODE_PERMISSION: |-
