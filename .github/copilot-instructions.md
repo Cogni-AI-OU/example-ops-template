@@ -44,19 +44,19 @@ Key contents:
 
 ### JSON
 
-Follow the JSON rules in `.github/instructions/json.instructions.md`, which mirror the repository `.editorconfig` configuration.
+Follow the repository `.editorconfig` configuration for JSON files.
 
 To test locally, use `jq` for validation or use the VS Code JSON formatter.
 
 ### Markdown
 
-Follow the Markdown rules in `.github/instructions/markdown.instructions.md`, which mirror the repository markdownlint configuration.
+Follow the repository `markdownlint` configuration for Markdown files.
 
 To test locally, run via `pre-commit run markdownlint -a` or use the VS Code Markdownlint extension.
 
 ### YAML
 
-Follow the YAML rules in `./.github/instructions/yaml.instructions.md`, which mirror the repository `.yamllint` configuration.
+Follow the repository `.yamllint` configuration for YAML files.
 
 Notes:
 
@@ -99,8 +99,6 @@ runtime and as the source of required controller-side dependencies.
 .
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Issue templates (bug reports, feature requests)
-│   ├── agents/              # AI agent configurations
-│   ├── instructions/        # Language-specific coding standards
 │   ├── skills/              # Agent skills definitions
 │   ├── workflows/           # GitHub Actions workflows
 │   ├── copilot-instructions.md
