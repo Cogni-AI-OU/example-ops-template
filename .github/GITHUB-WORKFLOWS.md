@@ -212,9 +212,9 @@ equivalents (such as `find`, `cat`, `grep`, `sed`) to ensure precise context ret
   - [Prompts Agent Catalog](prompts/AGENTS.md)
   - [Skills Agent Catalog](skills/AGENTS.md)
 - **Runtime Catalogs**:
-  - [Agents Catalog](https://github.com/Cogni-AI-OU/.github/blob/main/.github/agents/AGENTS-RUNTIME.md)
-  - [Instructions Catalog](https://github.com/Cogni-AI-OU/.github/blob/main/.github/instructions/AGENTS-RUNTIME.md)
-  - [Skills Catalog](https://github.com/Cogni-AI-OU/.github/blob/main/.github/skills/AGENTS-RUNTIME.md)
+  - [Agents Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agents/blob/main/AGENTS-RUNTIME.md)
+  - [Instructions Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agent-instructions/blob/main/AGENTS-RUNTIME.md)
+  - [Skills Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agent-skills/blob/main/AGENTS-RUNTIME.md)
 - **Project Guidance**:
   - [Main AGENTS.md](../AGENTS.md)
   - [Copilot Instructions](copilot-instructions.md)
