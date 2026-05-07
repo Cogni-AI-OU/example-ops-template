@@ -1,5 +1,7 @@
 # GitHub Workflows and Actions
 
+> **Organization Baseline**: [Cogni-AI-OU/.github](https://github.com/Cogni-AI-OU/.github/blob/main/.github/workflows/README.md)
+
 This directory contains GitHub Actions workflows, agent prompts, and related configuration.
 
 ## Workflows
@@ -46,12 +48,24 @@ actively executed but are preserved for future use or copying to other
 repositories. These templates can be customized and moved to the `workflows/`
 directory when needed.
 
+## Agent Workflows
+
+For the agent-facing catalog of workflows, triggers, and inputs, see
+[workflows/AGENTS.md](workflows/AGENTS.md). For human-oriented details, see
+[workflows/README.md](workflows/README.md).
+
 ## Agent Prompts
 
 The `prompts/` directory contains ready-to-use prompts for AI agents to perform
 common repository management tasks. For agent-loading guidance and catalog, see
 [prompts/AGENTS.md](prompts/AGENTS.md). For human-oriented details, see
 [prompts/README.md](prompts/README.md).
+
+## Agent Skills
+
+The `skills/` directory contains loadable Copilot skills for specialized tasks.
+For the agent-facing skills catalog, see [skills/AGENTS.md](skills/AGENTS.md).
+For human-oriented details, see [skills/README.md](skills/README.md).
 
 ## MCP Configuration
 
@@ -189,3 +203,19 @@ Available native tools include:
 
 *Note: The native tools `Glob`, `Read`, `Grep`, `Edit`, and `Write` are explicitly prioritized over their shell
 equivalents (such as `find`, `cat`, `grep`, `sed`) to ensure precise context retention and safety.*
+
+## References
+
+- **Organization Baseline**: [Cogni-AI-OU/.github](https://github.com/Cogni-AI-OU/.github)
+- **Agent Catalogs**:
+  - [Workflows Agent Catalog](workflows/AGENTS.md)
+  - [Prompts Agent Catalog](prompts/AGENTS.md)
+  - [Skills Agent Catalog](skills/AGENTS.md)
+- **Runtime Catalogs**:
+  - [Agents Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agents/blob/main/AGENTS-RUNTIME.md)
+  - [Instructions Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agent-instructions/blob/main/AGENTS-RUNTIME.md)
+  - [Skills Catalog](https://github.com/Cogni-AI-OU/cogni-ai-agent-skills/blob/main/AGENTS-RUNTIME.md)
+- **Project Guidance**:
+  - [Main AGENTS.md](../AGENTS.md)
+  - [Copilot Instructions](copilot-instructions.md)
+  - [Main README](../README.md)
