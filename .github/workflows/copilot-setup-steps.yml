@@ -14,10 +14,10 @@ on:
       - .github/workflows/copilot-setup-steps.yml
       - .devcontainer/requirements.txt
 env:
-  # Pin external repositories to specific SHAs for reproducibility.
-  COGNI_AI_AGENTS_REF: fa9e4a7f3a95a95430c4c7c051d3e718a4cfdf58
-  COGNI_AI_AGENT_INSTRUCTIONS_REF: d4ff44a0bffd72a5f590ec83e6b4dfce5d3a15c6
-  COGNI_AI_AGENT_SKILLS_REF: d47c2e7c39e172b2469bede875e238bf603201c3
+  # Use the main branch for better maintainability (org repo standard).
+  COGNI_AI_AGENTS_REF: main
+  COGNI_AI_AGENT_INSTRUCTIONS_REF: main
+  COGNI_AI_AGENT_SKILLS_REF: main
 jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
