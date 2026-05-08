@@ -76,18 +76,14 @@ The following configuration values **MUST** be kept in sync across multiple file
 The `OPENCODE_PERMISSION` environment variable defines the bash command allowlist for OpenCode agents.
 It must be identical in the workflow file:
 
-| File | Location |
-| ---- | -------- |
-| [opencode.yml](opencode.yml) | env section |
+- [opencode.yml](opencode.yml): env section
 
 ### Model options list
 
 The `model` input options for `workflow_dispatch` must be identical in the corresponding workflow files:
 
-| File | Location |
-| ---- | -------- |
-| [cogni-ai-agent.yml](cogni-ai-agent.yml) | `workflow_dispatch` inputs |
-| [opencode.yml](opencode.yml) | `workflow_dispatch` inputs |
+- [cogni-ai-agent.yml](cogni-ai-agent.yml): `workflow_dispatch` inputs
+- [opencode.yml](opencode.yml): `workflow_dispatch` inputs
 
 ## Notes
 
