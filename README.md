@@ -2,6 +2,7 @@
 
 [![PR Reviews][pr-reviews-image]][pr-reviews-link]
 [![License][license-image]][license-link]
+[![Check][check-image]][check-link]
 
 Template repository for applying Cogni-AI-OU operations standards, reusable workflows,
 prompt catalogs, coding instructions, and agent guidance to a project repository.
@@ -99,7 +100,7 @@ See also:
 ## GitHub Actions
 
 For documentation on GitHub Actions workflows, problem matchers, and CI/CD
-configuration, see [.github/GITHUB-WORKFLOWS.md](.github/GITHUB-WORKFLOWS.md).
+configuration, see [.github/workflows/README.md](.github/workflows/README.md).
 
 ## Organization Profile
 
@@ -108,8 +109,7 @@ For information about Cogni AI OÜ, our mission, and how to collaborate, see our
 
 ## Contributing
 
-See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for organization-wide
-contribution guidelines and expectations for issues, pull requests, and CI.
+For contribution guidelines, see [CONTRIBUTING.md](https://github.com/Cogni-AI-OU/.github/blob/main/.github/CONTRIBUTING.md).
 
 ## References
 
@@ -126,3 +126,5 @@ This repository is licensed under MIT. See [LICENSE](LICENSE) for the full text.
 [pr-reviews-link]: https://github.com/Cogni-AI-OU/example-ops-template/pulls
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-link]: https://tldrlegal.com/license/mit-license
+[check-image]: https://github.com/Cogni-AI-OU/example-ops-template/actions/workflows/check.yml/badge.svg
+[check-link]: https://github.com/Cogni-AI-OU/example-ops-template/actions/workflows/check.yml

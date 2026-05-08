@@ -49,7 +49,7 @@
     },
     {
       "title": "GitHub Actions Workflow",
-      "description": "## Continuous Integration\n\nThe repository keeps the standard `check.yml` validation workflow and now also includes OpenCode automation workflows.\n\n### Reusable Workflow:\n\nThe `check.yml` workflow uses a reusable workflow call from the `.github` organization repository:\n- **Location**: `Cogni-AI-OU/.github/.github/workflows/check.yml@main`\n- **Jobs**: actionlint and pre-commit checks\n\n### OpenCode Workflows:\n\n- **`opencode.yml`**: Handles `/oc` and `/opencode` issue and PR commands\n- **`opencode-review.yml`**: Runs OpenCode-based PR reviews\n\nThis centralizes workflow definitions across all organization repositories while keeping repository-specific entrypoints checked in here.",
+      "description": "## Continuous Integration\n\nThe repository keeps the standard `check.yml` validation workflow and now also includes agent automation workflows.\n\n### Reusable Workflow:\n\nThe `check.yml` workflow uses a reusable workflow call from the `.github` organization repository:\n- **Location**: `Cogni-AI-OU/.github/.github/workflows/check.yml@main`\n- **Jobs**: actionlint and pre-commit checks\n\n### Agent Workflows:\n\n- **`cogni-ai-agent.yml`**: Event-driven Cogni AI automation for issues, pull requests, and discussions\n\nThis centralizes workflow definitions across all organization repositories while keeping repository-specific entrypoints checked in here.",
       "file": ".github/workflows/check.yml",
       "line": 10
     },
@@ -62,8 +62,8 @@
     {
       "title": "Contributing Guidelines",
       "description": "## How to Contribute\n\nThe `CONTRIBUTING.md` file outlines the contribution process:\n\n### Key Steps:\n\n1. **Report Bugs**: Use GitHub Issues with detailed information\n2. **Code Standards**: Follow the coding conventions (2-space indentation, readable code)\n3. **Pull Requests**: Submit changes via GitHub PRs\n4. **CI Checks**: Ensure all tests pass before merging\n\n### Before Submitting:\n```bash\npre-commit run --all-files\n```",
-      "file": ".github/CONTRIBUTING.md",
-      "line": 1
+      "file": "README.md",
+      "line": 109
     },
     {
       "title": "License",

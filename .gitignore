@@ -150,6 +150,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+/.github/agents/
+/.github/instructions/
+/.github/skills/
 .env
 .envrc
 .venv
