@@ -22,7 +22,7 @@ on:
     # Example:
     #   jobs:
     #     devcontainer:
-    #       uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main
+    #       uses: <owner>/<repo>/.github/workflows/devcontainer-ci.yml@main
     #       permissions:
     #         contents: read
     #         packages: write  # Required for pushing to GitHub Container Registry

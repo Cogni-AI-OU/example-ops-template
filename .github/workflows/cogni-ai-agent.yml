@@ -63,7 +63,7 @@ on:
 concurrency:
   cancel-in-progress: false
   group: >-
-    opencode-${{
+    cogni-ai-agent-${{
       (github.event.issue.pull_request && github.event.issue.number)
       || github.event.pull_request.number
       || (github.ref_name != github.event.repository.default_branch && github.ref)
@@ -100,7 +100,7 @@ jobs:
       - name: Run Cogni AI Agent
         uses: Cogni-AI-OU/cogni-ai-agent-action@main
         with:
-          model: ${{ inputs.model }}
+          model: ${{ inputs.model || 'opencode/gemini-3-flash' }}
           opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}  # <https://opencode.ai/auth>
           permissions: |-
             bash:
@@ -114,7 +114,6 @@ jobs:
               docker*: allow
               ex*: allow
               gh*: allow
-              gh pr review*: allow
               git*: allow
               hexdump*: allow
               jq*: allow

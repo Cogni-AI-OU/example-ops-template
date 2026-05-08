@@ -16,7 +16,7 @@ Cogni-AI-OU projects:
 
 ### Key Features
 
-- **GitHub Actions Workflows**: CI/CD and automation (OpenCode, pre-commit, etc.)
+- **GitHub Actions Workflows**: CI/CD and automation (Cogni AI Agent, pre-commit, etc.)
 - **AI Agent Configurations**: AGENTS.md, skills, and prompts for automated development
 - **Pre-commit Hooks**: Linting and validation tooling
 - **Code Tours**: Guided walkthroughs for repository onboarding

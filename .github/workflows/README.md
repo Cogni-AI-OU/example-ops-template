@@ -54,7 +54,7 @@ on:
   workflow_dispatch:
 jobs:
   check:
-    uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
+    uses: <owner>/<repo>/.github/workflows/check.yml@main
     with:
       submodules: 'false'  # Set to 'true' or 'recursive' if repository uses submodules
 ```
@@ -86,7 +86,7 @@ to the `.devcontainer` directory, on a weekly schedule, and can also be used as 
 ```yaml
 jobs:
   devcontainer:
-    uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main
+    uses: <owner>/<repo>/.github/workflows/devcontainer-ci.yml@main
     permissions:
       contents: read
       packages: write  # Required for pushing to GitHub Container Registry
@@ -152,7 +152,7 @@ If you want to use custom matcher files, you can specify them using the inputs:
 ```yaml
 jobs:
   check:
-    uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
+    uses: <owner>/<repo>/.github/workflows/check.yml@main
     with:
       actionlint-matcher-path: .github/custom-actionlint-matcher.json
       pre-commit-matcher-path: .github/custom-pre-commit-matcher.json
