@@ -54,7 +54,7 @@ on:
   workflow_dispatch:
 jobs:
   check:
-    uses: <owner>/<repo>/.github/workflows/check.yml@main
+    uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main
     with:
       submodules: 'false'  # Set to 'true' or 'recursive' if repository uses submodules
 ```
@@ -86,7 +86,7 @@ to the `.devcontainer` directory, on a weekly schedule, and can also be used as 
 ```yaml
 jobs:
   devcontainer:
-    uses: <owner>/<repo>/.github/workflows/devcontainer-ci.yml@main
+    uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main
     permissions:
       contents: read
       packages: write  # Required for pushing to GitHub Container Registry
