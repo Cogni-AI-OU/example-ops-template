@@ -27,16 +27,19 @@ jobs:
       - uses: actions/checkout@v6
       - name: Clone agents
         run: |
+          rm -rf .github/agents
           git clone https://github.com/Cogni-AI-OU/cogni-ai-agents .github/agents
           cd .github/agents
           git checkout "$COGNI_AI_AGENTS_REF"
       - name: Clone instructions
         run: |
+          rm -rf .github/instructions
           git clone https://github.com/Cogni-AI-OU/cogni-ai-agent-instructions .github/instructions
           cd .github/instructions
           git checkout "$COGNI_AI_AGENT_INSTRUCTIONS_REF"
       - name: Clone skills
         run: |
+          rm -rf .github/skills
           git clone https://github.com/Cogni-AI-OU/cogni-ai-agent-skills .github/skills
           cd .github/skills
           git checkout "$COGNI_AI_AGENT_SKILLS_REF"

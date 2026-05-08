@@ -92,90 +92,6 @@ jobs:
       packages: write  # Required for pushing to GitHub Container Registry
 ```
 
-### OpenCode Workflow (`opencode.yml`)
-
-The `opencode.yml` workflow provides OpenCode automation for AI-assisted development.
-
-#### Using OpenCode as a Reusable Workflow
-
-You can use the OpenCode workflow in your repository by referencing it via `workflow_call`:
-
-```yaml
----
-name: OpenCode
-on:
-  issue_comment:
-    types: [created, edited]
-  pull_request_review_comment:
-    types: [created, edited]
-  issues:
-    types: [opened]
-  pull_request_review:
-    types: [submitted]
-  workflow_call:
-    inputs:
-      agent:
-        description: Agent to use.
-        required: false
-        type: string
-      model:
-        description: Model to use for OpenCode
-        required: false
-        type: string
-      issue_number:
-        description: Issue or PR number for workflow_call triggers
-        required: false
-        type: number
-      prompt:
-        description: Custom prompt to override the default prompt
-        required: false
-        type: string
-  workflow_dispatch:
-    inputs:
-      agent:
-        description: Agent to use.
-        required: false
-        type: string
-      model:
-        description: Model to use for OpenCode
-        required: false
-        type: string
-      issue_number:
-        description: Issue or PR number for manual workflow execution
-        required: false
-        type: number
-      prompt:
-        description: Custom prompt to override the default prompt
-        required: false
-        type: string
-jobs:
-  opencode:
-    uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main
-    with:
-      agent: >-
-        ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-        && inputs.agent }}
-      model: >-
-        ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-        && inputs.model }}
-      prompt: >-
-        ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call')
-        && inputs.prompt }}
-      issue_number: >-
-        ${{ github.event.issue.number || github.event.pull_request.number || inputs.issue_number }}
-    permissions:
-      actions: read
-      contents: write
-      id-token: write
-      issues: write
-      pull-requests: write
-    secrets: inherit
-```
-
-*Note: Requires `OPENCODE_API_KEY` secret to be set in repository settings.
-You must also install the [GitHub OpenCode app](https://github.com/apps/opencode-agent)
-or follow the [manual setup guide](https://opencode.ai/docs/github/#manual-setup).*
-
 ## Workflow Templates
 
 The `../workflow-templates/` directory contains reference workflows that are not
@@ -247,9 +163,9 @@ matcher files from this repository.
 
 ## Security
 
-### OpenCode Workflow Git Access
+### Cogni AI Agent Workflow Git Access
 
-The OpenCode workflow (`opencode.yml`) grants intentionally broad git access
+The Cogni AI Agent workflow (`cogni-ai-agent.yml`) grants intentionally broad git access
 via `Bash(git:*)` to enable autonomous code changes. This permission is necessary
 for OpenCode to commit and push changes, but requires proper safeguards.
 
