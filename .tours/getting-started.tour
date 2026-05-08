@@ -61,7 +61,7 @@
     },
     {
       "title": "Contributing Guidelines",
-      "description": "## How to Contribute\n\nThe `CONTRIBUTING.md` file outlines the contribution process:\n\n### Key Steps:\n\n1. **Report Bugs**: Use GitHub Issues with detailed information\n2. **Code Standards**: Follow the coding conventions (2-space indentation, readable code)\n3. **Pull Requests**: Submit changes via GitHub PRs\n4. **CI Checks**: Ensure all tests pass before merging\n\n### Before Submitting:\n```bash\npre-commit run --all-files\n```",
+      "description": "## How to Contribute\n\nThe organization-level contributing guidelines outline the contribution process:\n\n### Key Steps:\n\n1. **Report Bugs**: Use GitHub Issues with detailed information\n2. **Code Standards**: Follow the coding conventions (2-space indentation, readable code)\n3. **Pull Requests**: Submit changes via GitHub PRs\n4. **CI Checks**: Ensure all tests pass before merging\n\n### Before Submitting:\n```bash\npre-commit run --all-files\n```",
       "file": "README.md",
       "line": 110
     },
