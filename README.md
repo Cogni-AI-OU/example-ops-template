@@ -89,7 +89,7 @@ This repository provides AI agent configurations for automated development.
 | File/Directory | Audience | Purpose |
 | -------------- | -------- | ------- |
 | [AGENTS.md](AGENTS.md) | All agents | Repository-specific guidance and workflows |
-| [.github/skills/](.github/skills/) | All agents | Reusable capabilities (git, GitHub Actions, etc.) |
+| .github/skills/ | All agents | Reusable capabilities (git, GitHub Actions, etc.) |
 | [.github/prompts/](.github/prompts/) | All | Prompt templates (`.md` for VSCode, `.yaml` for GitHub Models) |
 
 See also:
