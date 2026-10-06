@@ -8,6 +8,11 @@
   //   // "args": { "VARIANT": "ubuntu-22.04" }
   // },
 
+  "containerEnv": {
+    "DEBIAN_FRONTEND": "noninteractive",
+    "EGET_CONFIG": "${containerWorkspaceFolder}/.devcontainer/.eget.toml"
+  },
+
   // Configure tool-specific properties.
   // Note: Keep the list in alphabetical order.
   "customizations": {
@@ -27,6 +32,7 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers-contrib/features/actionlint:1": {},
+    "ghcr.io/devcontainers-extra/features/eget:1": { "version": "1.3.4" },
     "ghcr.io/devcontainers-extra/features/node-asdf:0": { "version": "22.23.3" },
     "ghcr.io/devcontainers-extra/features/pipx-package:1": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
@@ -49,7 +55,12 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
 
-  "postCreateCommand": "time pip install -r .devcontainer/requirements.txt && time pipx install --include-deps --force ansible && time pipx inject ansible -r .devcontainer/requirements-ansible.txt && time pre-commit install",
+  // Install dependencies via eget and the project's Python tooling.
+  // @see: <https://github.com/zyedidia/eget>
+  "postCreateCommand": {
+    "dependencies": "time pip install -r .devcontainer/requirements.txt && time pipx install --include-deps --force ansible && time pipx inject ansible -r .devcontainer/requirements-ansible.txt && time pre-commit install",
+    "upctl": "eget -a linux_x86_64 -a tar.gz -a ^spdx --file upctl --tag v3.36.0 UpCloudLtd/upcloud-cli"
+  },
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode",

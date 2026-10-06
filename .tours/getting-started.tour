@@ -21,9 +21,9 @@
     },
     {
       "title": "Development Environment Setup",
-      "description": "## Devcontainer Configuration\n\nThis project uses VS Code's devcontainer for a consistent development environment.\n\n### Key Features:\n\n- **Base Image**: Ubuntu Jammy (22.04)\n- **Pre-installed Tools**: Python, Node.js, Docker, Make, Ripgrep, and OpenCode support\n- **VS Code Extensions**: Markdownlint, Copilot, CodeTour, Claude Code, and more\n- **Automatic Setup**: Runs `pip install` and `pre-commit install` on creation\n- **OpenCode Host Dirs**: Pre-creates the bind mount directories required by OpenCode\n\n### Important Extension:\n\nNotice the `vsls-contrib.codetour` extension is included - that's what enables this tour!",
+      "description": "## Devcontainer Configuration\n\nThis project uses VS Code's devcontainer for a consistent development environment.\n\n### Key Features:\n\n- **Base Image**: Ubuntu Jammy (22.04)\n- **Pre-installed Tools**: Python, Node.js, Docker, Make, Ripgrep, eget, and OpenCode support\n- **VS Code Extensions**: Markdownlint, Copilot, CodeTour, Claude Code, and more\n- **Automatic Setup**: Runs `pip install`, `pre-commit install`, and eget package installs (e.g. `upctl`) on creation\n- **OpenCode Host Dirs**: Pre-creates the bind mount directories required by OpenCode\n\n### Important Extension:\n\nNotice the `vsls-contrib.codetour` extension is included - that's what enables this tour!",
       "file": ".devcontainer/devcontainer.json",
-      "line": 20
+      "line": 33
     },
     {
       "title": "GitHub Copilot Instructions",
