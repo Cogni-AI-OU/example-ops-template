@@ -8,9 +8,9 @@ For a human-readable overview, see [README.md](README.md).
 ## Workflow catalog
 
 - **[check.yml](check.yml)**: Linting and quality gates via actionlint and pre-commit.
+- **[cogni-ai-agent.yml](cogni-ai-agent.yml)**: Logic for the Cogni AI Agent.
+- **[copilot-setup-steps.yml](copilot-setup-steps.yml)**: Environment setup utility.
 - **[devcontainer-ci.yml](devcontainer-ci.yml)**: Build/test devcontainer and required tools/packages.
-- **[opencode.yml](opencode.yml)**: OpenCode agent invocation via comments or manual triggers.
-- **[opencode-review.yml](opencode-review.yml)**: OpenCode PR review.
 
 ## Details
 
@@ -24,6 +24,23 @@ For a human-readable overview, see [README.md](README.md).
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/check.yml@main`.
 - Jobs: `actionlint`, `link-checker`, `pre-commit`.
 
+### cogni-ai-agent.yml
+
+- Purpose: provides the underlying logic to run the Cogni AI Agent.
+- Triggers: `issue_comment`, `pull_request_review_comment`, `workflow_call`, `workflow_dispatch`.
+- Details: Installs Python dependencies from `.devcontainer/requirements.txt` and calls the
+  `Cogni-AI-OU/cogni-ai-agent-action` to process instructions. A post-run `summary` job generates
+  an AI summary of the agent's actions.
+- Concurrency: Only one run per issue/PR/branch at a time; new runs are queued (no auto-cancel).
+- Permissions: `contents: write`, `id-token: write`, `issues: write`, `pull-requests: write`.
+
+### copilot-setup-steps.yml
+
+- Purpose: utility workflow for setting up the environment.
+- Triggers: `push` and `pull_request` on `copilot-setup-steps.yml` or `.devcontainer/requirements.txt`.
+- Details: Checks out repo, sets up Python 3.12, restores cache, and installs dependencies.
+- Permissions: `contents: read`.
+
 ### devcontainer-ci.yml
 
 - Purpose: build and validate the dev container; ensure required tools and Python packages exist.
@@ -34,59 +51,8 @@ For a human-readable overview, see [README.md](README.md).
 - Permissions: callers must grant `packages: write` when pushing images to GHCR.
 - Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/devcontainer-ci.yml@main`.
 
-### opencode.yml
-
-- Purpose: invoke OpenCode agents via slash commands or manual triggers.
-- Inputs: `agent` (default `cogni-ai`), `model` (workflow_call default via
-  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
-  default `opencode/gpt-5.3-codex`), `prompt` (optional override).
-- Triggers: `workflow_dispatch`, `workflow_call`, or issue comments with `/oc` or `/opencode` from trusted (non-bot) collaborators/members/owners.
-- Guardrail: comment-triggered runs do not populate `inputs.*`; back shared OpenCode defaults
-  with workflow-level `env` values instead of hardcoding agent/model literals in steps.
-- Permissions: `contents: read`, `id-token: write`, `issues: write`, `pull-requests: write`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode.yml@main`.
-
-### opencode-review.yml
-
-- Purpose: OpenCode-driven PR review.
-- Inputs: agent (cogni-ai), model (workflow_call default via
-  `vars.OPENCODE_MODEL_DEFAULT` with fallback `opencode/gpt-5.3-codex`; workflow_dispatch
-  default `opencode/gpt-5.3-codex`), additional_prompt, pr_number (req for call/dispatch),
-  prompt (default pr-review).
-- Triggers: pull_request_target (trusted authors), /review comment (COLLABORATOR/OWNER/MEMBER), workflow_call,
-  workflow_dispatch.
-- Guardrail: align review default behavior with OpenCode by using workflow-level
-  `env` fallbacks for `agent` and `model` rather than hardcoded literals in steps.
-- Permissions: `contents: read`, `id-token: write`, `issues: read`, `pull-requests: write`.
-- Reusable: `uses: Cogni-AI-OU/.github/.github/workflows/opencode-review.yml@main`.
-
-## Synchronized Configuration
-
-The following configuration values **MUST** be kept in sync across multiple files:
-
-### OPENCODE_PERMISSION
-
-The OpenCode bash command allow/deny list must stay synchronized across
-workflow, local OpenCode, and VS Code auto-approve configs.
-
-| File | Location |
-| ---- | -------- |
-| [opencode.yml](opencode.yml) | Line ~130 (env section) |
-| [opencode-review.yml](opencode-review.yml) | Line ~210 (env section) |
-| [.opencode/opencode.jsonc](../../.opencode/opencode.jsonc) | `agent.cogni-ai.permission.bash` |
-| [.vscode/settings.json](../../.vscode/settings.json) | `chat.tools.terminal.autoApprove` |
-
-### Model options list
-
-The `model` input options for `workflow_dispatch` must be identical in both workflow files:
-
-| File | Location |
-| ---- | -------- |
-| [opencode.yml](opencode.yml) | Lines ~48-90 (workflow_dispatch inputs) |
-| [opencode-review.yml](opencode-review.yml) | Lines ~67-107 (workflow_dispatch inputs) |
-
 ## Notes
 
-- Follow [.github/instructions/github-workflows.instruction.md](../instructions/github-workflows.instruction.md)
+- Follow the GitHub workflows instructions (available in the runtime instructions catalog)
   when editing workflow files (ordering, formatting, validation).
 - Keep this catalog updated when workflows are added, removed, or renamed.
